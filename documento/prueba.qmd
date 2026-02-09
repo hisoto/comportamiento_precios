@@ -1,0 +1,13 @@
+---
+title: "Comportamiento de precios"
+format: html
+editor: visual
+---
+
+Este documento describe el comportamiento de los precios, se pretende generar la informacion necesaria para incluir en el informe mensual del comportamiento de la economía de la **Comisión Nacional de los Salarios Mínimos**.
+
+```{r}
+print("hola")
+```
+
+![](images/va_anual_inpc_ccm_2025m12.png)

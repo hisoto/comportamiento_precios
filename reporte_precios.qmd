@@ -1,0 +1,216 @@
+---
+title: "Comportamiento de precios"
+
+params:
+  año: 2026
+  mes: 1
+
+execute:
+  echo: false
+  warning: false
+  message: false
+
+format:
+  html:
+    fig-responsive: true
+---
+
+## Inflación general, subyacente y no subyacente
+
+```{r}
+pacman:::p_load(
+  tidyverse, 
+  dplyr,
+  data.table,
+  readxl,
+  janitor,
+  lubridate,
+  haven 
+)
+
+source("rscripts/theme_conasami.R")
+
+fecha_interes  <- ymd(sprintf("%s-%s-01", params$año, params$mes))
+fecha_inicio <- "2021-01-01"
+
+base <- fread("data/inpc.csv") 
+
+base <- base |> 
+  arrange(variable, date) |> 
+  group_by(variable) |> 
+  mutate(
+    var_anual = ((valor / lag(valor, 12) - 1)*100),
+    var_mensual = ((valor / lag(valor, 1) - 1)*100)
+  ) |> 
+  filter(
+    date >= fecha_inicio & date <= fecha_interes
+  ) 
+
+valor_inpc <- base |>
+    filter(date == fecha_interes & variable == "INPC") |>
+    pull(valor)
+
+valor_subyacente <- base |>
+    filter(date == fecha_interes & variable == "Subyacente") |>
+    pull(valor)
+
+valor_nsubyacente <- base |>
+    filter(date == fecha_interes & variable == "No subyacente") |>
+    pull(valor)
+
+```
+
+El índice de precios al consumidor en `r month.name[params$mes]` de `r params$año` registro un valor de `r valor_inpc`, por su parte los índices subyacente y no subyacente tuvieron un valor de `r valor_subyacente` y `r valor_nsubyacente`, respectivamente.
+
+```{r}
+#| fig-asp: 0.6 
+#| out-width: "100%" 
+#| dpi: 300
+
+graph_01 <- base |> 
+  filter(
+     variable %in% c("INPC", "Subyacente", "No subyacente")
+  )
+
+ggplot(graph_01) + 
+  geom_point(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    shape = 1,
+    show.legend = FALSE
+  ) + 
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable)
+  ) +
+  scale_color_manual(
+    values = c(
+      "INPC" = "#a57f2c",
+      "Subyacente" = "#611232",
+      "No subyacente" = "#1e5b4f"
+    )
+  ) +
+  scale_y_continuous(
+    limits = c(-1, NA),
+    breaks = seq(-10, 20, by = 2)
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  geom_abline(
+    slope = 0,
+    intercept = 0,
+    color = "black",
+    linewidth = 0.5,
+    linetype = "dotted"
+  ) + 
+  geom_text(
+    data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "Subyacente", "No subyacente")),
+    mapping = aes(
+      x = date,
+      y = var_anual,
+      label = round(var_anual, 2),
+      color = variable
+    ),
+    hjust = -0.3,
+    vjust = 0,
+    show.legend = FALSE, 
+    fontface = "bold", 
+    size = 2.5
+  ) + 
+  labs(
+    title = "",
+    subtitle = "",
+    x = "",
+    y = "Variación anual (%)",
+    caption = "",
+    color = ""
+  ) +
+  theme_conasami() + 
+  theme(legend.position = "bottom")
+```
+
+La inflación anual para el INPC general, subyacente y no subyacente fue de `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_anual"], 2)`%, `r round(base[base$date== fecha_interes & base$variable == "Subyacente", "var_anual"], 2)`% y `r round(base[base$date== fecha_interes & base$variable == "No subyacente", "var_anual"], 2)`%, respectivamente. Por su parte, las variaciones mensuales fueron de `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_mensual"], 2)`%, `r round(base[base$date== fecha_interes & base$variable == "Subyacente", "var_mensual"], 2)`% y `r round(base[base$date== fecha_interes & base$variable == "No subyacente", "var_mensual"], 2)`%, respectivamente.
+
+```{r}
+#| out-width: "100%"
+
+base |> 
+  filter(
+     variable %in% c("INPC", "Subyacente", "No subyacente") &
+     date == fecha_interes
+  ) |> 
+  select(variable, date, valor, var_anual, var_mensual) |> 
+  arrange(variable) |>
+  knitr::kable(
+    col.names = c("Variable", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
+    caption = "INPC, subyacente, no subyacente e INPC CCM al mes de interés"
+  ) |> 
+  kableExtra:::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  )
+
+```
+
+------------------------------------------------------------------------
+
+## Canasta de consumo mínimo
+
+La inflación de los productos de la canasta básica fue de `r round(base[base$date== fecha_interes & base$variable == "INPC CCM", "var_anual"], 2)`% anual y `r round(base[base$date== fecha_interes & base$variable == "INPC CCM", "var_mensual"], 2)`% mensual. La diferencia en puntos porcentuales entre la inflación general y la de la canasta de consumo mínimo fue de `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_anual"] - base[base$date== fecha_interes & base$variable == "INPC CCM", "var_anual"], 2)` puntos porcentuales anual y `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_mensual"] - base[base$date== fecha_interes & base$variable == "INPC CCM", "var_mensual"], 2)` puntos porcentuales mensual.
+
+```{r}
+#| fig-asp: 0.6 
+#| out-width: "100%" 
+#| dpi: 300
+
+ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) + 
+  geom_point(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    shape = 1,
+    show.legend = FALSE
+  ) + 
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable)
+  ) + 
+  scale_color_manual(
+    values = c(
+      "INPC" = "#a57f2c",
+      "INPC CCM" = "#611232"
+    )
+  ) +
+  scale_y_continuous(
+    limits = c(-.5, NA),
+    breaks = seq(-10, 20, by = 2)
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  geom_abline(
+    slope = 0,
+    intercept = 0,
+    color = "black",
+    linewidth = 0.5,
+    linetype = "dotted"
+  ) + 
+  geom_text(
+    data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "INPC CCM")),
+    mapping = aes(
+      x = date,
+      y = var_anual,
+      label = round(var_anual, 2),
+      color = variable,
+      vjust = if_else(variable == "INPC", 1, 0),
+    ),
+    hjust = -0.3,
+    show.legend = FALSE, 
+    fontface = "bold", 
+    size = 2.5
+  ) + 
+  labs(
+    title = "",
+    subtitle = "",
+    x = "",
+    y = "Variación anual (%)",
+    caption = "",
+    color = ""
+  ) +
+  theme_conasami() + 
+  theme(legend.position = "bottom")
+
+```
