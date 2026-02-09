@@ -214,3 +214,89 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
   theme(legend.position = "bottom")
 
 ```
+
+## Productos básicos 
+
+En esta sección se analiza el comportamiento de cinco productos básico: Tortilla, Frijol, Huevo, Leche y Carne de res. En `r month.name[params$mes]` de `r params$año`, la variación anual de estos productos fue de `r round(base[base$date== fecha_interes & base$variable == "Tortilla", "var_anual"], 2)`% para la tortilla, `r round(base[base$date== fecha_interes & base$variable == "Frijol", "var_anual"], 2)`% para el frijol, `r round(base[base$date== fecha_interes & base$variable == "Huevo", "var_anual"], 2)`% para el huevo, `r round(base[base$date== fecha_interes & base$variable == "Leche", "var_anual"], 2)`% para la leche y `r round(base[base$date== fecha_interes & base$variable == "Carne res", "var_anual"], 2)`% para la carne de res. Por su parte, las variaciones mensuales fueron de `r round(base[base$date== fecha_interes & base$variable == "Tortilla", "var_mensual"], 2)`% para la tortilla, `r round(base[base$date== fecha_interes & base$variable == "Frijol", "var_mensual"], 2)`% para el frijol, `r round(base[base$date== fecha_interes & base$variable == "Huevo", "var_mensual"], 2)`% para el huevo, `r round(base[base$date== fecha_interes & base$variable == "Leche", "var_mensual"], 2)`% para la leche y `r round(base[base$date== fecha_interes & base$variable == "Carne res", "var_mensual"], 2)`% para la carne de res.
+
+```{r}
+#| fig-asp: 0.6 
+#| out-width: "100%" 
+#| dpi: 300
+
+tabla <- base |>
+  filter(date == fecha_interes & variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res")) |>
+  select(variable, date, valor, var_anual, var_mensual) |>
+  arrange(variable) |>
+  knitr::kable(
+    col.names = c("Variable", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
+    caption = "INPC, tortilla, frijol, huevo, leche y carne de res al mes de interés"
+  ) |> 
+  kableExtra:::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  )
+
+  tabla 
+
+  ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res"))) + 
+  geom_point(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    shape = 1,
+    show.legend = FALSE
+  ) + 
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable)
+  ) +
+  scale_color_manual(
+    values = c(
+      "INPC" = "#a57f2c",
+      "Tortilla" = "#611232",
+      "Carne res" = "#1e5b4f",
+      "Leche" = "#9b2247",
+      "Carne cerdo" = "#2e6f6f",
+      "Huevo" = "#161a1d",
+      "Frijol" = "#98989A"
+    )
+  ) +
+  scale_y_continuous(
+    limits = c(-15, NA),
+    breaks = seq(-15, 40, by = 5)
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  geom_abline(
+    slope = 0,
+    intercept = 0,
+    color = "black",
+    linewidth = 0.5,
+    linetype = "dotted"
+  ) + 
+  geom_text(
+    data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res")),
+    mapping = aes(
+      x = date,
+      y = var_anual,
+      label = round(var_anual, 2),
+      color = variable
+    ),
+    hjust = -0.3,
+    show.legend = FALSE, 
+    fontface = "bold", 
+    size = 2
+  ) +
+  labs(
+    title = "",
+    subtitle = "",
+    x = "",
+    y = "Variación anual (%)",
+    caption = "",
+    color = ""
+  ) +
+  theme_conasami() + 
+  guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+  theme(legend.position = "bottom")
+
+
+
+```
