@@ -24,7 +24,7 @@ source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2025-12-01")
+fecha_interes <- as.Date("2026-01-01")
 
 #_______________________________________________________________________________
 
@@ -150,7 +150,7 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
       y = var_anual,
       label = round(var_anual, 2),
       color = variable,
-      vjust = if_else(variable == "INPC", 1, 0),
+      vjust = if_else(variable == "INPC", 0, 1),
     ),
     hjust = -0.3,
     show.legend = FALSE, 
@@ -223,7 +223,15 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
       x = date,
       y = var_anual,
       label = round(var_anual, 2),
-      color = variable
+      color = variable,
+      vjust = case_when(
+        variable == "Tortilla" ~ 1,
+        variable == "Frijol" ~ 0,
+        variable == "Huevo" ~ -1,
+        variable == "Leche" ~ 0,
+        variable == "Carne res" ~ 0,
+        TRUE ~ 0
+      )
     ),
     hjust = -0.3,
     show.legend = FALSE, 
@@ -252,7 +260,7 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 25,
+  height = 20,
   units = "cm",
   dpi = 300
 )
@@ -326,7 +334,7 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 25,
+  height = 20,
   units = "cm",
   dpi = 300
 )

@@ -24,7 +24,7 @@ source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2025-11-01")
+fecha_interes <- as.Date("2026-01-01")
 
 #_______________________________________________________________________________
 
@@ -43,7 +43,6 @@ base <- base |>
       variable == "Cd. Juárez, Chih." ~ "ZLFN",
       variable == "Matamoros, Tamps." ~ "ZLFN",
       variable == "Cd. Acuña, Coah." ~ "ZLFN",
-      variable == "La Paz, B.C.S." ~ "ZLFN",
       variable == "Tijuana, B.C." ~ "ZLFN",
       variable == "Mexicali, B.C." ~ "ZLFN",
       TRUE ~ "ZSMG"
@@ -110,7 +109,7 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 25,
+  height = 20,
   units = "cm",
   dpi = 300
 )

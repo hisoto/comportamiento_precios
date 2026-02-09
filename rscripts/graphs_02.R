@@ -24,7 +24,7 @@ source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2025-12-01")
+fecha_interes <- as.Date("2026-01-01")
 
 #_______________________________________________________________________________
 
@@ -76,7 +76,7 @@ ggplot(
       "No subyacente" = "#1e5b4f"
     )) +
   scale_y_continuous(
-    limits = c(-1.2, 1.6),
+    limits = c(-0.5, 1.0),
     breaks = seq(-10, 20, by = 1)
   ) + 
   geom_abline(
@@ -175,7 +175,7 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 25,
+  height = 20,
   units = "cm",
   dpi = 300
 )

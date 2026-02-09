@@ -150,6 +150,30 @@ base |>
 
 ```
 
+Dentro de la inflación subyacente, el componente de Servicios tuvo una variación anual de `r round(base[base$date== fecha_interes & base$variable == "Subyacente - Servicios", "var_anual"], 2)`% y el de Mercancías de `r round(base[base$date== fecha_interes & base$variable == "Subyacente - Mercancias", "var_anual"], 2)`%. Por su parte, dentro del componente no subyacente, los productos agropecuarios tuvieron una variación anual de `r round(base[base$date== fecha_interes & base$variable == "No subyacente - Agropecuarios", "var_anual"], 2)`% y los energéticos y tarifas autorizadas de `r round(base[base$date== fecha_interes & base$variable == "No subyacente - Energéticos y tarifas autorizadas", "var_anual"], 2)`%.
+
+```{r}
+#| out-width: "100%"
+
+base |> 
+  filter(
+     variable %in% c("Subyacente - Servicios", "Subyacente - Mercancias", "No subyacente - Agropecuarios", "No subyacente - Energéticos y tarifas autorizadas") &
+     date == fecha_interes
+  ) |> 
+  select(variable, date, valor, var_anual, var_mensual) |> 
+  arrange(variable) |>
+  knitr::kable(
+    col.names = c("Variable", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
+    caption = "Componentes del INPC al mes de interés"
+  ) |> 
+  kableExtra:::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  )
+
+```
+
 ------------------------------------------------------------------------
 
 ## Canasta de consumo mínimo
@@ -299,4 +323,98 @@ tabla <- base |>
 
 
 
+```
+
+## Inflación por Ciudad
+
+```{r}
+
+ciudad <- base |>
+  filter(str_starts(api, "v_ciudad")) |> 
+  arrange(variable, date) |>
+  group_by(variable) |>
+  mutate(
+    zona = case_when(
+      variable == "Nacional" ~ "Nacional",
+      variable == "Cd. Juárez, Chih." ~ "ZLFN",
+      variable == "Matamoros, Tamps." ~ "ZLFN",
+      variable == "Cd. Acuña, Coah." ~ "ZLFN",
+      variable == "Tijuana, B.C." ~ "ZLFN",
+      variable == "Mexicali, B.C." ~ "ZLFN",
+      TRUE ~ "ZSMG"
+    )
+  ) |> 
+  filter(
+    date == fecha_interes 
+  ) 
+
+```
+
+La inflación promedio en las ciudades de la Zona Libre de la Frontera Norte (ZLFN) fue de `r round(ciudad |> filter(zona == "ZLFN") |> group_by(zona) |> summarise(x = mean(var_anual, na.rm = TRUE)) |> pull(x), 2)`. 
+
+```{r}
+#| out-width: "100%"
+
+ciudad |> 
+  filter(str_starts(api, "v_ciudad") & date == fecha_interes) |> 
+  select(variable, date, valor, var_anual, var_mensual) |> 
+  arrange(desc(var_anual)) |>
+  knitr::kable(
+    col.names = c("Ciudad", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
+    caption = "Inflación por ciudad al mes de interés"
+  ) |> 
+  kableExtra:::kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  )
+
+```
+
+```{r}
+ggplot(ciudad) +
+  geom_col(
+    mapping = aes(x = fct_reorder(variable, -var_anual), y = var_anual, fill = zona),
+    position = "dodge",
+    show.legend = TRUE,
+    alpha = 0.9
+  ) +
+  geom_text(
+    mapping = aes(
+      x = fct_reorder(variable, -var_anual),
+      y = var_anual,
+      label = round(var_anual, 2),
+      color = zona,
+      vjust = if_else(var_anual < 0, 1.2, -0.3)
+    ),
+    vjust = 0.5,
+    hjust = 1.25,
+    size = 2.5,
+    angle = 90,
+    color = "white",
+    fontface = "bold",
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Nacional" = "#a57f2c",
+      "ZLFN" = "#611232",
+      "ZSMG" = "#1e5b4f"
+    )) +
+  scale_color_manual(
+    values = c(
+      "Nacional" = "#a57f2c",
+      "ZLFN" = "#611232",
+      "ZSMG" = "#1e5b4f"
+    ))  +
+  geom_abline(
+    slope = 0,
+    intercept = 0,
+    linetype = "dashed",
+    color = "gray40"
+  ) +
+  labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
+  theme_conasami() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 90, hjust = 1))
 ```
