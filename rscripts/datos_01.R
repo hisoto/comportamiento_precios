@@ -21,8 +21,12 @@ temp <- tibble(
   variable = c(
     "INPC",
     "Subyacente",
+    "Subyacente - Mercancias", 
+    "Subyacente - Servicios",
     "INPC CCM",
     "No subyacente",
+    "No subyacente - Agropecuarios",
+    "No subyacente - Energéticos y tarifas autorizadas",
     "INPC quincenal",
     "INPC quincenal subyacente",
     "INPC quincenal nsubyacente",
@@ -95,6 +99,10 @@ temp <- tibble(
     "Nacional"
   ),
   idEstructura = c(
+    "112001700010",
+    "112001700010",
+    "112001700010",
+    "112001700010",
     "112001700010",
     "112001700010",
     "112001700010",
@@ -173,8 +181,12 @@ temp <- tibble(
   series = c(
     "e|865541",
     "e|865542",
+    "e|865548",
+    "e|865551",
     "e|865543",
     "e|865555",
+    "e|865556",
+    "e|865559",
     "e|821890",
     "e|821891",
     "e|821901",
@@ -253,7 +265,11 @@ temp <- temp %>%
     api = case_when(
       variable == "INPC"                        ~ "v_inpc",
       variable == "Subyacente"                  ~ "v_subyacente",
+      variable == "Subyacente - Mercancias"    ~ "v_subyacente_mercancias",
+      variable == "Subyacente - Servicios"     ~ "v_subyacente_servicios",
       variable == "No subyacente"               ~ "v_inpc_nsubyacente",
+      variable == "No subyacente - Agropecuarios" ~ "v_nsubyacente_agropecuarios",
+      variable == "No subyacente - Energéticos y tarifas autorizadas" ~ "v_nsubyacente_energeticos",
       variable == "INPC CCM"                    ~ "v_inpc_ccm",
       variable == "INPC quincenal"              ~ "v_inpc_quincenal",
       variable == "INPC quincenal subyacente"   ~ "v_subyacente_quincenal",
