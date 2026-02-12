@@ -287,7 +287,7 @@ ggplot(
     )
   ) +
   scale_y_continuous(
-    limits = c(-5, NA),
+    limits = c(-6, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year") +

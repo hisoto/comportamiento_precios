@@ -63,7 +63,6 @@ valor_nsubyacente <- base |>
 El índice de precios al consumidor en `r month.name[params$mes]` de `r params$año` registro un valor de `r valor_inpc`, por su parte los índices subyacente y no subyacente tuvieron un valor de `r valor_subyacente` y `r valor_nsubyacente`, respectivamente.
 
 ```{r}
-#| fig-asp: 0.6 
 #| out-width: "100%" 
 #| dpi: 300
 
@@ -181,7 +180,6 @@ base |>
 La inflación de los productos de la canasta básica fue de `r round(base[base$date== fecha_interes & base$variable == "INPC CCM", "var_anual"], 2)`% anual y `r round(base[base$date== fecha_interes & base$variable == "INPC CCM", "var_mensual"], 2)`% mensual. La diferencia en puntos porcentuales entre la inflación general y la de la canasta de consumo mínimo fue de `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_anual"] - base[base$date== fecha_interes & base$variable == "INPC CCM", "var_anual"], 2)` puntos porcentuales anual y `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_mensual"] - base[base$date== fecha_interes & base$variable == "INPC CCM", "var_mensual"], 2)` puntos porcentuales mensual.
 
 ```{r}
-#| fig-asp: 0.6 
 #| out-width: "100%" 
 #| dpi: 300
 
@@ -244,7 +242,6 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
 En esta sección se analiza el comportamiento de cinco productos básico: Tortilla, Frijol, Huevo, Leche y Carne de res. En `r month.name[params$mes]` de `r params$año`, la variación anual de estos productos fue de `r round(base[base$date== fecha_interes & base$variable == "Tortilla", "var_anual"], 2)`% para la tortilla, `r round(base[base$date== fecha_interes & base$variable == "Frijol", "var_anual"], 2)`% para el frijol, `r round(base[base$date== fecha_interes & base$variable == "Huevo", "var_anual"], 2)`% para el huevo, `r round(base[base$date== fecha_interes & base$variable == "Leche", "var_anual"], 2)`% para la leche y `r round(base[base$date== fecha_interes & base$variable == "Carne res", "var_anual"], 2)`% para la carne de res. Por su parte, las variaciones mensuales fueron de `r round(base[base$date== fecha_interes & base$variable == "Tortilla", "var_mensual"], 2)`% para la tortilla, `r round(base[base$date== fecha_interes & base$variable == "Frijol", "var_mensual"], 2)`% para el frijol, `r round(base[base$date== fecha_interes & base$variable == "Huevo", "var_mensual"], 2)`% para el huevo, `r round(base[base$date== fecha_interes & base$variable == "Leche", "var_mensual"], 2)`% para la leche y `r round(base[base$date== fecha_interes & base$variable == "Carne res", "var_mensual"], 2)`% para la carne de res.
 
 ```{r}
-#| fig-asp: 0.6 
 #| out-width: "100%" 
 #| dpi: 300
 
@@ -417,4 +414,139 @@ ggplot(ciudad) +
   theme_conasami() +
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## índice Nacional de Precios al Productor
+
+  El INPP registró una variación anual de `r round(base |> filter(variable == "INPP sin petróleo" & date == fecha_interes) |> pull(var_anual), 2)`% y una variación mensual de `r round(base |> filter(variable == "INPP sin petróleo" & date == fecha_interes) |> pull(var_mensual), 2)`% en `r month.name[params$mes]` de `r params$año`.
+  
+   Por grupos de actividad económica, el INPP primarias, el INPP secundarias sin petróleo y el INPP terciarias tuvieron una variación anual de `r round(base |> filter(variable == "INPP primarias" & date == fecha_interes) |> pull(var_anual), 2)`%, `r round(base |> filter(variable == "INPP secundarias sin petróleo" & date == fecha_interes) |> pull(var_anual), 2)`%, y `r round(base |> filter(variable == "INPP terciarias" & date == fecha_interes) |> pull(var_anual), 2)`%, respectivamente. Las variaciones mensuales para el INPP primarias, el INPP secundarias sin petróleo y el INPP terciarias fueron de `r round(base |> filter(variable == "INPP primarias" & date == fecha_interes) |> pull(var_mensual), 2)`%, `r round(base |> filter(variable == "INPP secundarias sin petróleo" & date == fecha_interes) |> pull(var_mensual), 2)`% y `r round(base |> filter(variable == "INPP terciarias" & date == fecha_interes) |> pull(var_mensual), 2)`%, respectivamente.
+
+
+```{r}
+
+
+ggplot(
+  base |> filter(variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias"))
+) + 
+  geom_point(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    shape = 1,
+    show.legend = FALSE
+  ) + 
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable)
+  ) +
+  scale_color_manual(
+    values = c(
+      "INPP sin petróleo" = "#a57f2c",
+      "INPP primarias" = "#9b2247",
+      "INPP secundarias sin petróleo" = "#611232",
+      "INPP terciarias" = "#1e5b4f"
+    )
+  ) +
+  scale_y_continuous(
+    limits = c(-6, NA),
+    breaks = seq(-10, 20, by = 2)
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  geom_abline(
+    slope = 0,
+    intercept = 0,
+    color = "black",
+    linewidth = 0.5,
+    linetype = "dotted"
+  ) +
+  geom_text(
+    data = base %>% filter(date == fecha_interes & variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias")),
+    mapping = aes(
+      x = date,
+      y = var_anual,
+      label = round(var_anual, 2),
+      color = variable,
+      vjust = if_else(variable == "INPP secundarias sin petróleo", 1, 0)
+    ),
+    hjust = -0.3,
+    show.legend = FALSE,
+    fontface = "bold",
+    size = 2.5
+  ) +
+  labs(
+    title = "",
+    subtitle = "",
+    x = "",
+    y = "Variación anual (%)",
+    caption = "",
+    color = ""
+  ) +
+  theme_conasami() +
+  guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+  theme(legend.position = "bottom")
+
+```
+
+El INPP de bienes finales tuvo una variación anual de `r round(base |> filter(variable == "INPP finales" & date == fecha_interes) |> pull(var_anual), 2)`% y una variación mensual de `r round(base |> filter(variable == "INPP finales" & date == fecha_interes) |> pull(var_mensual), 2)`%. Por su parte, el INPP intermedios tuvo una variación anual de `r round(base |> filter(variable == "INPP intermedios" & date == fecha_interes) |> pull(var_anual), 2)`% y una variación mensual de `r round(base |> filter(variable == "INPP intermedios" & date == fecha_interes) |> pull(var_mensual), 2)`%.
+
+```{r}
+
+ggplot(
+  base |> filter(variable %in% c("INPP sin petróleo", "INPP finales", "INPP intermedios"))
+) + 
+  geom_point(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    shape = 1,
+    show.legend = FALSE
+  ) + 
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable)
+  ) +
+  scale_color_manual(
+    values = c(
+      "INPP sin petróleo" = "#a57f2c",
+      "INPP finales" = "#611232",
+      "INPP intermedios" = "#1e5b4f"
+    )
+  ) +
+  scale_y_continuous(
+    limits = c(-2, NA),
+    breaks = seq(-10, 20, by = 2)
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  geom_abline(
+    slope = 0,
+    intercept = 0,
+    color = "black",
+    linewidth = 0.5,
+    linetype = "dotted"
+  ) +
+  geom_text(
+    data = base %>% filter(date == fecha_interes & variable %in% c("INPP sin petróleo", "INPP finales", "INPP intermedios")),
+    mapping = aes(
+      x = date,
+      y = var_anual,
+      label = round(var_anual, 2),
+      color = variable,
+      vjust = case_when(
+        variable == "INPP finales" ~ -1,
+        variable == "INPP intermedios" ~ 1,
+        TRUE ~ 0
+      )
+    ),
+    hjust = -0.3,
+    show.legend = FALSE,
+    fontface = "bold",
+    size = 2.5
+  ) +
+  labs(
+    title = "",
+    subtitle = "",
+    x = "",
+    y = "Variación anual (%)",
+    caption = "",
+    color = ""
+  ) +
+  theme_conasami() +
+  guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
+  theme(legend.position = "bottom")
+
 ```

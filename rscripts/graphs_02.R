@@ -150,7 +150,7 @@ ggplot(
       "INPP terciarias" = "#98989A"
     )) +
   scale_y_continuous(
-    limits = c(-1, 1.2),
+    limits = c(-2.5, 1.4),
     breaks = seq(-10, 20, by = 1)
   ) + 
   geom_abline(
