@@ -3,11 +3,16 @@
 
 ## Inflación general, subyacente y no subyacente
 
+Este repositorio contiene los códigos para automatizar la descarga de
+las series de tiempo del índice Nacional de Precios al Consumidor, y sus
+desagregaciones, para hacer el reporte sobre el comportamiento de los
+precios.
+
 El índice de precios al consumidor en January de 2026 registro un valor
 de 143.588, por su parte los índices subyacente y no subyacente tuvieron
 un valor de 143.3313259 y 144.0298102, respectivamente.
 
-<img src="README_files/figure-commonmark/unnamed-chunk-2-1.png"
+<img src="README_files/figure-commonmark/unnamed-chunk-2-1.svg"
 style="width:100.0%" />
 
 La inflación anual para el INPC general, subyacente y no subyacente fue
@@ -46,7 +51,7 @@ La inflación de los productos de la canasta básica fue de 3.6% anual y
 general y la de la canasta de consumo mínimo fue de 0.19 puntos
 porcentuales anual y 0 puntos porcentuales mensual.
 
-<img src="README_files/figure-commonmark/unnamed-chunk-5-1.png"
+<img src="README_files/figure-commonmark/unnamed-chunk-5-1.svg"
 style="width:100.0%" />
 
 ## Productos básicos
@@ -70,7 +75,7 @@ para la leche y 0.53% para la carne de res.
 
 INPC, tortilla, frijol, huevo, leche y carne de res al mes de interés
 
-<img src="README_files/figure-commonmark/unnamed-chunk-7-1.png"
+<img src="README_files/figure-commonmark/unnamed-chunk-7-1.svg"
 style="width:100.0%" />
 
 ## Inflación por Ciudad
@@ -139,7 +144,7 @@ Norte (ZLFN) fue de 3.07.
 
 Inflación por ciudad al mes de interés
 
-<img src="README_files/figure-commonmark/unnamed-chunk-10-1.png"
+<img src="README_files/figure-commonmark/unnamed-chunk-10-1.svg"
 style="width:100.0%" />
 
 ## índice Nacional de Precios al Productor
@@ -153,11 +158,12 @@ anual de -5.9%, 1.61%, y 4.02%, respectivamente. Las variaciones
 mensuales para el INPP primarias, el INPP secundarias sin petróleo y el
 INPP terciarias fueron de -2.41%, 0.74% y -0.64%, respectivamente.
 
-<img src="README_files/figure-commonmark/unnamed-chunk-11-1.png"
+<img src="README_files/figure-commonmark/unnamed-chunk-11-1.svg"
 style="width:100.0%" />
 
 El INPP de bienes finales tuvo una variación anual de 2.45% y una
 variación mensual de 0.03%. Por su parte, el INPP intermedios tuvo una
 variación anual de 1.27% y una variación mensual de 0.44%.
 
-![](README_files/figure-commonmark/unnamed-chunk-12-1.png)
+<img src="README_files/figure-commonmark/unnamed-chunk-12-1.svg"
+style="width:100.0%" />

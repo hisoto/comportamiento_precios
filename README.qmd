@@ -11,8 +11,16 @@ execute:
   message: false
 
 format:
-  gfm: default
-  html: default
+  gfm:
+    fig-format: png
+    fig-transparent: true
+  html:
+    fig-format: png
+    fig-transparent: true
+knitr:
+  opts_chunk:
+    dev: svg
+    dev.args: { bg: "transparent" }
 ---
 
 ## Inflación general, subyacente y no subyacente
@@ -46,21 +54,11 @@ base <- base |>
     date >= fecha_inicio & date <= fecha_interes
   ) 
 
-valor_inpc <- base |>
-    filter(date == fecha_interes & variable == "INPC") |>
-    pull(valor)
-
-valor_subyacente <- base |>
-    filter(date == fecha_interes & variable == "Subyacente") |>
-    pull(valor)
-
-valor_nsubyacente <- base |>
-    filter(date == fecha_interes & variable == "No subyacente") |>
-    pull(valor)
-
 ```
 
-El índice de precios al consumidor en `r month.name[params$mes]` de `r params$año` registro un valor de `r valor_inpc`, por su parte los índices subyacente y no subyacente tuvieron un valor de `r valor_subyacente` y `r valor_nsubyacente`, respectivamente.
+Este repositorio contiene los códigos para automatizar la descarga de las series de tiempo del índice Nacional de Precios al Consumidor, y sus desagregaciones, para hacer el reporte sobre el comportamiento de los precios. 
+
+El índice de precios al consumidor en `r month.name[params$mes]` de `r params$año` registro un valor de `r base |> filter(date == fecha_interes & variable == "INPC") |> pull(valor)`, por su parte los índices subyacente y no subyacente tuvieron un valor de `r base |> filter(date == fecha_interes & variable == "Subyacente") |> pull(valor)` y `r base |> filter(date == fecha_interes & variable == "No subyacente") |> pull(valor)`, respectivamente.
 
 ```{r}
 #| out-width: "100%" 
@@ -122,7 +120,13 @@ ggplot(graph_01) +
     color = ""
   ) +
   theme_conasami() + 
-  theme(legend.position = "bottom")
+  theme(
+  legend.position = "bottom", 
+  text = element_text(color = "white"), 
+  axis.text = element_text(color = "white"),
+  axis.title = element_text(color = "white"),
+  axis.ticks = element_line(color = "white")
+)
 ```
 
 La inflación anual para el INPC general, subyacente y no subyacente fue de `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_anual"], 2)`%, `r round(base[base$date== fecha_interes & base$variable == "Subyacente", "var_anual"], 2)`% y `r round(base[base$date== fecha_interes & base$variable == "No subyacente", "var_anual"], 2)`%, respectivamente. Por su parte, las variaciones mensuales fueron de `r round(base[base$date== fecha_interes & base$variable == "INPC", "var_mensual"], 2)`%, `r round(base[base$date== fecha_interes & base$variable == "Subyacente", "var_mensual"], 2)`% y `r round(base[base$date== fecha_interes & base$variable == "No subyacente", "var_mensual"], 2)`%, respectivamente.
@@ -228,7 +232,13 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
     color = ""
   ) +
   theme_conasami() + 
-  theme(legend.position = "bottom")
+  theme(
+  legend.position = "bottom", 
+  text = element_text(color = "white"), 
+  axis.text = element_text(color = "white"),
+  axis.title = element_text(color = "white"),
+  axis.ticks = element_line(color = "white")
+  )
 
 ```
 
@@ -310,7 +320,13 @@ tabla <- base |>
   ) +
   theme_conasami() + 
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-  theme(legend.position = "bottom")
+  theme(
+  legend.position = "bottom", 
+  text = element_text(color = "white"), 
+  axis.text = element_text(color = "white"),
+  axis.title = element_text(color = "white"),
+  axis.ticks = element_line(color = "white")
+  )
 
 
 
@@ -405,8 +421,14 @@ ggplot(ciudad) +
   ) +
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
-  theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 90, hjust = 1))
+  theme(
+    legend.position = "bottom", 
+    text = element_text(color = "white"), 
+    axis.text = element_text(color = "white"),
+    axis.title = element_text(color = "white"),
+    axis.ticks = element_line(color = "white"),
+    axis.text.x = element_text(angle = 90, hjust = 1)
+    )
 ```
 
 ## índice Nacional de Precios al Productor
@@ -475,14 +497,19 @@ ggplot(
   ) +
   theme_conasami() +
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-  theme(legend.position = "bottom")
+  theme(
+    legend.position = "bottom", 
+    text = element_text(color = "white"), 
+    axis.text = element_text(color = "white"),
+    axis.title = element_text(color = "white"),
+    axis.ticks = element_line(color = "white")
+  )
 
 ```
 
 El INPP de bienes finales tuvo una variación anual de `r round(base |> filter(variable == "INPP finales" & date == fecha_interes) |> pull(var_anual), 2)`% y una variación mensual de `r round(base |> filter(variable == "INPP finales" & date == fecha_interes) |> pull(var_mensual), 2)`%. Por su parte, el INPP intermedios tuvo una variación anual de `r round(base |> filter(variable == "INPP intermedios" & date == fecha_interes) |> pull(var_anual), 2)`% y una variación mensual de `r round(base |> filter(variable == "INPP intermedios" & date == fecha_interes) |> pull(var_mensual), 2)`%.
 
 ```{r}
-
 #| out-width: "100%" 
 #| dpi: 300
 
@@ -544,6 +571,12 @@ ggplot(
   ) +
   theme_conasami() +
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-  theme(legend.position = "bottom")
+  theme(
+    legend.position = "bottom", 
+    text = element_text(color = "white"), 
+    axis.text = element_text(color = "white"),
+    axis.title = element_text(color = "white"),
+    axis.ticks = element_line(color = "white")
+  )
 
 ```
