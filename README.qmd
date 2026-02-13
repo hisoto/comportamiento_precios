@@ -248,6 +248,7 @@ En esta sección se analiza el comportamiento de cinco productos básico: Tortil
 
 ```{r}
 #| out-width: "100%" 
+
 tabla <- base |>
   filter(date == fecha_interes & variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res")) |>
   select(variable, date, valor, var_anual, var_mensual) |>
@@ -255,6 +256,7 @@ tabla <- base |>
   knitr::kable(
     col.names = c("Variable", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
     caption = "INPC, tortilla, frijol, huevo, leche y carne de res al mes de interés",
+    align = c("l", "c", "r", "r", "r"),
     format = "pipe"
   ) 
 
@@ -360,21 +362,6 @@ ciudad <- base |>
 La inflación promedio en las ciudades de la Zona Libre de la Frontera Norte (ZLFN) fue de `r round(ciudad |> filter(zona == "ZLFN") |> group_by(zona) |> summarise(x = mean(var_anual, na.rm = TRUE)) |> pull(x), 2)`. 
 
 ```{r}
-#| out-width: "100%"
-
-ciudad |> 
-  filter(str_starts(api, "v_ciudad") & date == fecha_interes) |> 
-  select(variable, date, valor, var_anual, var_mensual) |> 
-  arrange(desc(var_anual)) |>
-  knitr::kable(
-    col.names = c("Ciudad", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
-    caption = "Inflación por ciudad al mes de interés",
-    format = "pipe"
-  ) 
-
-```
-
-```{r}
 #| out-width: "100%" 
 #| dpi: 300
 
@@ -430,7 +417,20 @@ ggplot(ciudad) +
     axis.text.x = element_text(angle = 90, hjust = 1)
     )
 ```
+```{r}
+#| out-width: "100%"
 
+ciudad |> 
+  filter(str_starts(api, "v_ciudad") & date == fecha_interes) |> 
+  select(variable, date, valor, var_anual, var_mensual) |> 
+  arrange(desc(var_anual)) |>
+  knitr::kable(
+    col.names = c("Ciudad", "Fecha", "Valor", "Variación anual (%)", "Variación mensual (%)"),
+    caption = "Inflación por ciudad al mes de interés",
+    format = "pipe"
+  ) 
+
+```
 ## índice Nacional de Precios al Productor
 
   El INPP registró una variación anual de `r round(base |> filter(variable == "INPP sin petróleo" & date == fecha_interes) |> pull(var_anual), 2)`% y una variación mensual de `r round(base |> filter(variable == "INPP sin petróleo" & date == fecha_interes) |> pull(var_mensual), 2)`% en `r month.name[params$mes]` de `r params$año`.

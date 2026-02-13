@@ -64,8 +64,8 @@ la carne de res. Por su parte, las variaciones mensuales fueron de 0.29%
 para la tortilla, -1.49% para el frijol, -6.31% para el huevo, 0.87%
 para la leche y 0.53% para la carne de res.
 
-| Variable  | Fecha      |   Valor | Variación anual (%) | Variación mensual (%) |
-|:----------|:-----------|--------:|--------------------:|----------------------:|
+| Variable  |   Fecha    |   Valor | Variación anual (%) | Variación mensual (%) |
+|:----------|:----------:|--------:|--------------------:|----------------------:|
 | Carne res | 2026-01-01 | 170.808 |           16.452589 |             0.5279234 |
 | Frijol    | 2026-01-01 | 153.287 |           -9.888424 |            -1.4928347 |
 | Huevo     | 2026-01-01 | 172.658 |           -8.166989 |            -6.3097577 |
@@ -82,6 +82,9 @@ style="width:100.0%" />
 
 La inflación promedio en las ciudades de la Zona Libre de la Frontera
 Norte (ZLFN) fue de 3.07.
+
+<img src="README_files/figure-commonmark/unnamed-chunk-9-1.svg"
+style="width:100.0%" />
 
 | Ciudad | Fecha | Valor | Variación anual (%) | Variación mensual (%) |
 |:---|:---|---:|---:|---:|
@@ -143,9 +146,6 @@ Norte (ZLFN) fue de 3.07.
 | Tijuana, B.C. | 2026-01-01 | 145.944 | 2.134449 | -0.1279674 |
 
 Inflación por ciudad al mes de interés
-
-<img src="README_files/figure-commonmark/unnamed-chunk-10-1.svg"
-style="width:100.0%" />
 
 ## índice Nacional de Precios al Productor
 
