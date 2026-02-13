@@ -1,5 +1,5 @@
 ---
-title: "Comportamiento de precios"
+title: "README"
 
 params:
   año: 2026

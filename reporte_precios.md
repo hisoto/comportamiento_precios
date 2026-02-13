@@ -1,4 +1,4 @@
-# Comportamiento de precios
+# README
 
 
 ## Inflación general, subyacente y no subyacente
