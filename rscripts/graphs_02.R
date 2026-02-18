@@ -74,9 +74,14 @@ ggplot(
       "INPC" = "#a57f2c",
       "Subyacente" = "#611232",
       "No subyacente" = "#1e5b4f"
-    )) +
+    )) + 
+  scale_x_continuous(
+    breaks = seq(min(base$year),
+                 max(base$year),
+                 by = 1)
+   ) +
   scale_y_continuous(
-    limits = c(-0.5, 1.0),
+    limits = c(-0.5, 2.5),
     breaks = seq(-10, 20, by = 1)
   ) + 
   geom_abline(
