@@ -37,7 +37,7 @@ inpc <- tbl %>%
     get_inpc_ciudad_df(
       idEstructura = idEstructura,
       series       = series,
-      anio_ini     = 2018,
+      anio_ini     = 2000,
       anio_fin     = 2026
     ) %>%
       mutate(
