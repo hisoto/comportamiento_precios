@@ -26,6 +26,8 @@ fecha_inicio <- as.Date("2021-01-01")
 
 fecha_interes <- as.Date("2026-02-01")
 
+dest_graphs <- "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+
 #_______________________________________________________________________________
 
 base <- fread("data/inpc.csv") |> 
@@ -109,6 +111,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # INPP - INPP primarias - INPP secundarias sin petróleo - INPP terciarias -----
 
@@ -155,7 +158,7 @@ ggplot(
       "INPP terciarias" = "#98989A"
     )) +
   scale_y_continuous(
-    limits = c(-2.5, 1.4),
+    limits = c(-0.5, 2),
     breaks = seq(-10, 20, by = 1)
   ) + 
   geom_abline(
@@ -184,6 +187,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # INPC quincenal, INPC quincenal subyacente, INPC quincenal nsubyacente -----
 
@@ -288,3 +292,4 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)

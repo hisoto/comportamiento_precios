@@ -71,3 +71,4 @@ inpc <- inpc %>%
   relocate(variable, api, year, month, date, valor)
 
 fwrite(inpc, "data/inpc.csv")
+fwrite(inpc, "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/bases/inpc.csv")

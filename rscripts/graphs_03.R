@@ -26,6 +26,8 @@ fecha_inicio <- as.Date("2021-01-01")
 
 fecha_interes <- as.Date("2026-02-01")
 
+dest_graphs <- "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+
 #_______________________________________________________________________________
 
 
@@ -113,4 +115,5 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
   

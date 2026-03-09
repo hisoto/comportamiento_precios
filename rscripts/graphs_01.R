@@ -26,6 +26,8 @@ fecha_inicio <- as.Date("2021-01-01")
 
 fecha_interes <- as.Date("2026-02-01")
 
+dest_graphs <- "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+
 #_______________________________________________________________________________
 
 base <- fread("data/inpc.csv") 
@@ -112,6 +114,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 
 # INPC e INPC CCM --------------------------------------------------------------
@@ -182,6 +185,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # Productos específicos: Tortilla, Frijol, Huevo, Leche, Carne de res ----------
 
@@ -206,7 +210,7 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
     )
   ) +
   scale_y_continuous(
-    limits = c(-15, NA),
+    limits = c(-16, NA),
     breaks = seq(-15, 40, by = 5)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
@@ -227,13 +231,13 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
       vjust = case_when(
         variable == "Tortilla" ~ 1,
         variable == "Frijol" ~ 0,
-        variable == "Huevo" ~ -1,
+        variable == "Huevo" ~ 0,
         variable == "Leche" ~ 0,
         variable == "Carne res" ~ 0,
         TRUE ~ 0
       )
     ),
-    hjust = -0.3,
+    hjust = -0.2,
     show.legend = FALSE, 
     fontface = "bold", 
     size = 6
@@ -264,6 +268,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # INPP - INPP secundarias sin petróleo - INPP terciarias ------------------------------
 
@@ -287,7 +292,7 @@ ggplot(
     )
   ) +
   scale_y_continuous(
-    limits = c(-6, NA),
+    limits = c(-6.5, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
@@ -338,6 +343,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # INPP - INPP finales - INPP intermedios ------------------------------
 
@@ -415,6 +421,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # INPC quincenal - INPC quincenal subyacente - INPC quincenal nsubyacente ------------------------------
 
@@ -521,6 +528,7 @@ ggsave(
   units = "cm",
   dpi = 300
 )
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
 
 # INPC — Incidencias subyacente y no subyacente --------------------------------
 
@@ -602,3 +610,4 @@ name <- paste0(
 
 ggsave(name, plot = last_plot(),
        width = 50, height = 25, units = "cm", dpi = 300)
+file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
