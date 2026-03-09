@@ -521,4 +521,84 @@ ggsave(
   units = "cm",
   dpi = 300
 )
-  
+
+# INPC — Incidencias subyacente y no subyacente --------------------------------
+
+base <- fread("data/inpc.csv") |>
+  arrange(variable, date) |>
+  group_by(variable) |>
+  mutate(var_anual = ((valor / lag(valor, 12) - 1) * 100)) |>
+  filter(date >= fecha_inicio & date <= fecha_interes)
+
+wide <- base |>
+  filter(variable %in% c("INPC", "Subyacente", "No subyacente")) |>
+  select(date, variable, var_anual) |>
+  pivot_wider(names_from = variable, values_from = var_anual) |>
+  rename(va_inpc = INPC, va_sub = Subyacente, va_nsub = `No subyacente`) |>
+  mutate(
+    inc_sub  = va_inpc * va_sub / (va_sub + va_nsub),
+    inc_nsub = va_inpc - inc_sub
+  )
+
+ggplot(wide, aes(x = date)) +
+  geom_ribbon(
+    aes(ymin = 0, ymax = inc_sub, fill = "Subyacente"),
+    alpha = 0.5
+  ) +
+  geom_ribbon(
+    aes(ymin = inc_sub, ymax = va_inpc, fill = "No subyacente"),
+    alpha = 0.5
+  ) +
+  geom_point(
+    aes(y = va_inpc, color = "INPC"),
+    shape = 1,
+    show.legend = FALSE
+  ) +
+  geom_line(
+    aes(y = va_inpc, color = "INPC"),
+    linewidth = 1
+  ) +
+  scale_fill_manual(
+    values = c("Subyacente" = "#611232", "No subyacente" = "#1e5b4f")
+  ) +
+  scale_color_manual(
+    values = c("INPC" = "#a57f2c")
+  ) +
+  scale_y_continuous(
+    limits = c(-1, NA),
+    breaks = seq(-10, 20, by = 2)
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  geom_abline(
+    slope = 0, intercept = 0,
+    color = "black", linewidth = 0.5, linetype = "dotted"
+  ) +
+  geom_text(
+    data = wide |> filter(date == fecha_interes),
+    aes(x = date, y = va_inpc, label = round(va_inpc, 2)),
+    color = "#a57f2c",
+    hjust = -0.3, vjust = 0,
+    fontface = "bold", size = 6
+  ) +
+  labs(
+    x = "", y = "Variación anual (%)",
+    fill = "", color = "",
+    caption = "Nota: incidencias calculadas con método proporcional."
+  ) +
+  theme_conasami() +
+  theme(
+    legend.position = "bottom",
+    legend.text     = element_text(size = 18),
+    axis.title.y    = element_text(size = 20),
+    axis.text.x     = element_text(size = 20),
+    axis.text.y     = element_text(size = 20),
+    plot.caption    = element_text(size = 12, hjust = 0)
+  )
+
+name <- paste0(
+  "graphs/va_anual_inpc_incidencias_",
+  fecha_interes |> format("%Ym%m"), ".png"
+)
+
+ggsave(name, plot = last_plot(),
+       width = 50, height = 25, units = "cm", dpi = 300)

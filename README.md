@@ -8,162 +8,165 @@ las series de tiempo del índice Nacional de Precios al Consumidor, y sus
 desagregaciones, para hacer el reporte sobre el comportamiento de los
 precios.
 
-El índice de precios al consumidor en January de 2026 registro un valor
-de 143.588, por su parte los índices subyacente y no subyacente tuvieron
-un valor de 143.3313259 y 144.0298102, respectivamente.
+El índice de precios al consumidor en February de 2026 registro un valor
+de 144.307, por su parte los índices subyacente y no subyacente tuvieron
+un valor de 143.9897602 y 144.9539142, respectivamente.
 
 <img src="README_files/figure-commonmark/unnamed-chunk-2-1.svg"
 style="width:100.0%" />
 
 La inflación anual para el INPC general, subyacente y no subyacente fue
-de 3.79%, 4.52% y 1.39%, respectivamente. Por su parte, las variaciones
-mensuales fueron de 0.38%, 0.6% y -0.36%, respectivamente.
+de 4.02%, 4.5% y 2.44%, respectivamente. Por su parte, las variaciones
+mensuales fueron de 0.5%, 0.46% y 0.64%, respectivamente.
 
 | Variable      | Fecha      |    Valor | Variación anual (%) | Variación mensual (%) |
 |:--------------|:-----------|---------:|--------------------:|----------------------:|
-| INPC          | 2026-01-01 | 143.5880 |            3.791301 |             0.3817061 |
-| No subyacente | 2026-01-01 | 144.0298 |            1.386747 |            -0.3587415 |
-| Subyacente    | 2026-01-01 | 143.3313 |            4.519170 |             0.6014009 |
+| INPC          | 2026-02-01 | 144.3070 |            4.023038 |             0.5007382 |
+| No subyacente | 2026-02-01 | 144.9539 |            2.441333 |             0.6416061 |
+| Subyacente    | 2026-02-01 | 143.9898 |            4.497411 |             0.4593792 |
 
 INPC, subyacente y no subyacente al mes de interés
 
 Dentro de la inflación subyacente, el componente de Servicios tuvo una
-variación anual de 4.48% y el de Mercancías de 4.56%. Por su parte,
+variación anual de 4.45% y el de Mercancías de 4.55%. Por su parte,
 dentro del componente no subyacente, los productos agropecuarios
-tuvieron una variación anual de 1.52% y los energéticos y tarifas
-autorizadas de 1.28%.
+tuvieron una variación anual de 4.5% y los energéticos y tarifas
+autorizadas de 0.89%.
 
 | Variable | Fecha | Valor | Variación anual (%) | Variación mensual (%) |
 |:---|:---|---:|---:|---:|
-| No subyacente - Agropecuarios | 2026-01-01 | 160.7256 | 1.519723 | -0.8628424 |
-| No subyacente - Energéticos y tarifas autorizadas | 2026-01-01 | 131.3457 | 1.284095 | 0.0348357 |
-| Subyacente - Mercancias | 2026-01-01 | 149.8595 | 4.562851 | 0.9239147 |
-| Subyacente - Servicios | 2026-01-01 | 136.1988 | 4.477602 | 0.2961445 |
+| No subyacente - Agropecuarios | 2026-02-01 | 163.0536 | 4.4953479 | 1.4484563 |
+| No subyacente - Energéticos y tarifas autorizadas | 2026-02-01 | 131.3684 | 0.8850045 | 0.0173098 |
+| Subyacente - Mercancias | 2026-02-01 | 150.4469 | 4.5479314 | 0.3919605 |
+| Subyacente - Servicios | 2026-02-01 | 136.9119 | 4.4494032 | 0.5235898 |
 
 Componentes del INPC al mes de interés
+
+<img src="README_files/figure-commonmark/unnamed-chunk-5-1.svg"
+style="width:100.0%" />
 
 ------------------------------------------------------------------------
 
 ## Canasta de consumo mínimo
 
-La inflación de los productos de la canasta básica fue de 3.6% anual y
-0.38% mensual. La diferencia en puntos porcentuales entre la inflación
-general y la de la canasta de consumo mínimo fue de 0.19 puntos
-porcentuales anual y 0 puntos porcentuales mensual.
+La inflación de los productos de la canasta básica fue de 3.84% anual y
+0.52% mensual. La diferencia en puntos porcentuales entre la inflación
+general y la de la canasta de consumo mínimo fue de 0.18 puntos
+porcentuales anual y -0.02 puntos porcentuales mensual.
 
-<img src="README_files/figure-commonmark/unnamed-chunk-5-1.svg"
+<img src="README_files/figure-commonmark/unnamed-chunk-6-1.svg"
 style="width:100.0%" />
 
 ## Productos básicos
 
 En esta sección se analiza el comportamiento de cinco productos básico:
-Tortilla, Frijol, Huevo, Leche y Carne de res. En January de 2026, la
-variación anual de estos productos fue de 1.8% para la tortilla, -9.89%
-para el frijol, -8.17% para el huevo, 10.08% para la leche y 16.45% para
-la carne de res. Por su parte, las variaciones mensuales fueron de 0.29%
-para la tortilla, -1.49% para el frijol, -6.31% para el huevo, 0.87%
-para la leche y 0.53% para la carne de res.
+Tortilla, Frijol, Huevo, Leche y Carne de res. En February de 2026, la
+variación anual de estos productos fue de 1.71% para la tortilla,
+-10.22% para el frijol, -15.41% para el huevo, 9.38% para la leche y
+13.98% para la carne de res. Por su parte, las variaciones mensuales
+fueron de 0.23% para la tortilla, -1.81% para el frijol, -2.63% para el
+huevo, 0.15% para la leche y 0.3% para la carne de res.
 
 | Variable  |   Fecha    |   Valor | Variación anual (%) | Variación mensual (%) |
 |:----------|:----------:|--------:|--------------------:|----------------------:|
-| Carne res | 2026-01-01 | 170.808 |           16.452589 |             0.5279234 |
-| Frijol    | 2026-01-01 | 153.287 |           -9.888424 |            -1.4928347 |
-| Huevo     | 2026-01-01 | 172.658 |           -8.166989 |            -6.3097577 |
-| INPC      | 2026-01-01 | 143.588 |            3.791301 |             0.3817061 |
-| Leche     | 2026-01-01 | 170.803 |           10.079013 |             0.8675163 |
-| Tortilla  | 2026-01-01 | 159.427 |            1.801986 |             0.2944155 |
+| Carne res | 2026-02-01 | 171.312 |           13.982315 |             0.2950681 |
+| Frijol    | 2026-02-01 | 150.507 |          -10.216366 |            -1.8135915 |
+| Huevo     | 2026-02-01 | 168.125 |          -15.407528 |            -2.6254214 |
+| INPC      | 2026-02-01 | 144.307 |            4.023038 |             0.5007382 |
+| Leche     | 2026-02-01 | 171.067 |            9.383472 |             0.1545640 |
+| Tortilla  | 2026-02-01 | 159.801 |            1.710870 |             0.2345901 |
 
 INPC, tortilla, frijol, huevo, leche y carne de res al mes de interés
 
-<img src="README_files/figure-commonmark/unnamed-chunk-7-1.svg"
+<img src="README_files/figure-commonmark/unnamed-chunk-8-1.svg"
 style="width:100.0%" />
 
 ## Inflación por Ciudad
 
 La inflación promedio en las ciudades de la Zona Libre de la Frontera
-Norte (ZLFN) fue de 3.07.
+Norte (ZLFN) fue de 3.03.
 
-<img src="README_files/figure-commonmark/unnamed-chunk-9-1.svg"
+<img src="README_files/figure-commonmark/unnamed-chunk-10-1.svg"
 style="width:100.0%" />
 
 | Ciudad | Fecha | Valor | Variación anual (%) | Variación mensual (%) |
 |:---|:---|---:|---:|---:|
-| Chetumal, Q.R. | 2026-01-01 | 144.694 | 5.598330 | 1.3036294 |
-| Oaxaca, Oax. | 2026-01-01 | 150.271 | 4.869011 | 0.3680203 |
-| Tepatitlán, Jal. | 2026-01-01 | 150.374 | 4.815078 | 0.5671254 |
-| Cancún, Q. Roo. | 2026-01-01 | 144.997 | 4.595819 | 1.0720833 |
-| Atlacomulco, Méx. | 2026-01-01 | 143.944 | 4.556515 | 0.6932348 |
-| Coatzacoalcos, Ver. | 2026-01-01 | 143.325 | 4.529045 | 0.8365228 |
-| Jacona, Mich. | 2026-01-01 | 149.818 | 4.519325 | 0.3402317 |
-| Campeche, Camp. | 2026-01-01 | 149.143 | 4.474799 | 0.9810825 |
-| Guadalajara, Jal. | 2026-01-01 | 145.147 | 4.414039 | 0.7881288 |
-| Matamoros, Tamps. | 2026-01-01 | 149.953 | 4.371037 | 0.6348695 |
-| Área Met. de la CDMX | 2026-01-01 | 140.349 | 4.370427 | 0.2628928 |
-| Tepic, Nay. | 2026-01-01 | 144.865 | 4.369597 | 0.8465078 |
-| Aguascalientes, Ags. | 2026-01-01 | 144.384 | 4.350089 | 0.4417422 |
-| Tulancingo, Hgo. | 2026-01-01 | 142.035 | 4.325503 | -0.0408183 |
-| San Luis Potosí, S.L.P. | 2026-01-01 | 145.962 | 4.233258 | 0.4542264 |
-| Mérida, Yuc. | 2026-01-01 | 151.287 | 4.122590 | 1.1682493 |
-| Córdoba, Ver. | 2026-01-01 | 148.516 | 4.077142 | 0.3167913 |
-| Tuxtla Gutiérrez, Chis. | 2026-01-01 | 143.824 | 4.073983 | 0.7184975 |
-| Cd. Juárez, Chih. | 2026-01-01 | 143.105 | 4.065768 | 0.5120245 |
-| Toluca, Edo. de Méx. | 2026-01-01 | 137.627 | 4.002086 | 0.0465241 |
-| Tehuantepec, Oax. | 2026-01-01 | 152.453 | 3.882662 | 0.5692988 |
-| Torreón, Coah. | 2026-01-01 | 148.234 | 3.833680 | 0.7325559 |
-| Pachuca, Hgo. | 2026-01-01 | 143.737 | 3.803712 | 0.5772783 |
-| San Andrés Tuxtla, Ver. | 2026-01-01 | 147.188 | 3.802646 | 0.8461628 |
-| Nacional | 2026-01-01 | 143.588 | 3.791301 | 0.3817061 |
-| Morelia, Mich. | 2026-01-01 | 143.658 | 3.706217 | 0.3520684 |
-| Durango, Dgo. | 2026-01-01 | 145.901 | 3.691359 | -0.0985997 |
-| León, Gto. | 2026-01-01 | 140.361 | 3.676210 | 0.2678839 |
-| Chihuahua, Chih. | 2026-01-01 | 141.808 | 3.623702 | 0.3183407 |
-| Cuernavaca, Mor. | 2026-01-01 | 142.619 | 3.607622 | 0.4366228 |
-| Monterrey, N.L. | 2026-01-01 | 142.109 | 3.518382 | 0.1430524 |
-| Tampico, Tamps. | 2026-01-01 | 139.328 | 3.513399 | 0.1307979 |
-| Colima, Col. | 2026-01-01 | 144.842 | 3.503669 | 0.3067888 |
-| Querétaro, Qro. | 2026-01-01 | 142.313 | 3.462741 | 0.1428471 |
-| Esperanza, Son. | 2026-01-01 | 142.655 | 3.326766 | 0.1847014 |
-| Cd. Jiménez, Chih. | 2026-01-01 | 142.645 | 3.323265 | 0.2480814 |
-| Cortazar, Gto. | 2026-01-01 | 141.452 | 3.303172 | 0.1408820 |
-| Zacatecas, Zac. | 2026-01-01 | 142.545 | 3.285994 | 0.6844380 |
-| Veracruz, Ver. | 2026-01-01 | 142.172 | 3.235644 | 0.5509467 |
-| Saltillo, Coah. | 2026-01-01 | 142.068 | 3.211839 | 0.6325483 |
-| Puebla, Pue. | 2026-01-01 | 144.357 | 3.085635 | 0.3964197 |
-| Monclova, Coah. | 2026-01-01 | 139.604 | 3.073663 | 0.5937455 |
-| Iguala, Gro. | 2026-01-01 | 142.860 | 3.055004 | 0.4055298 |
-| Huatabampo, Son. | 2026-01-01 | 146.298 | 3.028212 | 0.0109378 |
-| Acapulco, Gro. | 2026-01-01 | 145.747 | 3.018158 | -0.0514326 |
-| Villahermosa, Tab. | 2026-01-01 | 140.413 | 2.663596 | 0.6126485 |
-| Culiacán, Sin. | 2026-01-01 | 146.980 | 2.631064 | 0.2291263 |
-| Hermosillo, Son. | 2026-01-01 | 141.512 | 2.588044 | -0.0381448 |
-| Tapachula, Chis. | 2026-01-01 | 149.888 | 2.580808 | 0.5541318 |
-| Cd. Acuña, Coah. | 2026-01-01 | 144.923 | 2.530669 | 0.0994619 |
-| Fresnillo, Zac. | 2026-01-01 | 146.871 | 2.471952 | -0.0108927 |
-| Tlaxcala, Tlax. | 2026-01-01 | 141.310 | 2.343671 | -0.0014153 |
-| La Paz, B.C.S. | 2026-01-01 | 138.723 | 2.334794 | -0.1130472 |
-| Izúcar de Matamoros, Pue. | 2026-01-01 | 140.120 | 2.286332 | 0.2138448 |
-| Mexicali, B.C. | 2026-01-01 | 143.700 | 2.256474 | 0.3814074 |
-| Tijuana, B.C. | 2026-01-01 | 145.944 | 2.134449 | -0.1279674 |
+| Chetumal, Q.R. | 2026-02-01 | 145.900 | 5.693236 | 0.8334831 |
+| Atlacomulco, Méx. | 2026-02-01 | 145.274 | 5.442932 | 0.9239704 |
+| Oaxaca, Oax. | 2026-02-01 | 150.436 | 5.179405 | 0.1098016 |
+| Coatzacoalcos, Ver. | 2026-02-01 | 144.212 | 5.048769 | 0.6188732 |
+| Cancún, Q. Roo. | 2026-02-01 | 145.861 | 4.970710 | 0.5958744 |
+| Tepatitlán, Jal. | 2026-02-01 | 150.979 | 4.853809 | 0.4023302 |
+| Tulancingo, Hgo. | 2026-02-01 | 142.813 | 4.827652 | 0.5477523 |
+| Tepic, Nay. | 2026-02-01 | 145.821 | 4.792601 | 0.6599248 |
+| Campeche, Camp. | 2026-02-01 | 150.208 | 4.762901 | 0.7140798 |
+| Aguascalientes, Ags. | 2026-02-01 | 145.106 | 4.688041 | 0.5000554 |
+| San Andrés Tuxtla, Ver. | 2026-02-01 | 148.095 | 4.687412 | 0.6162187 |
+| Toluca, Edo. de Méx. | 2026-02-01 | 138.386 | 4.670565 | 0.5514906 |
+| San Luis Potosí, S.L.P. | 2026-02-01 | 146.909 | 4.595811 | 0.6487990 |
+| Jacona, Mich. | 2026-02-01 | 150.896 | 4.592053 | 0.7195397 |
+| Guadalajara, Jal. | 2026-02-01 | 145.881 | 4.507518 | 0.5056942 |
+| Área Met. de la CDMX | 2026-02-01 | 141.030 | 4.458155 | 0.4852190 |
+| Tehuantepec, Oax. | 2026-02-01 | 153.355 | 4.388461 | 0.5916578 |
+| Tuxtla Gutiérrez, Chis. | 2026-02-01 | 144.571 | 4.382640 | 0.5193848 |
+| Córdoba, Ver. | 2026-02-01 | 148.930 | 4.283954 | 0.2787578 |
+| Veracruz, Ver. | 2026-02-01 | 143.644 | 4.275738 | 1.0353656 |
+| Pachuca, Hgo. | 2026-02-01 | 144.729 | 4.241573 | 0.6901494 |
+| Iguala, Gro. | 2026-02-01 | 143.730 | 4.125011 | 0.6089878 |
+| Mérida, Yuc. | 2026-02-01 | 151.837 | 4.048544 | 0.3635474 |
+| Matamoros, Tamps. | 2026-02-01 | 149.890 | 4.047647 | -0.0420132 |
+| Nacional | 2026-02-01 | 144.307 | 4.023038 | 0.5007382 |
+| León, Gto. | 2026-02-01 | 141.151 | 3.982467 | 0.5628344 |
+| Cuernavaca, Mor. | 2026-02-01 | 143.305 | 3.896151 | 0.4810018 |
+| Querétaro, Qro. | 2026-02-01 | 143.190 | 3.880558 | 0.6162473 |
+| Torreón, Coah. | 2026-02-01 | 149.178 | 3.860533 | 0.6368310 |
+| Puebla, Pue. | 2026-02-01 | 145.481 | 3.804522 | 0.7786252 |
+| Colima, Col. | 2026-02-01 | 145.566 | 3.724553 | 0.4998550 |
+| Durango, Dgo. | 2026-02-01 | 146.764 | 3.702552 | 0.5914970 |
+| Cd. Juárez, Chih. | 2026-02-01 | 143.580 | 3.658889 | 0.3319241 |
+| Chihuahua, Chih. | 2026-02-01 | 142.421 | 3.593224 | 0.4322746 |
+| Morelia, Mich. | 2026-02-01 | 144.241 | 3.570069 | 0.4058249 |
+| Monterrey, N.L. | 2026-02-01 | 142.518 | 3.562838 | 0.2878072 |
+| Tampico, Tamps. | 2026-02-01 | 139.742 | 3.504926 | 0.2971406 |
+| Esperanza, Son. | 2026-02-01 | 143.271 | 3.501560 | 0.4318110 |
+| Izúcar de Matamoros, Pue. | 2026-02-01 | 141.299 | 3.397582 | 0.8414216 |
+| Huatabampo, Son. | 2026-02-01 | 146.960 | 3.375750 | 0.4525011 |
+| Monclova, Coah. | 2026-02-01 | 140.196 | 3.336798 | 0.4240566 |
+| Culiacán, Sin. | 2026-02-01 | 147.929 | 3.300210 | 0.6456661 |
+| Villahermosa, Tab. | 2026-02-01 | 141.285 | 3.276244 | 0.6210251 |
+| Zacatecas, Zac. | 2026-02-01 | 143.165 | 3.260125 | 0.4349504 |
+| Cortazar, Gto. | 2026-02-01 | 142.229 | 3.259788 | 0.5493029 |
+| Tapachula, Chis. | 2026-02-01 | 150.158 | 3.238271 | 0.1801345 |
+| Cd. Jiménez, Chih. | 2026-02-01 | 142.619 | 3.155740 | -0.0182271 |
+| Hermosillo, Son. | 2026-02-01 | 142.225 | 3.069063 | 0.5038442 |
+| Saltillo, Coah. | 2026-02-01 | 142.541 | 3.056835 | 0.3329392 |
+| Tlaxcala, Tlax. | 2026-02-01 | 142.430 | 2.987751 | 0.7925837 |
+| Acapulco, Gro. | 2026-02-01 | 146.017 | 2.919471 | 0.1852525 |
+| Cd. Acuña, Coah. | 2026-02-01 | 145.694 | 2.913774 | 0.5320067 |
+| Fresnillo, Zac. | 2026-02-01 | 147.766 | 2.710856 | 0.6093783 |
+| La Paz, B.C.S. | 2026-02-01 | 139.129 | 2.489889 | 0.2926696 |
+| Mexicali, B.C. | 2026-02-01 | 144.268 | 2.477625 | 0.3952679 |
+| Tijuana, B.C. | 2026-02-01 | 146.112 | 2.048485 | 0.1151126 |
 
 Inflación por ciudad al mes de interés
 
 ## índice Nacional de Precios al Productor
 
-El INPP registró una variación anual de 2.12% y una variación mensual de
-0.14% en January de 2026.
+El INPP registró una variación anual de 1.66% y una variación mensual de
+0.16% en February de 2026.
 
 Por grupos de actividad económica, el INPP primarias, el INPP
 secundarias sin petróleo y el INPP terciarias tuvieron una variación
-anual de -5.9%, 1.61%, y 4.02%, respectivamente. Las variaciones
+anual de -6.3%, 1.04%, y 3.77%, respectivamente. Las variaciones
 mensuales para el INPP primarias, el INPP secundarias sin petróleo y el
-INPP terciarias fueron de -2.41%, 0.74% y -0.64%, respectivamente.
-
-<img src="README_files/figure-commonmark/unnamed-chunk-11-1.svg"
-style="width:100.0%" />
-
-El INPP de bienes finales tuvo una variación anual de 2.45% y una
-variación mensual de 0.03%. Por su parte, el INPP intermedios tuvo una
-variación anual de 1.27% y una variación mensual de 0.44%.
+INPP terciarias fueron de -0.1%, -0.04% y 0.57%, respectivamente.
 
 <img src="README_files/figure-commonmark/unnamed-chunk-12-1.svg"
+style="width:100.0%" />
+
+El INPP de bienes finales tuvo una variación anual de 1.77% y una
+variación mensual de -0.01%. Por su parte, el INPP intermedios tuvo una
+variación anual de 1.39% y una variación mensual de 0.58%.
+
+<img src="README_files/figure-commonmark/unnamed-chunk-13-1.svg"
 style="width:100.0%" />

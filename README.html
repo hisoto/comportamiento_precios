@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>readme</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="README_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="README_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="readme" class="level1">
+<h1>README</h1>
+<section id="inflación-general-subyacente-y-no-subyacente" class="level2">
+<h2 class="anchored" data-anchor-id="inflación-general-subyacente-y-no-subyacente">Inflación general, subyacente y no subyacente</h2>
+<p>Este repositorio contiene los códigos para automatizar la descarga de las series de tiempo del índice Nacional de Precios al Consumidor, y sus desagregaciones, para hacer el reporte sobre el comportamiento de los precios.</p>
+<p>El índice de precios al consumidor en February de 2026 registro un valor de 144.307, por su parte los índices subyacente y no subyacente tuvieron un valor de 143.9897602 y 144.9539142, respectivamente.</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-2-1.svg" style="width:100.0%"></p>
+<p>La inflación anual para el INPC general, subyacente y no subyacente fue de 4.02%, 4.5% y 2.44%, respectivamente. Por su parte, las variaciones mensuales fueron de 0.5%, 0.46% y 0.64%, respectivamente.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 25%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Fecha</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Variación anual (%)</th>
+<th style="text-align: right;">Variación mensual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">INPC</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.3070</td>
+<td style="text-align: right;">4.023038</td>
+<td style="text-align: right;">0.5007382</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">No subyacente</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.9539</td>
+<td style="text-align: right;">2.441333</td>
+<td style="text-align: right;">0.6416061</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Subyacente</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.9898</td>
+<td style="text-align: right;">4.497411</td>
+<td style="text-align: right;">0.4593792</td>
+</tr>
+</tbody>
+</table>
+<p>INPC, subyacente y no subyacente al mes de interés</p>
+<p>Dentro de la inflación subyacente, el componente de Servicios tuvo una variación anual de 4.45% y el de Mercancías de 4.55%. Por su parte, dentro del componente no subyacente, los productos agropecuarios tuvieron una variación anual de 4.5% y los energéticos y tarifas autorizadas de 0.89%.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Fecha</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Variación anual (%)</th>
+<th style="text-align: right;">Variación mensual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">No subyacente - Agropecuarios</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">163.0536</td>
+<td style="text-align: right;">4.4953479</td>
+<td style="text-align: right;">1.4484563</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">No subyacente - Energéticos y tarifas autorizadas</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">131.3684</td>
+<td style="text-align: right;">0.8850045</td>
+<td style="text-align: right;">0.0173098</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Subyacente - Mercancias</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">150.4469</td>
+<td style="text-align: right;">4.5479314</td>
+<td style="text-align: right;">0.3919605</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Subyacente - Servicios</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">136.9119</td>
+<td style="text-align: right;">4.4494032</td>
+<td style="text-align: right;">0.5235898</td>
+</tr>
+</tbody>
+</table>
+<p>Componentes del INPC al mes de interés</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-5-1.svg" style="width:100.0%"></p>
+<hr>
+</section>
+<section id="canasta-de-consumo-mínimo" class="level2">
+<h2 class="anchored" data-anchor-id="canasta-de-consumo-mínimo">Canasta de consumo mínimo</h2>
+<p>La inflación de los productos de la canasta básica fue de 3.84% anual y 0.52% mensual. La diferencia en puntos porcentuales entre la inflación general y la de la canasta de consumo mínimo fue de 0.18 puntos porcentuales anual y -0.02 puntos porcentuales mensual.</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-6-1.svg" style="width:100.0%"></p>
+</section>
+<section id="productos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="productos-básicos">Productos básicos</h2>
+<p>En esta sección se analiza el comportamiento de cinco productos básico: Tortilla, Frijol, Huevo, Leche y Carne de res. En February de 2026, la variación anual de estos productos fue de 1.71% para la tortilla, -10.22% para el frijol, -15.41% para el huevo, 9.38% para la leche y 13.98% para la carne de res. Por su parte, las variaciones mensuales fueron de 0.23% para la tortilla, -1.81% para el frijol, -2.63% para el huevo, 0.15% para la leche y 0.3% para la carne de res.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 27%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: center;">Fecha</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Variación anual (%)</th>
+<th style="text-align: right;">Variación mensual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Carne res</td>
+<td style="text-align: center;">2026-02-01</td>
+<td style="text-align: right;">171.312</td>
+<td style="text-align: right;">13.982315</td>
+<td style="text-align: right;">0.2950681</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Frijol</td>
+<td style="text-align: center;">2026-02-01</td>
+<td style="text-align: right;">150.507</td>
+<td style="text-align: right;">-10.216366</td>
+<td style="text-align: right;">-1.8135915</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Huevo</td>
+<td style="text-align: center;">2026-02-01</td>
+<td style="text-align: right;">168.125</td>
+<td style="text-align: right;">-15.407528</td>
+<td style="text-align: right;">-2.6254214</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">INPC</td>
+<td style="text-align: center;">2026-02-01</td>
+<td style="text-align: right;">144.307</td>
+<td style="text-align: right;">4.023038</td>
+<td style="text-align: right;">0.5007382</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leche</td>
+<td style="text-align: center;">2026-02-01</td>
+<td style="text-align: right;">171.067</td>
+<td style="text-align: right;">9.383472</td>
+<td style="text-align: right;">0.1545640</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tortilla</td>
+<td style="text-align: center;">2026-02-01</td>
+<td style="text-align: right;">159.801</td>
+<td style="text-align: right;">1.710870</td>
+<td style="text-align: right;">0.2345901</td>
+</tr>
+</tbody>
+</table>
+<p>INPC, tortilla, frijol, huevo, leche y carne de res al mes de interés</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-8-1.svg" style="width:100.0%"></p>
+</section>
+<section id="inflación-por-ciudad" class="level2">
+<h2 class="anchored" data-anchor-id="inflación-por-ciudad">Inflación por Ciudad</h2>
+<p>La inflación promedio en las ciudades de la Zona Libre de la Frontera Norte (ZLFN) fue de 3.03.</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-10-1.svg" style="width:100.0%"></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ciudad</th>
+<th style="text-align: left;">Fecha</th>
+<th style="text-align: right;">Valor</th>
+<th style="text-align: right;">Variación anual (%)</th>
+<th style="text-align: right;">Variación mensual (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Chetumal, Q.R.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.900</td>
+<td style="text-align: right;">5.693236</td>
+<td style="text-align: right;">0.8334831</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Atlacomulco, Méx.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.274</td>
+<td style="text-align: right;">5.442932</td>
+<td style="text-align: right;">0.9239704</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oaxaca, Oax.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">150.436</td>
+<td style="text-align: right;">5.179405</td>
+<td style="text-align: right;">0.1098016</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Coatzacoalcos, Ver.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.212</td>
+<td style="text-align: right;">5.048769</td>
+<td style="text-align: right;">0.6188732</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cancún, Q. Roo.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.861</td>
+<td style="text-align: right;">4.970710</td>
+<td style="text-align: right;">0.5958744</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tepatitlán, Jal.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">150.979</td>
+<td style="text-align: right;">4.853809</td>
+<td style="text-align: right;">0.4023302</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tulancingo, Hgo.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.813</td>
+<td style="text-align: right;">4.827652</td>
+<td style="text-align: right;">0.5477523</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tepic, Nay.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.821</td>
+<td style="text-align: right;">4.792601</td>
+<td style="text-align: right;">0.6599248</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Campeche, Camp.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">150.208</td>
+<td style="text-align: right;">4.762901</td>
+<td style="text-align: right;">0.7140798</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aguascalientes, Ags.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.106</td>
+<td style="text-align: right;">4.688041</td>
+<td style="text-align: right;">0.5000554</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">San Andrés Tuxtla, Ver.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">148.095</td>
+<td style="text-align: right;">4.687412</td>
+<td style="text-align: right;">0.6162187</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Toluca, Edo. de Méx.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">138.386</td>
+<td style="text-align: right;">4.670565</td>
+<td style="text-align: right;">0.5514906</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">San Luis Potosí, S.L.P.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">146.909</td>
+<td style="text-align: right;">4.595811</td>
+<td style="text-align: right;">0.6487990</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jacona, Mich.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">150.896</td>
+<td style="text-align: right;">4.592053</td>
+<td style="text-align: right;">0.7195397</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Guadalajara, Jal.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.881</td>
+<td style="text-align: right;">4.507518</td>
+<td style="text-align: right;">0.5056942</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Área Met. de la CDMX</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">141.030</td>
+<td style="text-align: right;">4.458155</td>
+<td style="text-align: right;">0.4852190</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tehuantepec, Oax.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">153.355</td>
+<td style="text-align: right;">4.388461</td>
+<td style="text-align: right;">0.5916578</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tuxtla Gutiérrez, Chis.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.571</td>
+<td style="text-align: right;">4.382640</td>
+<td style="text-align: right;">0.5193848</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Córdoba, Ver.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">148.930</td>
+<td style="text-align: right;">4.283954</td>
+<td style="text-align: right;">0.2787578</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Veracruz, Ver.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.644</td>
+<td style="text-align: right;">4.275738</td>
+<td style="text-align: right;">1.0353656</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pachuca, Hgo.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.729</td>
+<td style="text-align: right;">4.241573</td>
+<td style="text-align: right;">0.6901494</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Iguala, Gro.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.730</td>
+<td style="text-align: right;">4.125011</td>
+<td style="text-align: right;">0.6089878</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mérida, Yuc.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">151.837</td>
+<td style="text-align: right;">4.048544</td>
+<td style="text-align: right;">0.3635474</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Matamoros, Tamps.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">149.890</td>
+<td style="text-align: right;">4.047647</td>
+<td style="text-align: right;">-0.0420132</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nacional</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.307</td>
+<td style="text-align: right;">4.023038</td>
+<td style="text-align: right;">0.5007382</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">León, Gto.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">141.151</td>
+<td style="text-align: right;">3.982467</td>
+<td style="text-align: right;">0.5628344</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cuernavaca, Mor.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.305</td>
+<td style="text-align: right;">3.896151</td>
+<td style="text-align: right;">0.4810018</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Querétaro, Qro.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.190</td>
+<td style="text-align: right;">3.880558</td>
+<td style="text-align: right;">0.6162473</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Torreón, Coah.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">149.178</td>
+<td style="text-align: right;">3.860533</td>
+<td style="text-align: right;">0.6368310</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Puebla, Pue.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.481</td>
+<td style="text-align: right;">3.804522</td>
+<td style="text-align: right;">0.7786252</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Colima, Col.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.566</td>
+<td style="text-align: right;">3.724553</td>
+<td style="text-align: right;">0.4998550</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Durango, Dgo.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">146.764</td>
+<td style="text-align: right;">3.702552</td>
+<td style="text-align: right;">0.5914970</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cd. Juárez, Chih.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.580</td>
+<td style="text-align: right;">3.658889</td>
+<td style="text-align: right;">0.3319241</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chihuahua, Chih.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.421</td>
+<td style="text-align: right;">3.593224</td>
+<td style="text-align: right;">0.4322746</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Morelia, Mich.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.241</td>
+<td style="text-align: right;">3.570069</td>
+<td style="text-align: right;">0.4058249</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Monterrey, N.L.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.518</td>
+<td style="text-align: right;">3.562838</td>
+<td style="text-align: right;">0.2878072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tampico, Tamps.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">139.742</td>
+<td style="text-align: right;">3.504926</td>
+<td style="text-align: right;">0.2971406</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Esperanza, Son.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.271</td>
+<td style="text-align: right;">3.501560</td>
+<td style="text-align: right;">0.4318110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Izúcar de Matamoros, Pue.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">141.299</td>
+<td style="text-align: right;">3.397582</td>
+<td style="text-align: right;">0.8414216</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Huatabampo, Son.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">146.960</td>
+<td style="text-align: right;">3.375750</td>
+<td style="text-align: right;">0.4525011</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Monclova, Coah.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">140.196</td>
+<td style="text-align: right;">3.336798</td>
+<td style="text-align: right;">0.4240566</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Culiacán, Sin.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">147.929</td>
+<td style="text-align: right;">3.300210</td>
+<td style="text-align: right;">0.6456661</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Villahermosa, Tab.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">141.285</td>
+<td style="text-align: right;">3.276244</td>
+<td style="text-align: right;">0.6210251</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Zacatecas, Zac.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">143.165</td>
+<td style="text-align: right;">3.260125</td>
+<td style="text-align: right;">0.4349504</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cortazar, Gto.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.229</td>
+<td style="text-align: right;">3.259788</td>
+<td style="text-align: right;">0.5493029</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tapachula, Chis.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">150.158</td>
+<td style="text-align: right;">3.238271</td>
+<td style="text-align: right;">0.1801345</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cd. Jiménez, Chih.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.619</td>
+<td style="text-align: right;">3.155740</td>
+<td style="text-align: right;">-0.0182271</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hermosillo, Son.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.225</td>
+<td style="text-align: right;">3.069063</td>
+<td style="text-align: right;">0.5038442</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Saltillo, Coah.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.541</td>
+<td style="text-align: right;">3.056835</td>
+<td style="text-align: right;">0.3329392</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tlaxcala, Tlax.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">142.430</td>
+<td style="text-align: right;">2.987751</td>
+<td style="text-align: right;">0.7925837</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Acapulco, Gro.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">146.017</td>
+<td style="text-align: right;">2.919471</td>
+<td style="text-align: right;">0.1852525</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cd. Acuña, Coah.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">145.694</td>
+<td style="text-align: right;">2.913774</td>
+<td style="text-align: right;">0.5320067</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fresnillo, Zac.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">147.766</td>
+<td style="text-align: right;">2.710856</td>
+<td style="text-align: right;">0.6093783</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">La Paz, B.C.S.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">139.129</td>
+<td style="text-align: right;">2.489889</td>
+<td style="text-align: right;">0.2926696</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mexicali, B.C.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">144.268</td>
+<td style="text-align: right;">2.477625</td>
+<td style="text-align: right;">0.3952679</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tijuana, B.C.</td>
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">146.112</td>
+<td style="text-align: right;">2.048485</td>
+<td style="text-align: right;">0.1151126</td>
+</tr>
+</tbody>
+</table>
+<p>Inflación por ciudad al mes de interés</p>
+</section>
+<section id="índice-nacional-de-precios-al-productor" class="level2">
+<h2 class="anchored" data-anchor-id="índice-nacional-de-precios-al-productor">índice Nacional de Precios al Productor</h2>
+<p>El INPP registró una variación anual de 1.66% y una variación mensual de 0.16% en February de 2026.</p>
+<p>Por grupos de actividad económica, el INPP primarias, el INPP secundarias sin petróleo y el INPP terciarias tuvieron una variación anual de -6.3%, 1.04%, y 3.77%, respectivamente. Las variaciones mensuales para el INPP primarias, el INPP secundarias sin petróleo y el INPP terciarias fueron de -0.1%, -0.04% y 0.57%, respectivamente.</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-12-1.svg" style="width:100.0%"></p>
+<p>El INPP de bienes finales tuvo una variación anual de 1.77% y una variación mensual de -0.01%. Por su parte, el INPP intermedios tuvo una variación anual de 1.39% y una variación mensual de 0.58%.</p>
+<p><img src="README_files/figure-commonmark/unnamed-chunk-13-1.svg" style="width:100.0%"></p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

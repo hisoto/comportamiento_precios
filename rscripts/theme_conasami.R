@@ -27,7 +27,7 @@ theme_conasami <- function(
   
   theme(
     # Configuraciones generales
-    text = element_text(family = "Noto Sans", size = base_size),
+    text = element_text(family = .font_family, size = base_size),
     plot.background = element_rect(fill = 'transparent', color = NA),
     
     # Configuración de paneles
@@ -81,8 +81,11 @@ theme_conasami <- function(
 
 library(extrafont)
 # font_import()
-# y
-loadfonts(device = "win")
+try(loadfonts(device = "win"), silent = TRUE)
+.font_family <- tryCatch(
+  if ("Noto Sans" %in% names(windowsFonts())) "Noto Sans" else "sans",
+  error = function(e) "sans"
+)
 
 
 

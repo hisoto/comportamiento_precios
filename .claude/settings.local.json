@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Rscript rscripts/datos_03.R)",
+      "Bash(\"/c/Program Files/R/R-4.5.2/bin/Rscript.exe\" rscripts/datos_03.R)",
+      "Bash(\"/c/Program Files/R/R-4.5.2/bin/Rscript.exe\" rscripts/graphs_01.R)",
+      "Bash(\"/c/Program Files/R/R-4.5.2/bin/Rscript.exe\" rscripts/graphs_02.R)",
+      "Bash(\"/c/Program Files/R/R-4.5.2/bin/Rscript.exe\" rscripts/graphs_03.R)",
+      "Bash(\"/c/Program Files/RStudio/resources/app/bin/quarto/bin/quarto.exe\" render README.qmd)"
+    ]
+  }
+}
