@@ -2923,6 +2923,7 @@ INPC quincenal,v_inpc_quincenal,2026,,,143.466,1Q Ene 2026
 INPC quincenal,v_inpc_quincenal,2026,,,143.711,2Q Ene 2026
 INPC quincenal,v_inpc_quincenal,2026,,,144.064,1Q Feb 2026
 INPC quincenal,v_inpc_quincenal,2026,,,144.551,2Q Feb 2026
+INPC quincenal,v_inpc_quincenal,2026,,,145.446,1Q Mar 2026
 INPC quincenal subyacente,v_subyacente_quincenal,2000,,,48.801160155926,1Q Ene 2000
 INPC quincenal subyacente,v_subyacente_quincenal,2000,,,49.137179295129,2Q Ene 2000
 INPC quincenal subyacente,v_subyacente_quincenal,2000,,,49.413209412912,1Q Feb 2000
@@ -3551,6 +3552,7 @@ INPC quincenal subyacente,v_subyacente_quincenal,2026,,,143.1164173261,1Q Ene 20
 INPC quincenal subyacente,v_subyacente_quincenal,2026,,,143.5462344993,2Q Ene 2026
 INPC quincenal subyacente,v_subyacente_quincenal,2026,,,143.8663362892,1Q Feb 2026
 INPC quincenal subyacente,v_subyacente_quincenal,2026,,,144.1131841608,2Q Feb 2026
+INPC quincenal subyacente,v_subyacente_quincenal,2026,,,144.4348025162,1Q Mar 2026
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2000,,,33.976642346637,1Q Ene 2000
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2000,,,34.017754186501,2Q Ene 2000
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2000,,,34.112553778683,1Q Feb 2000
@@ -4179,6 +4181,7 @@ INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,144.2224677423,1Q Ene 
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,143.8371527555,2Q Ene 2026
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,144.2992296755,1Q Feb 2026
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,145.6085987855,2Q Feb 2026
+INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,148.4631478733,1Q Mar 2026
 Tortilla,v_tortilla,2000,1,2000-01-01,27.766931905137,Ene 2000
 Tortilla,v_tortilla,2000,2,2000-02-01,28.463221780629,Feb 2000
 Tortilla,v_tortilla,2000,3,2000-03-01,28.979538424829,Mar 2000

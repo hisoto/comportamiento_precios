@@ -24,9 +24,9 @@ source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2026-02-01")
+fecha_interes <- as.Date("2026-03-01")
 
-dest_graphs <- "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
 #_______________________________________________________________________________
 
@@ -46,9 +46,12 @@ base <- base |>
 
 # INPC - Subyacente - No subyacente ----------------------------------------
 
-ggplot(
-  base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))
-) + 
+datos_p1 <- base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))
+y_pad    <- 0.3
+y_min_p1 <- min(datos_p1$var_mensual, na.rm = TRUE) - y_pad
+y_max_p1 <- max(datos_p1$var_mensual, na.rm = TRUE) + y_pad
+
+ggplot(datos_p1) +
   geom_col(
     mapping = aes(x = year, y = var_mensual, fill = variable),
     position = "dodge",
@@ -62,7 +65,7 @@ ggplot(
       color = variable,
       vjust = ifelse(var_mensual >= 0, -0.3, 1.3)),
     position = position_dodge(width = 0.9),
-    size = 6, 
+    size = 7, 
     fontface = "bold"
   ) + 
   scale_fill_manual(
@@ -83,9 +86,9 @@ ggplot(
                  by = 1)
    ) +
   scale_y_continuous(
-    limits = c(-0.5, 2.5),
+    limits = c(y_min_p1, y_max_p1),
     breaks = seq(-10, 20, by = 1)
-  ) + 
+  ) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -96,10 +99,10 @@ ggplot(
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
 name <- paste0("graphs/va_mensual_inpc_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -122,11 +125,13 @@ order_levels <- c(
   "INPP terciarias"
 )
 
-ggplot(
-  base |> 
-    filter(variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias")) |> 
-    mutate(variable = factor(variable, levels = order_levels))
-) + 
+datos_p2 <- base |>
+  filter(variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias")) |>
+  mutate(variable = factor(variable, levels = order_levels))
+y_min_p2 <- min(datos_p2$var_mensual, na.rm = TRUE) - y_pad
+y_max_p2 <- max(datos_p2$var_mensual, na.rm = TRUE) + y_pad
+
+ggplot(datos_p2) +
   geom_col(
     mapping = aes(x = year, y = var_mensual, fill = variable),
     position = "dodge",
@@ -140,7 +145,7 @@ ggplot(
       color = variable,
       vjust = ifelse(var_mensual >= 0, -0.3, 1.3)),
     position = position_dodge(width = 0.9),
-    size = 6, 
+    size = 7, 
     fontface = "bold"
   ) + 
   scale_fill_manual(
@@ -157,10 +162,15 @@ ggplot(
       "INPP secundarias sin petróleo" = "#1e5b4f",
       "INPP terciarias" = "#98989A"
     )) +
+  scale_x_continuous(
+    breaks = seq(min(base$year),
+                 max(base$year),
+                 by = 1)
+   ) +
   scale_y_continuous(
-    limits = c(-0.5, 2),
+    limits = c(y_min_p2, y_max_p2),
     breaks = seq(-10, 20, by = 1)
-  ) + 
+  ) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -172,10 +182,10 @@ ggplot(
   guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
 name <- paste0("graphs/va_mensual_inpp_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -224,7 +234,10 @@ base <- base |>
     quincena == "1"
   )
 
-ggplot(base) + 
+y_min_p3 <- min(base$va_mensual, na.rm = TRUE) - y_pad
+y_max_p3 <- max(base$va_mensual, na.rm = TRUE) + y_pad
+
+ggplot(base) +
   geom_col(
     mapping = aes(x = year, y = va_mensual, fill = variable),
     position = "dodge",
@@ -238,7 +251,7 @@ ggplot(base) +
       color = variable,
       vjust = ifelse(va_mensual >= 0, -0.3, 1.3)),
     position = position_dodge(width = 0.9),
-    size = 6, 
+    size = 7, 
     fontface = "bold"
   ) + 
   scale_fill_manual(
@@ -263,10 +276,15 @@ ggplot(base) +
     "INPC quincenal subyacente" = "Subyacente",
     "INPC quincenal nsubyacente" = "No subyacente"
   )) +
+  scale_x_continuous(
+    breaks = seq(min(base$year),
+                 max(base$year),
+                 by = 1)
+   ) + 
   scale_y_continuous(
-    limits = c(-1.5, 1),
+    limits = c(y_min_p3, y_max_p3),
     breaks = seq(-10, 20, by = 1)
-  ) + 
+  ) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -277,10 +295,10 @@ ggplot(base) +
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
 name <- paste0("graphs/va_mensual_inpc_quincenal_", fecha_interes %>% format("%Ym%m"), ".png")
 

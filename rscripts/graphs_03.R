@@ -26,7 +26,7 @@ fecha_inicio <- as.Date("2021-01-01")
 
 fecha_interes <- as.Date("2026-02-01")
 
-dest_graphs <- "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
 #_______________________________________________________________________________
 
@@ -100,10 +100,10 @@ ggplot(base) +
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 18, angle = 90, hjust = 1),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 22),
+        axis.title.y = element_text(size = 22),
+        axis.text.x = element_text(size = 22, angle = 90, hjust = 1),
+        axis.text.y = element_text(size = 22))
 
 name <- paste0("graphs/va_anual_inpc_ciudades_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -111,7 +111,7 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 20,
+  height = 25,
   units = "cm",
   dpi = 300
 )

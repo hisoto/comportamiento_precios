@@ -11,13 +11,14 @@
 rm(list = ls()); gc()
 
 pacman:::p_load(
-  tidyverse, 
+  tidyverse,
   dplyr,
   data.table,
   readxl,
   janitor,
   lubridate,
-  haven 
+  haven,
+  ggrepel
 )
 
 source("rscripts/theme_conasami.R")
@@ -26,7 +27,7 @@ fecha_inicio <- as.Date("2021-01-01")
 
 fecha_interes <- as.Date("2026-02-01")
 
-dest_graphs <- "d:/Users/hector.soto/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
 #_______________________________________________________________________________
 
@@ -65,7 +66,8 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
     limits = c(-1, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -73,7 +75,7 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
     linewidth = 0.5,
     linetype = "dotted"
   ) + 
-  geom_text(
+  geom_text_repel(
     data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "Subyacente", "No subyacente")),
     mapping = aes(
       x = date,
@@ -81,12 +83,14 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
       label = round(var_anual, 2),
       color = variable
     ),
-    hjust = -0.3,
-    vjust = 0,
-    show.legend = FALSE, 
-    fontface = "bold", 
-    size = 6
-  ) + 
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    show.legend   = FALSE,
+    fontface      = "bold",
+    size          = 7
+  ) +
   labs(
     title = "",
     subtitle = "",
@@ -97,10 +101,10 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
   ) +
   theme_conasami() + 
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
 
 
@@ -138,7 +142,8 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
     limits = c(-.5, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -146,20 +151,22 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
     linewidth = 0.5,
     linetype = "dotted"
   ) + 
-  geom_text(
+  geom_text_repel(
     data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "INPC CCM")),
     mapping = aes(
       x = date,
       y = var_anual,
       label = round(var_anual, 2),
-      color = variable,
-      vjust = if_else(variable == "INPC", 0, 1),
+      color = variable
     ),
-    hjust = -0.3,
-    show.legend = FALSE, 
-    fontface = "bold", 
-    size = 6
-  ) + 
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    show.legend   = FALSE,
+    fontface      = "bold",
+    size          = 7
+  ) +
   labs(
     title = "",
     subtitle = "",
@@ -170,10 +177,10 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
   ) +
   theme_conasami() + 
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
 name <- paste0("graphs/va_anual_inpc_ccm_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -213,7 +220,8 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
     limits = c(-16, NA),
     breaks = seq(-15, 40, by = 5)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -221,26 +229,21 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
     linewidth = 0.5,
     linetype = "dotted"
   ) + 
-  geom_text(
+  geom_text_repel(
     data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res")),
     mapping = aes(
       x = date,
       y = var_anual,
       label = round(var_anual, 2),
-      color = variable,
-      vjust = case_when(
-        variable == "Tortilla" ~ 1,
-        variable == "Frijol" ~ 0,
-        variable == "Huevo" ~ 0,
-        variable == "Leche" ~ 0,
-        variable == "Carne res" ~ 0,
-        TRUE ~ 0
-      )
+      color = variable
     ),
-    hjust = -0.2,
-    show.legend = FALSE, 
-    fontface = "bold", 
-    size = 6
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    show.legend   = FALSE,
+    fontface      = "bold",
+    size          = 7
   ) +
   labs(
     title = "",
@@ -253,10 +256,10 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
   theme_conasami() + 
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
 name <- paste0("graphs/va_anual_inpc_productos_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -295,7 +298,8 @@ ggplot(
     limits = c(-6.5, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -303,19 +307,21 @@ ggplot(
     linewidth = 0.5,
     linetype = "dotted"
   ) +
-  geom_text(
+  geom_text_repel(
     data = base %>% filter(date == fecha_interes & variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias")),
     mapping = aes(
       x = date,
       y = var_anual,
       label = round(var_anual, 2),
-      color = variable,
-      vjust = if_else(variable == "INPP secundarias sin petróleo", 1, 0)
+      color = variable
     ),
-    hjust = -0.3,
-    show.legend = FALSE,
-    fontface = "bold",
-    size = 6
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    show.legend   = FALSE,
+    fontface      = "bold",
+    size          = 7
   ) +
   labs(
     title = "",
@@ -328,10 +334,10 @@ ggplot(
   theme_conasami() +
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
  name <- paste0("graphs/va_anual_inpp_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -369,7 +375,8 @@ ggplot(
     limits = c(-2, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -377,23 +384,21 @@ ggplot(
     linewidth = 0.5,
     linetype = "dotted"
   ) +
-  geom_text(
+  geom_text_repel(
     data = base %>% filter(date == fecha_interes & variable %in% c("INPP sin petróleo", "INPP finales", "INPP intermedios")),
     mapping = aes(
       x = date,
       y = var_anual,
       label = round(var_anual, 2),
-      color = variable,
-      vjust = case_when(
-        variable == "INPP finales" ~ -1,
-        variable == "INPP intermedios" ~ 1,
-        TRUE ~ 0
-      )
+      color = variable
     ),
-    hjust = -0.3,
-    show.legend = FALSE,
-    fontface = "bold",
-    size = 6
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    show.legend   = FALSE,
+    fontface      = "bold",
+    size          = 7
   ) +
   labs(
     title = "",
@@ -406,10 +411,10 @@ ggplot(
   theme_conasami() +
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
   name <- paste0("graphs/va_anual_inpp_finales_intermedios_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -482,7 +487,8 @@ ggplot(
     limits = c(-1, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0,
     intercept = 0,
@@ -490,7 +496,7 @@ ggplot(
     linewidth = 0.5,
     linetype = "dotted"
   ) +
-  geom_text(
+  geom_text_repel(
     data = base %>% filter(fecha == fecha_interes),
     mapping = aes(
       x = fecha,
@@ -498,10 +504,13 @@ ggplot(
       label = round(var_anual, 2),
       color = variable
     ),
-    hjust = -0.3,
-    show.legend = FALSE,
-    fontface = "bold",
-    size = 6
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    show.legend   = FALSE,
+    fontface      = "bold",
+    size          = 7
   ) +
   labs(
     title = "",
@@ -513,10 +522,10 @@ ggplot(
   ) +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 18),
-        axis.title.y = element_text(size = 20),
-        axis.text.x = element_text(size = 20),
-        axis.text.y = element_text(size = 20))
+        legend.text = element_text(size = 20),
+        axis.title.y = element_text(size = 24),
+        axis.text.x = element_text(size = 24),
+        axis.text.y = element_text(size = 24))
 
   name <- paste0("graphs/va_anual_inpc_quincenal_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -576,17 +585,22 @@ ggplot(wide, aes(x = date)) +
     limits = c(-1, NA),
     breaks = seq(-10, 20, by = 2)
   ) +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0, intercept = 0,
     color = "black", linewidth = 0.5, linetype = "dotted"
   ) +
-  geom_text(
+  geom_text_repel(
     data = wide |> filter(date == fecha_interes),
     aes(x = date, y = va_inpc, label = round(va_inpc, 2)),
-    color = "#a57f2c",
-    hjust = -0.3, vjust = 0,
-    fontface = "bold", size = 6
+    color         = "#a57f2c",
+    direction     = "y",
+    nudge_x       = 30,
+    hjust         = 0,
+    segment.color = NA,
+    fontface      = "bold",
+    size          = 7
   ) +
   labs(
     x = "", y = "Variación anual (%)",
@@ -597,9 +611,9 @@ ggplot(wide, aes(x = date)) +
   theme(
     legend.position = "bottom",
     legend.text     = element_text(size = 18),
-    axis.title.y    = element_text(size = 20),
-    axis.text.x     = element_text(size = 20),
-    axis.text.y     = element_text(size = 20),
+    axis.title.y    = element_text(size = 24),
+    axis.text.x     = element_text(size = 24),
+    axis.text.y     = element_text(size = 24),
     plot.caption    = element_text(size = 12, hjust = 0)
   )
 
