@@ -3,7 +3,7 @@ title: "README"
 
 params:
   año: 2026
-  mes: 2
+  mes: 4
 
 execute:
   echo: false
@@ -404,7 +404,7 @@ ciudad <- base |>
 La inflación promedio en las ciudades de la Zona Libre de la Frontera Norte (ZLFN) fue de `r round(ciudad |> filter(zona == "ZLFN") |> group_by(zona) |> summarise(x = mean(var_anual, na.rm = TRUE)) |> pull(x), 2)`. 
 
 ```{r}
-#| out-width: "100%" 
+#| out-width: "100%"
 #| dpi: 300
 
 ggplot(ciudad) +
