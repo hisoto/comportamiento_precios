@@ -24,7 +24,7 @@ source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2026-03-01")
+fecha_interes <- as.Date("2026-05-01")
 
 dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
@@ -99,7 +99,7 @@ ggplot(datos_p1) +
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -110,7 +110,7 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 20,
+  height = 25,
   units = "cm",
   dpi = 300
 )
@@ -182,7 +182,7 @@ ggplot(datos_p2) +
   guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -295,7 +295,7 @@ ggplot(base) +
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -306,8 +306,11 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 20,
+  height = 25,
   units = "cm",
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")

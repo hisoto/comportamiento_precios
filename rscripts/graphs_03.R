@@ -24,7 +24,7 @@ source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2026-02-01")
+fecha_interes <- as.Date("2026-04-01")
 
 dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
@@ -100,7 +100,7 @@ ggplot(base) +
   labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
   theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 22),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 22),
         axis.text.x = element_text(size = 22, angle = 90, hjust = 1),
         axis.text.y = element_text(size = 22))

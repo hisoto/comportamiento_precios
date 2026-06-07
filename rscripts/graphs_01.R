@@ -18,14 +18,15 @@ pacman:::p_load(
   janitor,
   lubridate,
   haven,
-  ggrepel
+  ggrepel,
+  scales
 )
 
 source("rscripts/theme_conasami.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2026-02-01")
+fecha_interes <- as.Date("2026-04-01")
 
 dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
@@ -44,14 +45,18 @@ base <- base |>
   )
 #_______________________________________________________________________________
 
-# INPC - INPC subyacente - INPC no subyacente 
+# INPC - INPC subyacente - INPC no subyacente ------------------------------------------------
 
-ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) + 
+plot_data <- base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))
+y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
+
+ggplot(plot_data) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
     shape = 1,
     show.legend = FALSE
-  ) + 
+  ) +
   geom_line(
     mapping = aes(x = date, y = var_anual, color = variable)
   ) +
@@ -63,8 +68,8 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
     )
   ) +
   scale_y_continuous(
-    limits = c(-1, NA),
-    breaks = seq(-10, 20, by = 2)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
@@ -76,7 +81,7 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
     linetype = "dotted"
   ) + 
   geom_text_repel(
-    data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "Subyacente", "No subyacente")),
+    data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
       x = date,
       y = var_anual,
@@ -99,14 +104,12 @@ ggplot(base |> filter(variable %in% c("INPC", "Subyacente", "No subyacente"))) +
     caption = "",
     color = ""
   ) +
-  theme_conasami() + 
+  theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
-
-
 
 name <- paste0("graphs/va_anual_inpc_", fecha_interes %>% format("%Ym%m"), ".png")
 
@@ -119,19 +122,25 @@ ggsave(
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
 
 
 # INPC e INPC CCM --------------------------------------------------------------
 
-ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) + 
+plot_data <- base |> filter(variable %in% c("INPC", "INPC CCM"))
+y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
+
+ggplot(plot_data) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
     shape = 1,
     show.legend = FALSE
-  ) + 
+  ) +
   geom_line(
     mapping = aes(x = date, y = var_anual, color = variable)
-  ) + 
+  ) +
   scale_color_manual(
     values = c(
       "INPC" = "#a57f2c",
@@ -139,8 +148,8 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
     )
   ) +
   scale_y_continuous(
-    limits = c(-.5, NA),
-    breaks = seq(-10, 20, by = 2)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
@@ -152,7 +161,7 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
     linetype = "dotted"
   ) + 
   geom_text_repel(
-    data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "INPC CCM")),
+    data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
       x = date,
       y = var_anual,
@@ -175,9 +184,9 @@ ggplot(base |> filter(variable %in% c("INPC", "INPC CCM"))) +
     caption = "",
     color = ""
   ) +
-  theme_conasami() + 
+  theme_conasami() +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -193,15 +202,21 @@ ggsave(
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
 
 # Productos específicos: Tortilla, Frijol, Huevo, Leche, Carne de res ----------
 
-ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res"))) + 
+plot_data <- base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res"))
+y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
+
+ggplot(plot_data) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
     shape = 1,
     show.legend = FALSE
-  ) + 
+  ) +
   geom_line(
     mapping = aes(x = date, y = var_anual, color = variable)
   ) +
@@ -217,8 +232,8 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
     )
   ) +
   scale_y_continuous(
-    limits = c(-16, NA),
-    breaks = seq(-15, 40, by = 5)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
@@ -230,7 +245,7 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
     linetype = "dotted"
   ) + 
   geom_text_repel(
-    data = base %>% filter(date == fecha_interes & variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Leche", "Carne res")),
+    data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
       x = date,
       y = var_anual,
@@ -256,7 +271,7 @@ ggplot(base |> filter(variable %in% c("INPC", "Tortilla", "Frijol", "Huevo", "Le
   theme_conasami() + 
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -267,22 +282,26 @@ ggsave(
   name,
   plot = last_plot(),
   width = 50,
-  height = 20,
+  height = 25,
   units = "cm",
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
 
 # INPP - INPP secundarias sin petróleo - INPP terciarias ------------------------------
 
-ggplot(
-  base |> filter(variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias"))
-) + 
+plot_data <- base |> filter(variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias"))
+y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
+
+ggplot(plot_data) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
     shape = 1,
     show.legend = FALSE
-  ) + 
+  ) +
   geom_line(
     mapping = aes(x = date, y = var_anual, color = variable)
   ) +
@@ -295,8 +314,8 @@ ggplot(
     )
   ) +
   scale_y_continuous(
-    limits = c(-6.5, NA),
-    breaks = seq(-10, 20, by = 2)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
@@ -308,7 +327,7 @@ ggplot(
     linetype = "dotted"
   ) +
   geom_text_repel(
-    data = base %>% filter(date == fecha_interes & variable %in% c("INPP sin petróleo", "INPP primarias", "INPP secundarias sin petróleo", "INPP terciarias")),
+    data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
       x = date,
       y = var_anual,
@@ -334,7 +353,7 @@ ggplot(
   theme_conasami() +
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -350,17 +369,21 @@ ggsave(
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 20, units = "cm")
 
 # INPP - INPP finales - INPP intermedios ------------------------------
 
-ggplot(
-  base |> filter(variable %in% c("INPP sin petróleo", "INPP finales", "INPP intermedios"))
-) + 
+plot_data <- base |> filter(variable %in% c("INPP sin petróleo", "INPP finales", "INPP intermedios"))
+y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
+
+ggplot(plot_data) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
     shape = 1,
     show.legend = FALSE
-  ) + 
+  ) +
   geom_line(
     mapping = aes(x = date, y = var_anual, color = variable)
   ) +
@@ -372,8 +395,8 @@ ggplot(
     )
   ) +
   scale_y_continuous(
-    limits = c(-2, NA),
-    breaks = seq(-10, 20, by = 2)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
@@ -385,7 +408,7 @@ ggplot(
     linetype = "dotted"
   ) +
   geom_text_repel(
-    data = base %>% filter(date == fecha_interes & variable %in% c("INPP sin petróleo", "INPP finales", "INPP intermedios")),
+    data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
       x = date,
       y = var_anual,
@@ -411,7 +434,7 @@ ggplot(
   theme_conasami() +
   guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
+        legend.text = element_text(size = 28),
         axis.title.y = element_text(size = 24),
         axis.text.x = element_text(size = 24),
         axis.text.y = element_text(size = 24))
@@ -427,6 +450,8 @@ ggsave(
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
 
 # INPC quincenal - INPC quincenal subyacente - INPC quincenal nsubyacente ------------------------------
 
@@ -460,14 +485,15 @@ base <- base |>
     fecha >= fecha_inicio & fecha <= fecha_interes
   ) 
 
-ggplot(
-  base 
-) + 
+y_min <- floor(min(base$var_anual, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(base$var_anual, na.rm = TRUE)) + 0.5
+
+ggplot(base) +
   geom_point(
     mapping = aes(x = fecha, y = var_anual, color = variable),
     shape = 1,
     show.legend = FALSE
-  ) + 
+  ) +
   geom_line(
     mapping = aes(x = fecha, y = var_anual, color = variable)
   ) +
@@ -484,8 +510,8 @@ ggplot(
     )
   ) +
   scale_y_continuous(
-    limits = c(-1, NA),
-    breaks = seq(-10, 20, by = 2)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
@@ -538,6 +564,8 @@ ggsave(
   dpi = 300
 )
 file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+name_svg <- sub("\\.png$", ".svg", name)
+ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
 
 # INPC — Incidencias subyacente y no subyacente --------------------------------
 
@@ -556,6 +584,9 @@ wide <- base |>
     inc_sub  = va_inpc * va_sub / (va_sub + va_nsub),
     inc_nsub = va_inpc - inc_sub
   )
+
+y_min <- floor(min(wide$inc_sub, wide$va_inpc, na.rm = TRUE)) - 0.5
+y_max <- ceiling(max(wide$va_inpc, na.rm = TRUE)) + 0.5
 
 ggplot(wide, aes(x = date)) +
   geom_ribbon(
@@ -582,8 +613,8 @@ ggplot(wide, aes(x = date)) +
     values = c("INPC" = "#a57f2c")
   ) +
   scale_y_continuous(
-    limits = c(-1, NA),
-    breaks = seq(-10, 20, by = 2)
+    limits = c(y_min, y_max),
+    breaks = scales::pretty_breaks(n = 6)
   ) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year",
                limits = c(fecha_inicio, fecha_interes + months(3))) +
