@@ -2,7 +2,7 @@
 
 # Objetivo: Gráficas comportamiento del INPC (Variación mensual, barras)
 
-# Autor: Héctor Iván Soto Parra 
+# Autor: Héctor Iván Soto Parra
 
 # Fecha: 19 de enero de 2026
 
@@ -11,31 +11,34 @@
 rm(list = ls()); gc()
 
 pacman:::p_load(
-  tidyverse, 
+  tidyverse,
   dplyr,
   data.table,
   readxl,
   janitor,
   lubridate,
-  haven 
+  haven
 )
 
-source("rscripts/theme_conasami.R")
+source("rscripts/theme_conasami_dt2026.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2026-05-01")
+fecha_interes <- as.Date("2026-06-01")
 
 dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
+# ── tamaño de etiquetas de valor (8 pt, igual que axis.text del manual) ──
+lab_size <- 6 / .pt        # geom_text: 8 pt → tamaño en mm
+
 #_______________________________________________________________________________
 
-base <- fread("data/inpc.csv") |> 
+base <- fread("data/inpc.csv") |>
   clean_names()
 
-base <- base |> 
-  arrange(variable, date) |> 
-  group_by(variable) |> 
+base <- base |>
+  arrange(variable, date) |>
+  group_by(variable) |>
   mutate(
     var_mensual = ((valor / lag(valor, 1) - 1)*100)
   ) |>
@@ -55,31 +58,32 @@ ggplot(datos_p1) +
   geom_col(
     mapping = aes(x = year, y = var_mensual, fill = variable),
     position = "dodge",
+    width = 0.68,
     show.legend = TRUE
-  ) + 
+  ) +
   geom_text(
     mapping = aes(
-      x = year, 
-      y = var_mensual, 
-      label = round(var_mensual, 2), 
+      x = year,
+      y = var_mensual,
+      label = round(var_mensual, 2),
       color = variable,
       vjust = ifelse(var_mensual >= 0, -0.3, 1.3)),
-    position = position_dodge(width = 0.9),
-    size = 7, 
+    position = position_dodge(width = 0.68),
+    size = lab_size,
     fontface = "bold"
-  ) + 
+  ) +
   scale_fill_manual(
     values = c(
       "INPC" = "#a57f2c",
       "Subyacente" = "#611232",
       "No subyacente" = "#1e5b4f"
-    )) + 
+    )) +
   scale_color_manual(
     values = c(
       "INPC" = "#a57f2c",
       "Subyacente" = "#611232",
       "No subyacente" = "#1e5b4f"
-    )) + 
+    )) +
   scale_x_continuous(
     breaks = seq(min(base$year),
                  max(base$year),
@@ -93,28 +97,15 @@ ggplot(datos_p1) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
   ) +
-  labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
-  theme_conasami() +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  labs(x = "", color = "", fill = "") +
+  theme_conasami()
 
-name <- paste0("graphs/va_mensual_inpc_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_mensual_inpc_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # INPP - INPP primarias - INPP secundarias sin petróleo - INPP terciarias -----
 
@@ -135,26 +126,27 @@ ggplot(datos_p2) +
   geom_col(
     mapping = aes(x = year, y = var_mensual, fill = variable),
     position = "dodge",
+    width = 0.68,
     show.legend = TRUE
-  ) + 
+  ) +
   geom_text(
     mapping = aes(
-      x = year, 
-      y = var_mensual, 
-      label = round(var_mensual, 2), 
+      x = year,
+      y = var_mensual,
+      label = round(var_mensual, 2),
       color = variable,
       vjust = ifelse(var_mensual >= 0, -0.3, 1.3)),
-    position = position_dodge(width = 0.9),
-    size = 7, 
+    position = position_dodge(width = 0.68),
+    size = lab_size,
     fontface = "bold"
-  ) + 
+  ) +
   scale_fill_manual(
     values = c(
       "INPP sin petróleo" = "#a57f2c",
       "INPP primarias" = "#611232",
       "INPP secundarias sin petróleo" = "#1e5b4f",
       "INPP terciarias" = "#98989A"
-    )) + 
+    )) +
   scale_color_manual(
     values = c(
       "INPP sin petróleo" = "#a57f2c",
@@ -175,33 +167,20 @@ ggplot(datos_p2) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
   ) +
-  labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
-  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+  labs(x = "", color = "", fill = "") +
   theme_conasami() +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE))
 
-name <- paste0("graphs/va_mensual_inpp_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_mensual_inpp_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 20,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # INPC quincenal, INPC quincenal subyacente, INPC quincenal nsubyacente -----
 
-base <- fread("data/inpc.csv") |> 
+base <- fread("data/inpc.csv") |>
   clean_names()
 
 order_levels <- c(
@@ -210,10 +189,10 @@ order_levels <- c(
   "INPC quincenal nsubyacente"
 )
 
-base <- base |> 
+base <- base |>
   filter(
     variable %in% c("INPC quincenal", "INPC quincenal subyacente", "INPC quincenal nsubyacente")
-  ) |> 
+  ) |>
   mutate(
     quincena = substr(periodo, 1,1),
     fecha = substr(periodo, 4,11),
@@ -227,9 +206,9 @@ base <- base |>
     year = year(fecha),
     va_mensual = (valor / lag(valor, 1) - 1)*100,
     variable = factor(variable, levels = order_levels)
-  ) |> 
+  ) |>
   filter(
-    fecha >= fecha_inicio & fecha <= fecha_interes & 
+    fecha >= fecha_inicio & fecha <= fecha_interes &
     mes == month(fecha_interes) &
     quincena == "1"
   )
@@ -241,19 +220,20 @@ ggplot(base) +
   geom_col(
     mapping = aes(x = year, y = va_mensual, fill = variable),
     position = "dodge",
+    width = 0.68,
     show.legend = TRUE
-  ) + 
+  ) +
   geom_text(
     mapping = aes(
-      x = year, 
-      y = va_mensual, 
-      label = round(va_mensual, 2), 
+      x = year,
+      y = va_mensual,
+      label = round(va_mensual, 2),
       color = variable,
       vjust = ifelse(va_mensual >= 0, -0.3, 1.3)),
-    position = position_dodge(width = 0.9),
-    size = 7, 
+    position = position_dodge(width = 0.68),
+    size = lab_size,
     fontface = "bold"
-  ) + 
+  ) +
   scale_fill_manual(
     values = c(
       "INPC quincenal" = "#a57f2c",
@@ -280,7 +260,7 @@ ggplot(base) +
     breaks = seq(min(base$year),
                  max(base$year),
                  by = 1)
-   ) + 
+   ) +
   scale_y_continuous(
     limits = c(y_min_p3, y_max_p3),
     breaks = seq(-10, 20, by = 1)
@@ -289,28 +269,12 @@ ggplot(base) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
   ) +
-  labs(x = "", y = "Variación mensual (%)", color = "", fill = "") +
-  theme_conasami() +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  labs(x = "", color = "", fill = "") +
+  theme_conasami()
 
-name <- paste0("graphs/va_mensual_inpc_quincenal_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_mensual_inpc_quincenal_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)

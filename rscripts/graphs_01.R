@@ -2,7 +2,7 @@
 
 # Objetivo: Gráficas comportamiento del INPC (Series de tiempo)
 
-# Autor: Héctor Iván Soto Parra 
+# Autor: Héctor Iván Soto Parra
 
 # Fecha: 19 de enero de 2026
 
@@ -22,24 +22,27 @@ pacman:::p_load(
   scales
 )
 
-source("rscripts/theme_conasami.R")
+source("rscripts/theme_conasami_dt2026.R")
 
 fecha_inicio <- as.Date("2021-01-01")
 
-fecha_interes <- as.Date("2026-04-01")
+fecha_interes <- as.Date("2026-06-01")
 
 dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
 
+# ── tamaño de etiquetas de valor (8 pt, igual que axis.text del manual) ──
+lab_size <- 8 / .pt        # geom_text_repel: 8 pt → tamaño en mm
+
 #_______________________________________________________________________________
 
-base <- fread("data/inpc.csv") 
+base <- fread("data/inpc.csv")
 
-base <- base |> 
-  arrange(variable, date) |> 
-  group_by(variable) |> 
+base <- base |>
+  arrange(variable, date) |>
+  group_by(variable) |>
   mutate(
     var_anual = ((valor / lag(valor, 12) - 1)*100)
-  ) |> 
+  ) |>
   filter(
     date >= fecha_inicio & date <= fecha_interes
   )
@@ -52,13 +55,14 @@ y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
 y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
 
 ggplot(plot_data) +
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
-    shape = 1,
+    size = 1.4,
     show.legend = FALSE
-  ) +
-  geom_line(
-    mapping = aes(x = date, y = var_anual, color = variable)
   ) +
   scale_color_manual(
     values = c(
@@ -77,9 +81,9 @@ ggplot(plot_data) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
-  ) + 
+  ) +
   geom_text_repel(
     data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
@@ -94,36 +98,17 @@ ggplot(plot_data) +
     segment.color = NA,
     show.legend   = FALSE,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    title = "",
-    subtitle = "",
     x = "",
-    y = "Variación anual (%)",
-    caption = "",
     color = ""
   ) +
-  theme_conasami() +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  theme_conasami()
 
-name <- paste0("graphs/va_anual_inpc_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_anual_inpc_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 
 # INPC e INPC CCM --------------------------------------------------------------
@@ -133,13 +118,14 @@ y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
 y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
 
 ggplot(plot_data) +
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
-    shape = 1,
+    size = 1.4,
     show.legend = FALSE
-  ) +
-  geom_line(
-    mapping = aes(x = date, y = var_anual, color = variable)
   ) +
   scale_color_manual(
     values = c(
@@ -157,9 +143,9 @@ ggplot(plot_data) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
-  ) + 
+  ) +
   geom_text_repel(
     data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
@@ -174,36 +160,17 @@ ggplot(plot_data) +
     segment.color = NA,
     show.legend   = FALSE,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    title = "",
-    subtitle = "",
     x = "",
-    y = "Variación anual (%)",
-    caption = "",
     color = ""
   ) +
-  theme_conasami() +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  theme_conasami()
 
-name <- paste0("graphs/va_anual_inpc_ccm_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_anual_inpc_ccm_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # Productos específicos: Tortilla, Frijol, Huevo, Leche, Carne de res ----------
 
@@ -212,13 +179,14 @@ y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
 y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
 
 ggplot(plot_data) +
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
-    shape = 1,
+    size = 1.4,
     show.legend = FALSE
-  ) +
-  geom_line(
-    mapping = aes(x = date, y = var_anual, color = variable)
   ) +
   scale_color_manual(
     values = c(
@@ -241,9 +209,9 @@ ggplot(plot_data) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
-  ) + 
+  ) +
   geom_text_repel(
     data = plot_data |> filter(date == fecha_interes),
     mapping = aes(
@@ -258,37 +226,18 @@ ggplot(plot_data) +
     segment.color = NA,
     show.legend   = FALSE,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    title = "",
-    subtitle = "",
     x = "",
-    y = "Variación anual (%)",
-    caption = "",
     color = ""
   ) +
-  theme_conasami() + 
-  guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  theme_conasami() +
+  guides(color = guide_legend(nrow = 2, byrow = TRUE))
 
-name <- paste0("graphs/va_anual_inpc_productos_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_anual_inpc_productos_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # INPP - INPP secundarias sin petróleo - INPP terciarias ------------------------------
 
@@ -297,13 +246,14 @@ y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
 y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
 
 ggplot(plot_data) +
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
-    shape = 1,
+    size = 1.4,
     show.legend = FALSE
-  ) +
-  geom_line(
-    mapping = aes(x = date, y = var_anual, color = variable)
   ) +
   scale_color_manual(
     values = c(
@@ -323,7 +273,7 @@ ggplot(plot_data) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
   ) +
   geom_text_repel(
@@ -340,37 +290,18 @@ ggplot(plot_data) +
     segment.color = NA,
     show.legend   = FALSE,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    title = "",
-    subtitle = "",
     x = "",
-    y = "Variación anual (%)",
-    caption = "",
     color = ""
   ) +
   theme_conasami() +
-  guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  guides(color = guide_legend(nrow = 2, byrow = TRUE))
 
- name <- paste0("graphs/va_anual_inpp_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_anual_inpp_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 20,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 20, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # INPP - INPP finales - INPP intermedios ------------------------------
 
@@ -379,13 +310,14 @@ y_min <- floor(min(plot_data$var_anual, na.rm = TRUE)) - 0.5
 y_max <- ceiling(max(plot_data$var_anual, na.rm = TRUE)) + 0.5
 
 ggplot(plot_data) +
+  geom_line(
+    mapping = aes(x = date, y = var_anual, color = variable),
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
   geom_point(
     mapping = aes(x = date, y = var_anual, color = variable),
-    shape = 1,
+    size = 1.4,
     show.legend = FALSE
-  ) +
-  geom_line(
-    mapping = aes(x = date, y = var_anual, color = variable)
   ) +
   scale_color_manual(
     values = c(
@@ -404,7 +336,7 @@ ggplot(plot_data) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
   ) +
   geom_text_repel(
@@ -421,51 +353,32 @@ ggplot(plot_data) +
     segment.color = NA,
     show.legend   = FALSE,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    title = "",
-    subtitle = "",
     x = "",
-    y = "Variación anual (%)",
-    caption = "",
     color = ""
   ) +
   theme_conasami() +
-  guides(color = guide_legend(nrow = 2, byrow = TRUE)) +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 28),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  guides(color = guide_legend(nrow = 2, byrow = TRUE))
 
-  name <- paste0("graphs/va_anual_inpp_finales_intermedios_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_anual_inpp_finales_intermedios_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # INPC quincenal - INPC quincenal subyacente - INPC quincenal nsubyacente ------------------------------
 
-base <- fread("data/inpc.csv") 
+base <- fread("data/inpc.csv")
 
-base <- base |> 
+base <- base |>
   filter(
     variable %in% c("INPC quincenal", "INPC quincenal subyacente", "INPC quincenal nsubyacente")
-  ) |> 
+  ) |>
   mutate(
     quincena = substr(periodo, 1,2),
     fecha = substr(periodo, 4,11)
-  ) %>% 
-  filter(quincena == "1Q") |> 
+  ) %>%
+  filter(quincena == "1Q") |>
   mutate(
     fecha = str_replace_all(fecha, c(
       "Ene" = "Jan", "Feb" = "Feb", "Mar" = "Mar", "Abr" = "Apr",
@@ -475,7 +388,7 @@ base <- base |>
     fecha = dmy(paste0("01-", fecha)),
     mes = month(fecha),
     year = year(fecha)
-  ) |> 
+  ) |>
   arrange(variable, fecha) |>
   group_by(variable) |>
   mutate(
@@ -483,19 +396,20 @@ base <- base |>
   ) |>
   filter(
     fecha >= fecha_inicio & fecha <= fecha_interes
-  ) 
+  )
 
 y_min <- floor(min(base$var_anual, na.rm = TRUE)) - 0.5
 y_max <- ceiling(max(base$var_anual, na.rm = TRUE)) + 0.5
 
 ggplot(base) +
+  geom_line(
+    mapping = aes(x = fecha, y = var_anual, color = variable),
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
   geom_point(
     mapping = aes(x = fecha, y = var_anual, color = variable),
-    shape = 1,
+    size = 1.4,
     show.legend = FALSE
-  ) +
-  geom_line(
-    mapping = aes(x = fecha, y = var_anual, color = variable)
   ) +
   scale_color_manual(
     values = c(
@@ -519,7 +433,7 @@ ggplot(base) +
     slope = 0,
     intercept = 0,
     color = "black",
-    linewidth = 0.5,
+    linewidth = 0.4,
     linetype = "dotted"
   ) +
   geom_text_repel(
@@ -536,36 +450,17 @@ ggplot(base) +
     segment.color = NA,
     show.legend   = FALSE,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    title = "",
-    subtitle = "",
     x = "",
-    y = "Variación anual (%)",
-    caption = "",
     color = ""
   ) +
-  theme_conasami() +
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 20),
-        axis.title.y = element_text(size = 24),
-        axis.text.x = element_text(size = 24),
-        axis.text.y = element_text(size = 24))
+  theme_conasami()
 
-  name <- paste0("graphs/va_anual_inpc_quincenal_", fecha_interes %>% format("%Ym%m"), ".png")
+archivo <- paste0("va_anual_inpc_quincenal_", format(fecha_interes, "%Ym%m"))
 
-ggsave(
-  name,
-  plot = last_plot(),
-  width = 50,
-  height = 25,
-  units = "cm",
-  dpi = 300
-)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
-name_svg <- sub("\\.png$", ".svg", name)
-ggsave(name_svg, plot = last_plot(), width = 50, height = 25, units = "cm")
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 
 # INPC — Incidencias subyacente y no subyacente --------------------------------
 
@@ -597,14 +492,14 @@ ggplot(wide, aes(x = date)) +
     aes(ymin = inc_sub, ymax = va_inpc, fill = "No subyacente"),
     alpha = 0.5
   ) +
-  geom_point(
-    aes(y = va_inpc, color = "INPC"),
-    shape = 1,
-    show.legend = FALSE
-  ) +
   geom_line(
     aes(y = va_inpc, color = "INPC"),
-    linewidth = 1
+    linewidth = 0.75, lineend = "round", linejoin = "round"
+  ) +
+  geom_point(
+    aes(y = va_inpc, color = "INPC"),
+    size = 1.4,
+    show.legend = FALSE
   ) +
   scale_fill_manual(
     values = c("Subyacente" = "#611232", "No subyacente" = "#1e5b4f")
@@ -620,7 +515,7 @@ ggplot(wide, aes(x = date)) +
                limits = c(fecha_inicio, fecha_interes + months(3))) +
   geom_abline(
     slope = 0, intercept = 0,
-    color = "black", linewidth = 0.5, linetype = "dotted"
+    color = "black", linewidth = 0.4, linetype = "dotted"
   ) +
   geom_text_repel(
     data = wide |> filter(date == fecha_interes),
@@ -631,28 +526,14 @@ ggplot(wide, aes(x = date)) +
     hjust         = 0,
     segment.color = NA,
     fontface      = "bold",
-    size          = 7
+    size          = lab_size
   ) +
   labs(
-    x = "", y = "Variación anual (%)",
-    fill = "", color = "",
-    caption = "Nota: incidencias calculadas con método proporcional."
+    x = "",
+    fill = "", color = ""
   ) +
-  theme_conasami() +
-  theme(
-    legend.position = "bottom",
-    legend.text     = element_text(size = 18),
-    axis.title.y    = element_text(size = 24),
-    axis.text.x     = element_text(size = 24),
-    axis.text.y     = element_text(size = 24),
-    plot.caption    = element_text(size = 12, hjust = 0)
-  )
+  theme_conasami()
 
-name <- paste0(
-  "graphs/va_anual_inpc_incidencias_",
-  fecha_interes |> format("%Ym%m"), ".png"
-)
+archivo <- paste0("va_anual_inpc_incidencias_", format(fecha_interes, "%Ym%m"))
 
-ggsave(name, plot = last_plot(),
-       width = 50, height = 25, units = "cm", dpi = 300)
-file.copy(name, file.path(dest_graphs, basename(name)), overwrite = TRUE)
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
