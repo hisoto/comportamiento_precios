@@ -10,9 +10,15 @@ Pipeline mensual automatizado, orquestado desde **`Master.R`**, para descargar s
 
 ```
 comportamiento_precios/
-├── Master.R              # Orquestador (punto de entrada): datos + gráficas + resumen
+├── comportamiento_precios.Rproj  # Ancla de here::here() — abrir el proyecto desde aquí
+├── Master.R              # Orquestador LOCAL COMPLETO: informe + extras
+├── Master_informe.R      # Orquestador del INFORME (sin extras) ← el que corre la copia DT
+├── LEEME_DT.md           # Guía de arranque para quien corre sin contexto
 ├── rscripts/
 │   ├── _config.R                 # Config central: fecha de interés + rutas → options(precios)
+│   ├── _correr_pasos.R           # Motor compartido de los dos masters (tryCatch + resumen)
+│   ├── 000_requisitos.R          # Prepara el equipo. Una vez por máquina
+│   ├── 900_extra_incidencias.R   # EXTRA: no va al informe
 │   ├── datos_01.R                # Catálogo de series (mapeo variable → idEstructura → series → api)
 │   ├── datos_02.R                # Función get_inpc_ciudad_df() — web scraping INEGI
 │   ├── datos_03.R                # Descarga masiva + limpieza → data/inpc.csv
@@ -33,18 +39,33 @@ comportamiento_precios/
 
 ## Pipeline de ejecución
 
-Punto de entrada: **`Master.R`** (raíz). Define el mes una sola vez y orquesta todo:
+**Hay dos masters**, con el mismo mecanismo y distinto alcance:
+
+| Master | Corre | Para qué |
+|---|---|---|
+| `Master.R` | todo, **incluido `900_extra_incidencias.R`** | Trabajo diario en local |
+| `Master_informe.R` | solo lo que va al informe | **Es el que corre la copia de la carpeta compartida de la DT** |
 
 ```
-Master.R
+Master_informe.R
   ├─ _config.R           # publica fecha_interes, fecha_inicio, anio_ini/fin y rutas en options(precios)
   ├─ datos_03.R          # solo si correr_datos = TRUE (sourcea datos_01.R + datos_02.R)
   ├─ graphs_01.R → graphs_02.R → graphs_03.R
   └─ resumen_precios.R   # imprime en consola las cifras clave del mes
 ```
 
+Los dos comparten el motor `rscripts/_correr_pasos.R`, que aísla cada paso con `tryCatch` y
+cierra con un resumen OK/ERROR: un fallo en `graphs_02.R` ya no impide que corran los demás.
+El guion inicial del nombre lo deja fuera de la secuencia del pipeline: es infraestructura.
+
+**Para probar sin escribir en `proyectosDT`** (carpeta compartida):
+
+```bash
+Rscript -e "Sys.setenv(CNSM_COPIAR_DT='false'); source('Master_informe.R')"
+```
+
 Uso mensual:
-1. Editar `año_precios` / `mes_precios` al inicio de `Master.R` (**única edición mensual**).
+1. Editar `anio_interes` / `mes_interes` al inicio del master (**única edición mensual**).
 2. `correr_datos <- TRUE` para re-descargar de INEGI (~1-2 min de scraping); `FALSE` para
    solo regenerar gráficas + resumen con el `data/inpc.csv` existente.
 3. Ejecutar `Master.R`.
@@ -64,11 +85,20 @@ que inicia cada script, así que todos leen la misma configuración sin importar
 **No quitar los `rm(list = ls())` de los scripts ni pasar parámetros por variables
 globales**: el canal es `options(precios)`.
 
-- **Desde Master:** `Master.R` define `año_precios`/`mes_precios` y sourcea `_config.R`;
-  esos valores mandan.
+- **Desde un master:** el master define `anio_interes`/`mes_interes` y sourcea `_config.R`;
+  esos valores mandan. Los nombres viejos (`año_precios`/`mes_precios`) siguen funcionando
+  como alias — el nombre canónico se unificó con los otros tres proyectos del informe para
+  que un orquestador global pueda fijar el periodo una sola vez.
 - **Script suelto:** cada script trae el fallback
-  `if (is.null(getOption("precios"))) source("rscripts/_config.R")` y usa los defaults
-  de `_config.R` (mantener esos defaults al día si se trabaja fuera del Master).
+  `if (is.null(getOption("precios"))) source(here::here("rscripts", "_config.R"))` y usa
+  los defaults de `_config.R`.
+
+**Rutas:** desde agosto de 2026 todos los scripts resuelven sus rutas con `here::here()`,
+anclado en `comportamiento_precios.Rproj`. Antes usaban rutas relativas puras
+(`"data/inpc.csv"`) y dependían de que `Master.R` hiciera `setwd()`; ese `setwd()` se
+quitó. `_config.R` trae una guarda que aborta con un mensaje claro si `here` resuelve fuera
+del proyecto — el caso peligroso era que resolviera a otro proyecto y las gráficas se
+escribieran en el vecino.
 
 Contenido de `options(precios)` (se accede con `cfg <- getOption("precios")`):
 
@@ -78,7 +108,8 @@ Contenido de `options(precios)` (se accede con `cfg <- getOption("precios")`):
 | `fecha_interes` | Primer día del mes de interés — último punto de todas las gráficas |
 | `fecha_inicio` | `2021-01-01` — inicio de las series de tiempo y de las barras por año (`graphs_03.R` no lo usa: es corte transversal de un solo mes) |
 | `anio_ini`, `anio_fin` | Rango de descarga INEGI (`2000` → año de interés) |
-| `dest_graphs`, `dest_data` | Copias externas al flujo Word de la DT (`proyectosDT/informes/automatizacion/`), derivadas de `Sys.getenv("USERPROFILE")` (portables entre máquinas); si la carpeta no existe, se omiten con mensaje, sin error. Equivalente a `ruta_dt_automatizacion()` del theme, que es lo que usan los demás proyectos de `Informes/` |
+| `dest_graphs`, `dest_bases`, `dest_data` | Copias externas al flujo Word de la DT. Se derivan de **`ruta_dt_automatizacion()`** (del theme), que resuelve la raíz desde el entorno con tres niveles de respaldo: `OneDriveCommercial` → `OneDrive` → `USERPROFILE`. Antes se armaban a mano aquí con un solo nivel. Si la carpeta no existe, las copias se omiten con mensaje, nunca en silencio |
+| — | Con `options(cnsm_copiar_dt = FALSE)` o `CNSM_COPIAR_DT=false` los tres quedan en `NULL`/`NA` y **nada sale hacia `proyectosDT`**. Es lo que hay que usar para pruebas: esa carpeta es compartida |
 
 **`rscripts/resumen_precios.R`** (último paso del Master) recalcula desde `data/inpc.csv`
 e imprime en consola las cifras que en el flujo personal se narran en `README.qmd`:

@@ -16,13 +16,13 @@ if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
 pacman::p_load(tidyverse, data.table, knitr)
 
 # ── configuración (Master.R la define; fallback si se corre suelto) ───────────
-if (is.null(getOption("precios"))) source("rscripts/_config.R")
+if (is.null(getOption("precios"))) source(here::here("rscripts", "_config.R"))
 cfg <- getOption("precios")
 
 fecha_interes <- cfg$fecha_interes
 
 # ── base con variaciones anual y mensual ─────────────────────────────────────
-base <- fread("data/inpc.csv") |>
+base <- fread(here::here("data", "inpc.csv")) |>
   arrange(variable, date) |>
   group_by(variable) |>
   mutate(
@@ -212,12 +212,15 @@ tabla_infl_csv <- tabla_infl |>
   pivot_wider(names_from = col, values_from = valor)
 
 archivo_csv <- paste0("tabla_inflacion_", format(fecha_interes, "%Ym%m"), ".csv")
-fwrite(tabla_infl_csv, file.path("data", archivo_csv), na = "s/d", bom = TRUE)
+fwrite(tabla_infl_csv, here::here("data", archivo_csv), na = "s/d", bom = TRUE)
 cat("\nCuadro exportado a data/", archivo_csv, "\n", sep = "")
 
 # Copia a la carpeta externa de la DT (se omite sin error si no existe).
-dest_bases <- dirname(cfg$dest_data)
-if (dir.exists(dest_bases)) {
+# cfg$dest_bases vale NA cuando se apagó la copia (options(cnsm_copiar_dt=FALSE)).
+dest_bases <- cfg$dest_bases
+if (is.na(dest_bases)) {
+  message("Copia a la DT desactivada; el cuadro se queda en data/.")
+} else if (dir.exists(dest_bases)) {
   fwrite(tabla_infl_csv, file.path(dest_bases, archivo_csv), na = "s/d", bom = TRUE)
   cat("Copia en ", file.path(dest_bases, archivo_csv), "\n", sep = "")
 } else {

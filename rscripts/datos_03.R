@@ -5,16 +5,16 @@ options(scipen=999) #para desactivar la notación científica
 
 # Entrar al entorno del proyecto ------------------------------------------
 
-source("rscripts/datos_01.R")
+source(here::here("rscripts", "datos_01.R"))
 
-source("rscripts/datos_02.R")
+source(here::here("rscripts", "datos_02.R"))
 
 
 # Configuración (Master.R la define; fallback si se corre suelto) ----------
 # Nota: datos_01.R hace rm(list=ls()); options() sobrevive, así que la config se
 # lee aquí, después de sourcear los pasos previos.
 
-if (is.null(getOption("precios"))) source("rscripts/_config.R")
+if (is.null(getOption("precios"))) source(here::here("rscripts", "_config.R"))
 cfg <- getOption("precios")
 
 
@@ -34,7 +34,7 @@ pacman::p_load(
 
 # claves ------------------------------------------------------------------
 
-tbl <- read_excel("data/inpc_api.xlsx")
+tbl <- read_excel(here::here("data", "inpc_api.xlsx"))
 
 
 # tibble  -----------------------------------------------------------------
@@ -79,10 +79,14 @@ inpc <- inpc %>%
   relocate(variable, api, year, month, date, valor)
 
 # Base maestra local
-fwrite(inpc, "data/inpc.csv")
+fwrite(inpc, here::here("data", "inpc.csv"))
 
-# Copia externa al flujo de Word de la DT (ruta portable; se omite si no existe)
-if (dir.exists(dirname(cfg$dest_data))) {
+# Copia externa al flujo de Word de la DT (ruta portable; se omite si no existe).
+# cfg$dest_data vale NA cuando se apagó la copia (options(cnsm_copiar_dt = FALSE)).
+# Este CSV también lo consume Negociación laboral (901_extra_mir.R).
+if (is.na(cfg$dest_data)) {
+  message("Copia a la DT desactivada; inpc.csv se queda en data/.")
+} else if (dir.exists(dirname(cfg$dest_data))) {
   fwrite(inpc, cfg$dest_data)
 } else {
   message("Carpeta DT no encontrada (", dirname(cfg$dest_data),

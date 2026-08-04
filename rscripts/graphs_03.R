@@ -20,10 +20,10 @@ pacman:::p_load(
   haven
 )
 
-source("rscripts/theme_conasami_dt2026.R")
+source(here::here("rscripts", "theme_conasami_dt2026.R"))
 
 # Configuración (Master.R la define; fallback si se corre suelto) ----------
-if (is.null(getOption("precios"))) source("rscripts/_config.R")
+if (is.null(getOption("precios"))) source(here::here("rscripts", "_config.R"))
 cfg <- getOption("precios")
 
 fecha_inicio  <- cfg$fecha_inicio
@@ -36,7 +36,7 @@ lab_size <- 7 / .pt        # geom_text: 8 pt → tamaño en mm
 #_______________________________________________________________________________
 
 
-base <- fread("data/inpc.csv") |>
+base <- fread(here::here("data", "inpc.csv")) |>
   clean_names()
 
 base <- base |>

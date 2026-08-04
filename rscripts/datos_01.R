@@ -346,4 +346,4 @@ temp <- temp %>%
   )
 
 
-writexl::write_xlsx(temp, "data/inpc_api.xlsx")
+writexl::write_xlsx(temp, here::here("data", "inpc_api.xlsx"))
