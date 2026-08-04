@@ -22,11 +22,13 @@ pacman:::p_load(
 
 source("rscripts/theme_conasami_dt2026.R")
 
-fecha_inicio <- as.Date("2021-01-01")
+# Configuración (Master.R la define; fallback si se corre suelto) ----------
+if (is.null(getOption("precios"))) source("rscripts/_config.R")
+cfg <- getOption("precios")
 
-fecha_interes <- as.Date("2026-05-01")
-
-dest_graphs <- "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/graphs"
+fecha_inicio  <- cfg$fecha_inicio
+fecha_interes <- cfg$fecha_interes
+dest_graphs   <- cfg$dest_graphs
 
 # ── tamaño de etiquetas de valor (8 pt, igual que axis.text del manual) ──
 lab_size <- 7 / .pt        # geom_text: 8 pt → tamaño en mm

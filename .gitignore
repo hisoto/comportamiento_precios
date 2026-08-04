@@ -1,1 +1,9 @@
 graphs/*.svg
+
+# ── basura de sesión de R ─────────────────────────────────────────────────────
+Rplots.pdf
+Rplots-*.pdf
+.Rhistory
+.RData
+.RDataTmp
+.Rproj.user/

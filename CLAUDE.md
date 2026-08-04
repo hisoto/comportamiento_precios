@@ -2,7 +2,7 @@
 
 ## Objetivo del proyecto
 
-Pipeline mensual automatizado para descargar series de precios del portal de INEGI, procesarlas en R y renderizar un reporte Quarto (`README.qmd`) sobre el comportamiento de los precios en México. El reporte es de uso institucional en CONASAMI y cubre INPC, INPP y sus desagregaciones.
+Pipeline mensual automatizado, orquestado desde **`Master.R`**, para descargar series de precios del portal de INEGI, procesarlas en R, generar las gráficas institucionales e imprimir un resumen de cifras en consola. Es de uso institucional en CONASAMI y cubre INPC, INPP y sus desagregaciones. El reporte Quarto (`README.qmd`) es un flujo personal complementario, fuera del Master.
 
 ---
 
@@ -10,35 +10,87 @@ Pipeline mensual automatizado para descargar series de precios del portal de INE
 
 ```
 comportamiento_precios/
+├── Master.R              # Orquestador (punto de entrada): datos + gráficas + resumen
 ├── rscripts/
-│   ├── datos_01.R        # Catálogo de series (mapeo variable → idEstructura → series → api)
-│   ├── datos_02.R        # Función get_inpc_ciudad_df() — web scraping INEGI
-│   ├── datos_03.R        # Descarga masiva + limpieza → data/inpc.csv
-│   ├── graphs_01.R       # Gráficas de variación anual (series de tiempo, líneas)
-│   ├── graphs_02.R       # Gráficas de variación mensual (barras comparativas por año)
-│   ├── graphs_03.R       # Gráfica de ciudades (barras ordenadas por inflación)
-│   └── theme_conasami.R  # Tema ggplot2 institucional
+│   ├── _config.R                 # Config central: fecha de interés + rutas → options(precios)
+│   ├── datos_01.R                # Catálogo de series (mapeo variable → idEstructura → series → api)
+│   ├── datos_02.R                # Función get_inpc_ciudad_df() — web scraping INEGI
+│   ├── datos_03.R                # Descarga masiva + limpieza → data/inpc.csv
+│   ├── graphs_01.R               # Gráficas de variación anual (series de tiempo, líneas)
+│   ├── graphs_02.R               # Gráficas de variación mensual (barras comparativas por año)
+│   ├── graphs_03.R               # Gráfica de ciudades (barras ordenadas por inflación)
+│   ├── resumen_precios.R         # Imprime en consola las cifras narradas del README
+│   ├── theme_conasami_dt2026.R   # Tema ggplot2 institucional DT 2026 (vigente; lo usan las gráficas)
+│   └── theme_conasami.R          # Tema viejo (solo lo usa README.qmd; pendiente de migrar)
 ├── data/
 │   ├── inpc.csv          # Base maestra (salida de datos_03.R)
 │   └── inpc_api.xlsx     # Catálogo exportado (salida de datos_01.R)
-├── graphs/               # PNGs generadas por graphs_01/02/03.R
-└── README.qmd            # Reporte Quarto paramétrico
+├── graphs/               # PNGs + SVGs generadas por graphs_01/02/03.R
+└── README.qmd            # Reporte Quarto paramétrico (uso personal; aún con theme viejo)
 ```
 
 ---
 
 ## Pipeline de ejecución
 
+Punto de entrada: **`Master.R`** (raíz). Define el mes una sola vez y orquesta todo:
+
 ```
-datos_01.R  →  datos_02.R  →  datos_03.R  →  graphs_01/02/03.R  →  README.qmd
-(catálogo)     (función)       (descarga)       (PNGs)              (reporte)
+Master.R
+  ├─ _config.R           # publica fecha_interes, fecha_inicio, anio_ini/fin y rutas en options(precios)
+  ├─ datos_03.R          # solo si correr_datos = TRUE (sourcea datos_01.R + datos_02.R)
+  ├─ graphs_01.R → graphs_02.R → graphs_03.R
+  └─ resumen_precios.R   # imprime en consola las cifras clave del mes
 ```
 
-Orden de ejecución mensual:
-1. `datos_01.R` — solo si se agregan series nuevas
-2. `datos_03.R` — descarga todo (llama internamente a `datos_01.R` y `datos_02.R`)
-3. `graphs_01.R`, `graphs_02.R`, `graphs_03.R` — en cualquier orden
-4. Renderizar `README.qmd` en Quarto con `params$año` y `params$mes` actualizados
+Uso mensual:
+1. Editar `año_precios` / `mes_precios` al inicio de `Master.R` (**única edición mensual**).
+2. `correr_datos <- TRUE` para re-descargar de INEGI (~1-2 min de scraping); `FALSE` para
+   solo regenerar gráficas + resumen con el `data/inpc.csv` existente.
+3. Ejecutar `Master.R`.
+4. (Flujo personal, fuera del Master) Renderizar `README.qmd` con `params$año`/`params$mes`.
+
+`datos_01.R` solo requiere corrida manual si se agregan series nuevas (regenera
+`data/inpc_api.xlsx`). Cada script sigue siendo ejecutable **suelto** (ver sección
+siguiente).
+
+---
+
+## Configuración central (`rscripts/_config.R`)
+
+Los parámetros del pipeline viven en `options(precios = list(...))`, publicados por
+`_config.R`. Clave del diseño: `options()` **sobrevive** al `rm(list = ls()); gc()` con
+que inicia cada script, así que todos leen la misma configuración sin importar el orden.
+**No quitar los `rm(list = ls())` de los scripts ni pasar parámetros por variables
+globales**: el canal es `options(precios)`.
+
+- **Desde Master:** `Master.R` define `año_precios`/`mes_precios` y sourcea `_config.R`;
+  esos valores mandan.
+- **Script suelto:** cada script trae el fallback
+  `if (is.null(getOption("precios"))) source("rscripts/_config.R")` y usa los defaults
+  de `_config.R` (mantener esos defaults al día si se trabaja fuera del Master).
+
+Contenido de `options(precios)` (se accede con `cfg <- getOption("precios")`):
+
+| Elemento | Descripción |
+|---|---|
+| `año`, `mes` | Mes de interés (canónico: se edita en `Master.R`) |
+| `fecha_interes` | Primer día del mes de interés — último punto de todas las gráficas |
+| `fecha_inicio` | `2021-01-01` — inicio de las series de tiempo y de las barras por año (`graphs_03.R` no lo usa: es corte transversal de un solo mes) |
+| `anio_ini`, `anio_fin` | Rango de descarga INEGI (`2000` → año de interés) |
+| `dest_graphs`, `dest_data` | Copias externas al flujo Word de la DT (`proyectosDT/informes/automatizacion/`), derivadas de `Sys.getenv("USERPROFILE")` (portables entre máquinas); si la carpeta no existe, se omiten con mensaje, sin error. Equivalente a `ruta_dt_automatizacion()` del theme, que es lo que usan los demás proyectos de `Informes/` |
+
+**`rscripts/resumen_precios.R`** (último paso del Master) recalcula desde `data/inpc.csv`
+e imprime en consola las cifras que en el flujo personal se narran en `README.qmd`:
+INPC/subyacente/no subyacente, componentes, INPC CCM y su brecha, productos básicos,
+promedio anual de la ZLFN e INPP. Así quien clone el proyecto obtiene el resumen numérico
+sin renderizar el Quarto.
+
+Su **sección 7** imprime además el cuadro del tablero institucional: variación **mensual y
+anual** de la inflación general, subyacente y no subyacente en los **últimos 13 meses**
+(meses como columnas, agrupadas por año). El mismo cuadro se exporta a
+`data/tabla_inflacion_{YYYY}m{MM}.csv` (con copia a la carpeta `bases/` de la DT si existe),
+listo para pegar en el cuadro de Word.
 
 ---
 
@@ -114,6 +166,11 @@ En los scripts de gráficas y en el Quarto se calculan en línea:
 
 ## Reporte Quarto (`README.qmd`)
 
+**Flujo personal de Héctor, fuera del Master**: no lo corre `Master.R` (las cifras que
+narra las imprime `resumen_precios.R` en consola). Se renderiza aparte y mantiene sus
+propios `params$año`/`params$mes` (sincronizarlos a mano con `Master.R`). Pendiente:
+migrarlo del theme viejo (`theme_conasami.R`) al DT 2026.
+
 ### Parámetros
 ```yaml
 params:
@@ -171,23 +228,30 @@ Los scripts standalone (`graphs_01/02/03.R`) **no** tienen este override (texto 
 ## Convenciones de gráficas
 
 ### Tema base
-Todas las gráficas usan `theme_conasami()` (definido en `rscripts/theme_conasami.R`):
-- Fuente: **Noto Sans** (cargada con `extrafont::loadfonts(device = "win")`)
-- Fondo: transparente (`fill = "transparent"`)
-- Grid: solo horizontal, color `#F0F0F0FF`
-- Sin grid vertical
+Los scripts de gráficas usan `theme_conasami()` del **theme DT 2026**
+(`rscripts/theme_conasami_dt2026.R`, copia del canon en la raíz CAEL; **no editarla
+localmente**, ver `GUIA_GRAFICAS_DT2026.md`):
+- Fuente: **Noto Sans** (numerales de eje/leyenda en la variante `"Noto Sans Tab"`),
+  resuelta vía `systemfonts`/`ragg` (ya no `extrafont`)
+- Fondo transparente; grid solo horizontal (`#ECE8DE`); leyenda abajo
+- `README.qmd` aún usa el theme viejo (`rscripts/theme_conasami.R`) — pendiente de migrar
 
 ### Elementos comunes
-- Línea de cero: `geom_abline(slope = 0, intercept = 0, linetype = "dotted", color = "black", linewidth = 0.5)`
-- Etiqueta del último valor: `geom_text()` filtrando `date == fecha_interes`, `hjust = -0.3`, `fontface = "bold"`
-- Leyenda abajo: `theme(legend.position = "bottom")`
+- Línea de cero: `geom_abline(slope = 0, intercept = 0, linetype = "dotted", color = "black", linewidth = 0.4)`
+- Etiqueta del último valor: `geom_text_repel()` filtrando `date == fecha_interes`,
+  `nudge_x = 30`, `fontface = "bold"`, tamaño `lab_size` (pt → mm vía `/.pt`)
+- Leyenda abajo (la trae el theme)
 
-### Dimensiones de exportación (scripts standalone)
+### Exportación
+Con `guardar_grafica_conasami()` (helper del theme DT 2026):
 ```r
-ggsave(name, plot = last_plot(), width = 50, height = 25, units = "cm", dpi = 300)
-# barras comparativas: height = 20
-# ciudades:           height = 20, axis.text.x rotado 90°
+guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)
 ```
+- Genera **PNG 300 dpi + SVG** en `graphs/` (tamaños del Manual: `"ancho"` 17.5×8 cm,
+  `"medio"` 8×8 cm, `"libre"` con `width`/`height`)
+- `dest = dest_graphs` (de `cfg$dest_graphs`) copia además el **SVG** a la carpeta DT
+  externa (`dest_formato = "svg"` es el default del theme desde 2026-07-27; antes
+  copiaba el PNG). Si la carpeta no existe, avisa con `message()` y sigue
 
 ### Nomenclatura de archivos PNG
 ```
@@ -206,7 +270,9 @@ Ejemplos:
 1. Filtrar `base` con las variables deseadas usando sus nombres exactos de `variable`
 2. Construir el `ggplot` siguiendo el patrón existente (ver gráficas de INPC o INPP)
 3. Definir colores con `scale_color_manual()` usando la paleta institucional
-4. Guardar con `ggsave()` siguiendo la nomenclatura de nombre
+4. Guardar con `guardar_grafica_conasami(last_plot(), archivo, tamano = "ancho", dest = dest_graphs)`
+   siguiendo la nomenclatura de nombre (`archivo <- paste0("va_..._", format(fecha_interes, "%Ym%m"))`)
+5. Si la cifra se narra en el reporte, considerar añadirla también a `resumen_precios.R`
 
 ### En `README.qmd` (reporte)
 1. Agregar un chunk con el mismo código de la gráfica

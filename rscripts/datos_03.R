@@ -10,6 +10,14 @@ source("rscripts/datos_01.R")
 source("rscripts/datos_02.R")
 
 
+# Configuración (Master.R la define; fallback si se corre suelto) ----------
+# Nota: datos_01.R hace rm(list=ls()); options() sobrevive, así que la config se
+# lee aquí, después de sourcear los pasos previos.
+
+if (is.null(getOption("precios"))) source("rscripts/_config.R")
+cfg <- getOption("precios")
+
+
 # Librerías ---------------------------------------------------------------
 
 if (!requireNamespace("pacman", quietly = TRUE)) install.packages("pacman")
@@ -18,7 +26,7 @@ pacman::p_load(
   tidyverse,
   haven,
   readxl,
-  tictoc, 
+  tictoc,
   beepr,
   data.table
 )
@@ -37,8 +45,8 @@ inpc <- tbl %>%
     get_inpc_ciudad_df(
       idEstructura = idEstructura,
       series       = series,
-      anio_ini     = 2000,
-      anio_fin     = 2026
+      anio_ini     = cfg$anio_ini,
+      anio_fin     = cfg$anio_fin
     ) %>%
       mutate(
         variable = variable,
@@ -70,5 +78,13 @@ inpc <- inpc %>%
   ) |> 
   relocate(variable, api, year, month, date, valor)
 
+# Base maestra local
 fwrite(inpc, "data/inpc.csv")
-fwrite(inpc, "C:/Users/ivan_/OneDrive - Comision Nacional de los Salarios Minimos/proyectosDT/informes/automatizacion/bases/inpc.csv")
+
+# Copia externa al flujo de Word de la DT (ruta portable; se omite si no existe)
+if (dir.exists(dirname(cfg$dest_data))) {
+  fwrite(inpc, cfg$dest_data)
+} else {
+  message("Carpeta DT no encontrada (", dirname(cfg$dest_data),
+          "); se omite la copia externa.")
+}

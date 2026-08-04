@@ -316,6 +316,7 @@ INPC,v_inpc,2026,2,2026-02-01,144.307,Feb 2026
 INPC,v_inpc,2026,3,2026-03-01,145.544,Mar 2026
 INPC,v_inpc,2026,4,2026-04-01,145.831,Abr 2026
 INPC,v_inpc,2026,5,2026-05-01,145.527,May 2026
+INPC,v_inpc,2026,6,2026-06-01,145.131,Jun 2026
 Subyacente,v_subyacente,2000,1,2000-01-01,48.969169725527,Ene 2000
 Subyacente,v_subyacente,2000,2,2000-02-01,49.507968239477,Feb 2000
 Subyacente,v_subyacente,2000,3,2000-03-01,49.828170679495,Mar 2000
@@ -633,6 +634,7 @@ Subyacente,v_subyacente,2026,2,2026-02-01,143.989760225,Feb 2026
 Subyacente,v_subyacente,2026,3,2026-03-01,144.5434289049,Mar 2026
 Subyacente,v_subyacente,2026,4,2026-04-01,144.9913290386,Abr 2026
 Subyacente,v_subyacente,2026,5,2026-05-01,145.3152989928,May 2026
+Subyacente,v_subyacente,2026,6,2026-06-01,145.6712785907,Jun 2026
 Subyacente - Mercancias,v_subyacente_mercancias,2000,1,2000-01-01,48.134559959771,Ene 2000
 Subyacente - Mercancias,v_subyacente_mercancias,2000,2,2000-02-01,48.651393960731,Feb 2000
 Subyacente - Mercancias,v_subyacente_mercancias,2000,3,2000-03-01,49.000163770381,Mar 2000
@@ -950,6 +952,7 @@ Subyacente - Mercancias,v_subyacente_mercancias,2026,2,2026-02-01,150.4468744839
 Subyacente - Mercancias,v_subyacente_mercancias,2026,3,2026-03-01,150.8811337969,Mar 2026
 Subyacente - Mercancias,v_subyacente_mercancias,2026,4,2026-04-01,151.3459015645,Abr 2026
 Subyacente - Mercancias,v_subyacente_mercancias,2026,5,2026-05-01,151.5845443554,May 2026
+Subyacente - Mercancias,v_subyacente_mercancias,2026,6,2026-06-01,151.8626861158,Jun 2026
 Subyacente - Servicios,v_subyacente_servicios,2000,1,2000-01-01,49.169591401813,Ene 2000
 Subyacente - Servicios,v_subyacente_servicios,2000,2,2000-02-01,49.726207427378,Feb 2000
 Subyacente - Servicios,v_subyacente_servicios,2000,3,2000-03-01,50.006159793727,Mar 2000
@@ -1267,6 +1270,7 @@ Subyacente - Servicios,v_subyacente_servicios,2026,2,2026-02-01,136.9118798915,F
 Subyacente - Servicios,v_subyacente_servicios,2026,3,2026-03-01,137.5631848124,Mar 2026
 Subyacente - Servicios,v_subyacente_servicios,2026,4,2026-04-01,137.9918538061,Abr 2026
 Subyacente - Servicios,v_subyacente_servicios,2026,5,2026-05-01,138.3863332953,May 2026
+Subyacente - Servicios,v_subyacente_servicios,2026,6,2026-06-01,138.806008767,Jun 2026
 INPC CCM,v_inpc_ccm,2018,1,2018-01-01,,Ene 2018
 INPC CCM,v_inpc_ccm,2018,2,2018-02-01,,Feb 2018
 INPC CCM,v_inpc_ccm,2018,3,2018-03-01,,Mar 2018
@@ -1368,6 +1372,7 @@ INPC CCM,v_inpc_ccm,2026,2,2026-02-01,146.143462805,Feb 2026
 INPC CCM,v_inpc_ccm,2026,3,2026-03-01,147.4678961144,Mar 2026
 INPC CCM,v_inpc_ccm,2026,4,2026-04-01,147.8891102796,Abr 2026
 INPC CCM,v_inpc_ccm,2026,5,2026-05-01,147.4627334625,May 2026
+INPC CCM,v_inpc_ccm,2026,6,2026-06-01,146.496093167,Jun 2026
 No subyacente,v_inpc_nsubyacente,2000,1,2000-01-01,33.997198266569,Ene 2000
 No subyacente,v_inpc_nsubyacente,2000,2,2000-02-01,34.089598660714,Feb 2000
 No subyacente,v_inpc_nsubyacente,2000,3,2000-03-01,34.186919590062,Mar 2000
@@ -1685,6 +1690,7 @@ No subyacente,v_inpc_nsubyacente,2026,2,2026-02-01,144.9539142305,Feb 2026
 No subyacente,v_inpc_nsubyacente,2026,3,2026-03-01,148.5269160435,Mar 2026
 No subyacente,v_inpc_nsubyacente,2026,4,2026-04-01,148.2610955638,Abr 2026
 No subyacente,v_inpc_nsubyacente,2026,5,2026-05-01,145.8075421345,May 2026
+No subyacente,v_inpc_nsubyacente,2026,6,2026-06-01,142.8388000141,Jun 2026
 No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2000,1,2000-01-01,35.656676317567,Ene 2000
 No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2000,2,2000-02-01,35.241141477272,Feb 2000
 No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2000,3,2000-03-01,35.022979072524,Mar 2000
@@ -2002,6 +2008,7 @@ No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2026,2,2026-02-01,163.
 No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2026,3,2026-03-01,170.4182553454,Mar 2026
 No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2026,4,2026-04-01,171.888336066,Abr 2026
 No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2026,5,2026-05-01,169.064835401,May 2026
+No subyacente - Agropecuarios,v_nsubyacente_agropecuarios,2026,6,2026-06-01,161.3025010655,Jun 2026
 No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2000,1,2000-01-01,32.652954909267,Ene 2000
 No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2000,2,2000-02-01,33.149796368329,Feb 2000
 No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2000,3,2000-03-01,33.498292783251,Mar 2000
@@ -2319,6 +2326,7 @@ No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,202
 No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2026,3,2026-03-01,132.4911634444,Mar 2026
 No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2026,4,2026-04-01,131.1316447961,Abr 2026
 No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2026,5,2026-05-01,128.9482499743,May 2026
+No subyacente - Energéticos y tarifas autorizadas,v_nsubyacente_energeticos,2026,6,2026-06-01,129.0543817417,Jun 2026
 INPC quincenal,v_inpc_quincenal,2000,,,44.809270260844,1Q Ene 2000
 INPC quincenal,v_inpc_quincenal,2000,,,45.052246335988,2Q Ene 2000
 INPC quincenal,v_inpc_quincenal,2000,,,45.272547144596,1Q Feb 2000
@@ -2954,6 +2962,8 @@ INPC quincenal,v_inpc_quincenal,2026,,,145.857,2Q Abr 2026
 INPC quincenal,v_inpc_quincenal,2026,,,145.622,1Q May 2026
 INPC quincenal,v_inpc_quincenal,2026,,,145.432,2Q May 2026
 INPC quincenal,v_inpc_quincenal,2026,,,145.274,1Q Jun 2026
+INPC quincenal,v_inpc_quincenal,2026,,,144.988,2Q Jun 2026
+INPC quincenal,v_inpc_quincenal,2026,,,145.091,1Q Jul 2026
 INPC quincenal subyacente,v_subyacente_quincenal,2000,,,48.801160155926,1Q Ene 2000
 INPC quincenal subyacente,v_subyacente_quincenal,2000,,,49.137179295129,2Q Ene 2000
 INPC quincenal subyacente,v_subyacente_quincenal,2000,,,49.413209412912,1Q Feb 2000
@@ -3589,6 +3599,8 @@ INPC quincenal subyacente,v_subyacente_quincenal,2026,,,145.0664173552,2Q Abr 20
 INPC quincenal subyacente,v_subyacente_quincenal,2026,,,145.2541604763,1Q May 2026
 INPC quincenal subyacente,v_subyacente_quincenal,2026,,,145.3764375092,2Q May 2026
 INPC quincenal subyacente,v_subyacente_quincenal,2026,,,145.6564904146,1Q Jun 2026
+INPC quincenal subyacente,v_subyacente_quincenal,2026,,,145.6860667668,2Q Jun 2026
+INPC quincenal subyacente,v_subyacente_quincenal,2026,,,145.9161695864,1Q Jul 2026
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2000,,,33.976642346637,1Q Ene 2000
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2000,,,34.017754186501,2Q Ene 2000
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2000,,,34.112553778683,1Q Feb 2000
@@ -4224,6 +4236,8 @@ INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,148.1180648952,2Q Abr 
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,146.4356373452,1Q May 2026
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,145.1794469238,2Q May 2026
 INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,143.52195775,1Q Jun 2026
+INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,142.1556422782,2Q Jun 2026
+INPC quincenal nsubyacente,v_nsubyacente_quincenal,2026,,,141.8230258616,1Q Jul 2026
 Tortilla,v_tortilla,2000,1,2000-01-01,27.766931905137,Ene 2000
 Tortilla,v_tortilla,2000,2,2000-02-01,28.463221780629,Feb 2000
 Tortilla,v_tortilla,2000,3,2000-03-01,28.979538424829,Mar 2000
@@ -4541,6 +4555,7 @@ Tortilla,v_tortilla,2026,2,2026-02-01,159.801,Feb 2026
 Tortilla,v_tortilla,2026,3,2026-03-01,160.176,Mar 2026
 Tortilla,v_tortilla,2026,4,2026-04-01,160.819,Abr 2026
 Tortilla,v_tortilla,2026,5,2026-05-01,162.129,May 2026
+Tortilla,v_tortilla,2026,6,2026-06-01,162.475,Jun 2026
 Huevo,v_huevo,2000,1,2000-01-01,39.084862790687,Ene 2000
 Huevo,v_huevo,2000,2,2000-02-01,39.343824105559,Feb 2000
 Huevo,v_huevo,2000,3,2000-03-01,38.675169094326,Mar 2000
@@ -4858,6 +4873,7 @@ Huevo,v_huevo,2026,2,2026-02-01,168.125,Feb 2026
 Huevo,v_huevo,2026,3,2026-03-01,163.607,Mar 2026
 Huevo,v_huevo,2026,4,2026-04-01,157.916,Abr 2026
 Huevo,v_huevo,2026,5,2026-05-01,150.149,May 2026
+Huevo,v_huevo,2026,6,2026-06-01,139.316,Jun 2026
 Leche,v_leche,2000,1,2000-01-01,41.107762140527,Ene 2000
 Leche,v_leche,2000,2,2000-02-01,41.248627576793,Feb 2000
 Leche,v_leche,2000,3,2000-03-01,41.256908274118,Mar 2000
@@ -5175,6 +5191,7 @@ Leche,v_leche,2026,2,2026-02-01,171.067,Feb 2026
 Leche,v_leche,2026,3,2026-03-01,171.137,Mar 2026
 Leche,v_leche,2026,4,2026-04-01,171.679,Abr 2026
 Leche,v_leche,2026,5,2026-05-01,172.528,May 2026
+Leche,v_leche,2026,6,2026-06-01,171.913,Jun 2026
 Carne res,v_carne_res,2000,1,2000-01-01,,Ene 2000
 Carne res,v_carne_res,2000,2,2000-02-01,,Feb 2000
 Carne res,v_carne_res,2000,3,2000-03-01,,Mar 2000
@@ -5492,6 +5509,7 @@ Carne res,v_carne_res,2026,2,2026-02-01,171.312,Feb 2026
 Carne res,v_carne_res,2026,3,2026-03-01,171.081,Mar 2026
 Carne res,v_carne_res,2026,4,2026-04-01,171.327,Abr 2026
 Carne res,v_carne_res,2026,5,2026-05-01,171.551,May 2026
+Carne res,v_carne_res,2026,6,2026-06-01,171.717,Jun 2026
 Frijol,v_frijol,2000,1,2000-01-01,36.848449613863,Ene 2000
 Frijol,v_frijol,2000,2,2000-02-01,36.589781268848,Feb 2000
 Frijol,v_frijol,2000,3,2000-03-01,36.115420463512,Mar 2000
@@ -5809,6 +5827,7 @@ Frijol,v_frijol,2026,2,2026-02-01,150.507,Feb 2026
 Frijol,v_frijol,2026,3,2026-03-01,148.494,Mar 2026
 Frijol,v_frijol,2026,4,2026-04-01,146.784,Abr 2026
 Frijol,v_frijol,2026,5,2026-05-01,145.581,May 2026
+Frijol,v_frijol,2026,6,2026-06-01,144.242,Jun 2026
 INPP sin petróleo,v_inpp,2003,1,2003-01-01,,Ene 2003
 INPP sin petróleo,v_inpp,2003,2,2003-02-01,,Feb 2003
 INPP sin petróleo,v_inpp,2003,3,2003-03-01,,Mar 2003
@@ -6090,6 +6109,7 @@ INPP sin petróleo,v_inpp,2026,2,2026-02-01,134.536882932461,Feb 2026
 INPP sin petróleo,v_inpp,2026,3,2026-03-01,135.909593592512,Mar 2026
 INPP sin petróleo,v_inpp,2026,4,2026-04-01,135.707541959118,Abr 2026
 INPP sin petróleo,v_inpp,2026,5,2026-05-01,136.090212933949,May 2026
+INPP sin petróleo,v_inpp,2026,6,2026-06-01,135.546563625531,Jun 2026
 INPP primarias,v_inpp_primarias,2003,1,2003-01-01,37.281265396418,Ene 2003
 INPP primarias,v_inpp_primarias,2003,2,2003-02-01,37.452103806711,Feb 2003
 INPP primarias,v_inpp_primarias,2003,3,2003-03-01,38.292202836988,Mar 2003
@@ -6371,6 +6391,7 @@ INPP primarias,v_inpp_primarias,2026,2,2026-02-01,133.970803172047,Feb 2026
 INPP primarias,v_inpp_primarias,2026,3,2026-03-01,140.241711908555,Mar 2026
 INPP primarias,v_inpp_primarias,2026,4,2026-04-01,138.119220680691,Abr 2026
 INPP primarias,v_inpp_primarias,2026,5,2026-05-01,140.610449599517,May 2026
+INPP primarias,v_inpp_primarias,2026,6,2026-06-01,136.143491038581,Jun 2026
 INPP secundarias sin petróleo,v_inpp_secundarias,2003,1,2003-01-01,41.722922893491,Ene 2003
 INPP secundarias sin petróleo,v_inpp_secundarias,2003,2,2003-02-01,42.486515136246,Feb 2003
 INPP secundarias sin petróleo,v_inpp_secundarias,2003,3,2003-03-01,42.965651375696,Mar 2003
@@ -6652,6 +6673,7 @@ INPP secundarias sin petróleo,v_inpp_secundarias,2026,2,2026-02-01,135.90399858
 INPP secundarias sin petróleo,v_inpp_secundarias,2026,3,2026-03-01,136.999406095904,Mar 2026
 INPP secundarias sin petróleo,v_inpp_secundarias,2026,4,2026-04-01,136.706572220086,Abr 2026
 INPP secundarias sin petróleo,v_inpp_secundarias,2026,5,2026-05-01,136.990617369451,May 2026
+INPP secundarias sin petróleo,v_inpp_secundarias,2026,6,2026-06-01,136.240890288838,Jun 2026
 INPP terciarias,v_inpp_terciarias,2003,1,2003-01-01,54.523009701654,Ene 2003
 INPP terciarias,v_inpp_terciarias,2003,2,2003-02-01,54.857411753851,Feb 2003
 INPP terciarias,v_inpp_terciarias,2003,3,2003-03-01,55.085203134014,Mar 2003
@@ -6933,6 +6955,7 @@ INPP terciarias,v_inpp_terciarias,2026,2,2026-02-01,131.62338659423,Feb 2026
 INPP terciarias,v_inpp_terciarias,2026,3,2026-03-01,132.930215719784,Mar 2026
 INPP terciarias,v_inpp_terciarias,2026,4,2026-04-01,133.113658734807,Abr 2026
 INPP terciarias,v_inpp_terciarias,2026,5,2026-05-01,133.431218337504,May 2026
+INPP terciarias,v_inpp_terciarias,2026,6,2026-06-01,133.712894130742,Jun 2026
 INPP finales,v_inpp_finales,2000,1,2000-01-01,41.178847651348,Ene 2000
 INPP finales,v_inpp_finales,2000,2,2000-02-01,41.549897168599,Feb 2000
 INPP finales,v_inpp_finales,2000,3,2000-03-01,41.742735564714,Mar 2000
@@ -7250,6 +7273,7 @@ INPP finales,v_inpp_finales,2026,2,2026-02-01,135.244336298037,Feb 2026
 INPP finales,v_inpp_finales,2026,3,2026-03-01,136.835882175603,Mar 2026
 INPP finales,v_inpp_finales,2026,4,2026-04-01,136.855560942194,Abr 2026
 INPP finales,v_inpp_finales,2026,5,2026-05-01,137.039470789625,May 2026
+INPP finales,v_inpp_finales,2026,6,2026-06-01,136.642604361469,Jun 2026
 INPP intermedios,v_inpp_intermedios,2003,1,2003-01-01,,Ene 2003
 INPP intermedios,v_inpp_intermedios,2003,2,2003-02-01,,Feb 2003
 INPP intermedios,v_inpp_intermedios,2003,3,2003-03-01,,Mar 2003
@@ -7531,6 +7555,7 @@ INPP intermedios,v_inpp_intermedios,2026,2,2026-02-01,132.719460931047,Feb 2026
 INPP intermedios,v_inpp_intermedios,2026,3,2026-03-01,133.559440666334,Mar 2026
 INPP intermedios,v_inpp_intermedios,2026,4,2026-04-01,132.818775747211,Abr 2026
 INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
+INPP intermedios,v_inpp_intermedios,2026,6,2026-06-01,132.784212101529,Jun 2026
 Área Met. de la CDMX,v_ciudad_870982,2000,1,2000-01-01,43.874697081474,Ene 2000
 Área Met. de la CDMX,v_ciudad_870982,2000,2,2000-02-01,44.275015668685,Feb 2000
 Área Met. de la CDMX,v_ciudad_870982,2000,3,2000-03-01,44.498071919169,Mar 2000
@@ -7848,6 +7873,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 Área Met. de la CDMX,v_ciudad_870982,2026,3,2026-03-01,142.332,Mar 2026
 Área Met. de la CDMX,v_ciudad_870982,2026,4,2026-04-01,142.733,Abr 2026
 Área Met. de la CDMX,v_ciudad_870982,2026,5,2026-05-01,142.669,May 2026
+Área Met. de la CDMX,v_ciudad_870982,2026,6,2026-06-01,142.21,Jun 2026
 "Acapulco, Gro.",v_ciudad_871518,2000,1,2000-01-01,45.880379190462,Ene 2000
 "Acapulco, Gro.",v_ciudad_871518,2000,2,2000-02-01,46.283947708482,Feb 2000
 "Acapulco, Gro.",v_ciudad_871518,2000,3,2000-03-01,46.556319224926,Mar 2000
@@ -8165,6 +8191,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Acapulco, Gro.",v_ciudad_871518,2026,3,2026-03-01,147.63,Mar 2026
 "Acapulco, Gro.",v_ciudad_871518,2026,4,2026-04-01,148.926,Abr 2026
 "Acapulco, Gro.",v_ciudad_871518,2026,5,2026-05-01,148.898,May 2026
+"Acapulco, Gro.",v_ciudad_871518,2026,6,2026-06-01,147.347,Jun 2026
 "Aguascalientes, Ags.",v_ciudad_871948,2000,1,2000-01-01,45.51100652767,Ene 2000
 "Aguascalientes, Ags.",v_ciudad_871948,2000,2,2000-02-01,45.902199639027,Feb 2000
 "Aguascalientes, Ags.",v_ciudad_871948,2000,3,2000-03-01,46.173731912132,Mar 2000
@@ -8482,6 +8509,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Aguascalientes, Ags.",v_ciudad_871948,2026,3,2026-03-01,146.415,Mar 2026
 "Aguascalientes, Ags.",v_ciudad_871948,2026,4,2026-04-01,146.592,Abr 2026
 "Aguascalientes, Ags.",v_ciudad_871948,2026,5,2026-05-01,146.048,May 2026
+"Aguascalientes, Ags.",v_ciudad_871948,2026,6,2026-06-01,146.202,Jun 2026
 "Atlacomulco, Méx.",v_ciudad_872378,2018,1,2018-01-01,,Ene 2018
 "Atlacomulco, Méx.",v_ciudad_872378,2018,2,2018-02-01,,Feb 2018
 "Atlacomulco, Méx.",v_ciudad_872378,2018,3,2018-03-01,,Mar 2018
@@ -8583,6 +8611,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Atlacomulco, Méx.",v_ciudad_872378,2026,3,2026-03-01,147.182,Mar 2026
 "Atlacomulco, Méx.",v_ciudad_872378,2026,4,2026-04-01,147.401,Abr 2026
 "Atlacomulco, Méx.",v_ciudad_872378,2026,5,2026-05-01,146.751,May 2026
+"Atlacomulco, Méx.",v_ciudad_872378,2026,6,2026-06-01,145.719,Jun 2026
 "Campeche, Camp.",v_ciudad_872808,2000,1,2000-01-01,44.252384351784,Ene 2000
 "Campeche, Camp.",v_ciudad_872808,2000,2,2000-02-01,44.638953538127,Feb 2000
 "Campeche, Camp.",v_ciudad_872808,2000,3,2000-03-01,44.879203822544,Mar 2000
@@ -8900,6 +8929,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Campeche, Camp.",v_ciudad_872808,2026,3,2026-03-01,151.189,Mar 2026
 "Campeche, Camp.",v_ciudad_872808,2026,4,2026-04-01,150.457,Abr 2026
 "Campeche, Camp.",v_ciudad_872808,2026,5,2026-05-01,150.688,May 2026
+"Campeche, Camp.",v_ciudad_872808,2026,6,2026-06-01,150.204,Jun 2026
 "Cancún, Q. Roo.",v_ciudad_873238,2018,1,2018-01-01,,Ene 2018
 "Cancún, Q. Roo.",v_ciudad_873238,2018,2,2018-02-01,,Feb 2018
 "Cancún, Q. Roo.",v_ciudad_873238,2018,3,2018-03-01,,Mar 2018
@@ -9001,6 +9031,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Cancún, Q. Roo.",v_ciudad_873238,2026,3,2026-03-01,147.264,Mar 2026
 "Cancún, Q. Roo.",v_ciudad_873238,2026,4,2026-04-01,146.591,Abr 2026
 "Cancún, Q. Roo.",v_ciudad_873238,2026,5,2026-05-01,146.417,May 2026
+"Cancún, Q. Roo.",v_ciudad_873238,2026,6,2026-06-01,146.676,Jun 2026
 "Cd. Acuña, Coah.",v_ciudad_873668,2000,1,2000-01-01,51.136101782831,Ene 2000
 "Cd. Acuña, Coah.",v_ciudad_873668,2000,2,2000-02-01,51.662902514458,Feb 2000
 "Cd. Acuña, Coah.",v_ciudad_873668,2000,3,2000-03-01,51.996878322615,Mar 2000
@@ -9318,6 +9349,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Cd. Acuña, Coah.",v_ciudad_873668,2026,3,2026-03-01,146.352,Mar 2026
 "Cd. Acuña, Coah.",v_ciudad_873668,2026,4,2026-04-01,143.616,Abr 2026
 "Cd. Acuña, Coah.",v_ciudad_873668,2026,5,2026-05-01,143.962,May 2026
+"Cd. Acuña, Coah.",v_ciudad_873668,2026,6,2026-06-01,143.772,Jun 2026
 "Cd. Jiménez, Chih.",v_ciudad_874098,2000,1,2000-01-01,46.865265419364,Ene 2000
 "Cd. Jiménez, Chih.",v_ciudad_874098,2000,2,2000-02-01,47.32341484052,Feb 2000
 "Cd. Jiménez, Chih.",v_ciudad_874098,2000,3,2000-03-01,47.632904475415,Mar 2000
@@ -9635,6 +9667,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Cd. Jiménez, Chih.",v_ciudad_874098,2026,3,2026-03-01,143.728,Mar 2026
 "Cd. Jiménez, Chih.",v_ciudad_874098,2026,4,2026-04-01,145.001,Abr 2026
 "Cd. Jiménez, Chih.",v_ciudad_874098,2026,5,2026-05-01,144.265,May 2026
+"Cd. Jiménez, Chih.",v_ciudad_874098,2026,6,2026-06-01,143.114,Jun 2026
 "Cd. Juárez, Chih.",v_ciudad_874528,2000,1,2000-01-01,50.238704625506,Ene 2000
 "Cd. Juárez, Chih.",v_ciudad_874528,2000,2,2000-02-01,50.661555637312,Feb 2000
 "Cd. Juárez, Chih.",v_ciudad_874528,2000,3,2000-03-01,50.963157322304,Mar 2000
@@ -9952,6 +9985,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Cd. Juárez, Chih.",v_ciudad_874528,2026,3,2026-03-01,143.853,Mar 2026
 "Cd. Juárez, Chih.",v_ciudad_874528,2026,4,2026-04-01,144.553,Abr 2026
 "Cd. Juárez, Chih.",v_ciudad_874528,2026,5,2026-05-01,143.205,May 2026
+"Cd. Juárez, Chih.",v_ciudad_874528,2026,6,2026-06-01,143.05,Jun 2026
 "Chetumal, Q.R.",v_ciudad_876248,2000,1,2000-01-01,46.894806020875,Ene 2000
 "Chetumal, Q.R.",v_ciudad_876248,2000,2,2000-02-01,47.270780289098,Feb 2000
 "Chetumal, Q.R.",v_ciudad_876248,2000,3,2000-03-01,47.5207446818,Mar 2000
@@ -10269,6 +10303,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Chetumal, Q.R.",v_ciudad_876248,2026,3,2026-03-01,147.23,Mar 2026
 "Chetumal, Q.R.",v_ciudad_876248,2026,4,2026-04-01,146.592,Abr 2026
 "Chetumal, Q.R.",v_ciudad_876248,2026,5,2026-05-01,146.886,May 2026
+"Chetumal, Q.R.",v_ciudad_876248,2026,6,2026-06-01,147.061,Jun 2026
 "Chihuahua, Chih.",v_ciudad_876678,2000,1,2000-01-01,43.649535163536,Ene 2000
 "Chihuahua, Chih.",v_ciudad_876678,2000,2,2000-02-01,44.068878727856,Feb 2000
 "Chihuahua, Chih.",v_ciudad_876678,2000,3,2000-03-01,44.362302894458,Mar 2000
@@ -10586,6 +10621,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Chihuahua, Chih.",v_ciudad_876678,2026,3,2026-03-01,143.217,Mar 2026
 "Chihuahua, Chih.",v_ciudad_876678,2026,4,2026-04-01,144.225,Abr 2026
 "Chihuahua, Chih.",v_ciudad_876678,2026,5,2026-05-01,144.167,May 2026
+"Chihuahua, Chih.",v_ciudad_876678,2026,6,2026-06-01,143.674,Jun 2026
 "Coatzacoalcos, Ver.",v_ciudad_877108,2018,1,2018-01-01,,Ene 2018
 "Coatzacoalcos, Ver.",v_ciudad_877108,2018,2,2018-02-01,,Feb 2018
 "Coatzacoalcos, Ver.",v_ciudad_877108,2018,3,2018-03-01,,Mar 2018
@@ -10687,6 +10723,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Coatzacoalcos, Ver.",v_ciudad_877108,2026,3,2026-03-01,144.865,Mar 2026
 "Coatzacoalcos, Ver.",v_ciudad_877108,2026,4,2026-04-01,143.902,Abr 2026
 "Coatzacoalcos, Ver.",v_ciudad_877108,2026,5,2026-05-01,144.436,May 2026
+"Coatzacoalcos, Ver.",v_ciudad_877108,2026,6,2026-06-01,144.008,Jun 2026
 "Colima, Col.",v_ciudad_877538,2000,1,2000-01-01,44.672019227778,Ene 2000
 "Colima, Col.",v_ciudad_877538,2000,2,2000-02-01,45.034997202089,Feb 2000
 "Colima, Col.",v_ciudad_877538,2000,3,2000-03-01,45.269332155927,Mar 2000
@@ -11004,6 +11041,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Colima, Col.",v_ciudad_877538,2026,3,2026-03-01,147.285,Mar 2026
 "Colima, Col.",v_ciudad_877538,2026,4,2026-04-01,147.849,Abr 2026
 "Colima, Col.",v_ciudad_877538,2026,5,2026-05-01,147.595,May 2026
+"Colima, Col.",v_ciudad_877538,2026,6,2026-06-01,147.36,Jun 2026
 "Córdoba, Ver.",v_ciudad_877968,2000,1,2000-01-01,41.311725298794,Ene 2000
 "Córdoba, Ver.",v_ciudad_877968,2000,2,2000-02-01,41.620718314356,Feb 2000
 "Córdoba, Ver.",v_ciudad_877968,2000,3,2000-03-01,41.924835421763,Mar 2000
@@ -11321,6 +11359,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Córdoba, Ver.",v_ciudad_877968,2026,3,2026-03-01,150.327,Mar 2026
 "Córdoba, Ver.",v_ciudad_877968,2026,4,2026-04-01,151.321,Abr 2026
 "Córdoba, Ver.",v_ciudad_877968,2026,5,2026-05-01,151.376,May 2026
+"Córdoba, Ver.",v_ciudad_877968,2026,6,2026-06-01,150.315,Jun 2026
 "Cortazar, Gto.",v_ciudad_874958,2000,1,2000-01-01,43.387921435275,Ene 2000
 "Cortazar, Gto.",v_ciudad_874958,2000,2,2000-02-01,43.748314841214,Feb 2000
 "Cortazar, Gto.",v_ciudad_874958,2000,3,2000-03-01,43.993477561123,Mar 2000
@@ -11638,6 +11677,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Cortazar, Gto.",v_ciudad_874958,2026,3,2026-03-01,143.22,Mar 2026
 "Cortazar, Gto.",v_ciudad_874958,2026,4,2026-04-01,143.896,Abr 2026
 "Cortazar, Gto.",v_ciudad_874958,2026,5,2026-05-01,144.466,May 2026
+"Cortazar, Gto.",v_ciudad_874958,2026,6,2026-06-01,143.604,Jun 2026
 "Cuernavaca, Mor.",v_ciudad_875388,2000,1,2000-01-01,48.364906164662,Ene 2000
 "Cuernavaca, Mor.",v_ciudad_875388,2000,2,2000-02-01,48.791079351983,Feb 2000
 "Cuernavaca, Mor.",v_ciudad_875388,2000,3,2000-03-01,49.060552426771,Mar 2000
@@ -11955,6 +11995,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Cuernavaca, Mor.",v_ciudad_875388,2026,3,2026-03-01,144.972,Mar 2026
 "Cuernavaca, Mor.",v_ciudad_875388,2026,4,2026-04-01,145.042,Abr 2026
 "Cuernavaca, Mor.",v_ciudad_875388,2026,5,2026-05-01,144.598,May 2026
+"Cuernavaca, Mor.",v_ciudad_875388,2026,6,2026-06-01,144.375,Jun 2026
 "Culiacán, Sin.",v_ciudad_875818,2000,1,2000-01-01,46.615990384593,Ene 2000
 "Culiacán, Sin.",v_ciudad_875818,2000,2,2000-02-01,47.026929130495,Feb 2000
 "Culiacán, Sin.",v_ciudad_875818,2000,3,2000-03-01,47.284812688512,Mar 2000
@@ -12272,6 +12313,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Culiacán, Sin.",v_ciudad_875818,2026,3,2026-03-01,148.967,Mar 2026
 "Culiacán, Sin.",v_ciudad_875818,2026,4,2026-04-01,149.841,Abr 2026
 "Culiacán, Sin.",v_ciudad_875818,2026,5,2026-05-01,144.949,May 2026
+"Culiacán, Sin.",v_ciudad_875818,2026,6,2026-06-01,145.104,Jun 2026
 "Durango, Dgo.",v_ciudad_878398,2000,1,2000-01-01,42.652643061424,Ene 2000
 "Durango, Dgo.",v_ciudad_878398,2000,2,2000-02-01,43.034578848557,Feb 2000
 "Durango, Dgo.",v_ciudad_878398,2000,3,2000-03-01,43.31294852738,Mar 2000
@@ -12589,6 +12631,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Durango, Dgo.",v_ciudad_878398,2026,3,2026-03-01,147.721,Mar 2026
 "Durango, Dgo.",v_ciudad_878398,2026,4,2026-04-01,148.805,Abr 2026
 "Durango, Dgo.",v_ciudad_878398,2026,5,2026-05-01,148.92,May 2026
+"Durango, Dgo.",v_ciudad_878398,2026,6,2026-06-01,148.589,Jun 2026
 "Esperanza, Son.",v_ciudad_878828,2018,1,2018-01-01,,Ene 2018
 "Esperanza, Son.",v_ciudad_878828,2018,2,2018-02-01,,Feb 2018
 "Esperanza, Son.",v_ciudad_878828,2018,3,2018-03-01,,Mar 2018
@@ -12690,6 +12733,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Esperanza, Son.",v_ciudad_878828,2026,3,2026-03-01,144.256,Mar 2026
 "Esperanza, Son.",v_ciudad_878828,2026,4,2026-04-01,144.797,Abr 2026
 "Esperanza, Son.",v_ciudad_878828,2026,5,2026-05-01,139.898,May 2026
+"Esperanza, Son.",v_ciudad_878828,2026,6,2026-06-01,140.332,Jun 2026
 "Fresnillo, Zac.",v_ciudad_879258,2000,1,2000-01-01,45.880508426925,Ene 2000
 "Fresnillo, Zac.",v_ciudad_879258,2000,2,2000-02-01,46.283117236274,Feb 2000
 "Fresnillo, Zac.",v_ciudad_879258,2000,3,2000-03-01,46.538077448482,Mar 2000
@@ -13007,6 +13051,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Fresnillo, Zac.",v_ciudad_879258,2026,3,2026-03-01,149.069,Mar 2026
 "Fresnillo, Zac.",v_ciudad_879258,2026,4,2026-04-01,149.975,Abr 2026
 "Fresnillo, Zac.",v_ciudad_879258,2026,5,2026-05-01,149.998,May 2026
+"Fresnillo, Zac.",v_ciudad_879258,2026,6,2026-06-01,149.214,Jun 2026
 "Guadalajara, Jal.",v_ciudad_879688,2000,1,2000-01-01,46.678353839442,Ene 2000
 "Guadalajara, Jal.",v_ciudad_879688,2000,2,2000-02-01,47.075078443367,Feb 2000
 "Guadalajara, Jal.",v_ciudad_879688,2000,3,2000-03-01,47.341551261618,Mar 2000
@@ -13324,6 +13369,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Guadalajara, Jal.",v_ciudad_879688,2026,3,2026-03-01,147.182,Mar 2026
 "Guadalajara, Jal.",v_ciudad_879688,2026,4,2026-04-01,148.242,Abr 2026
 "Guadalajara, Jal.",v_ciudad_879688,2026,5,2026-05-01,148.694,May 2026
+"Guadalajara, Jal.",v_ciudad_879688,2026,6,2026-06-01,148.599,Jun 2026
 "Hermosillo, Son.",v_ciudad_880224,2000,1,2000-01-01,50.57547587081,Ene 2000
 "Hermosillo, Son.",v_ciudad_880224,2000,2,2000-02-01,50.993502197419,Feb 2000
 "Hermosillo, Son.",v_ciudad_880224,2000,3,2000-03-01,51.299283498348,Mar 2000
@@ -13641,6 +13687,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Hermosillo, Son.",v_ciudad_880224,2026,3,2026-03-01,143.296,Mar 2026
 "Hermosillo, Son.",v_ciudad_880224,2026,4,2026-04-01,143.81,Abr 2026
 "Hermosillo, Son.",v_ciudad_880224,2026,5,2026-05-01,139.933,May 2026
+"Hermosillo, Son.",v_ciudad_880224,2026,6,2026-06-01,140.051,Jun 2026
 "Huatabampo, Son.",v_ciudad_880654,2000,1,2000-01-01,48.006965188133,Ene 2000
 "Huatabampo, Son.",v_ciudad_880654,2000,2,2000-02-01,48.420011592258,Feb 2000
 "Huatabampo, Son.",v_ciudad_880654,2000,3,2000-03-01,48.700614547332,Mar 2000
@@ -13958,6 +14005,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Huatabampo, Son.",v_ciudad_880654,2026,3,2026-03-01,148.154,Mar 2026
 "Huatabampo, Son.",v_ciudad_880654,2026,4,2026-04-01,148.219,Abr 2026
 "Huatabampo, Son.",v_ciudad_880654,2026,5,2026-05-01,143.827,May 2026
+"Huatabampo, Son.",v_ciudad_880654,2026,6,2026-06-01,143.827,Jun 2026
 "Iguala, Gro.",v_ciudad_881084,2000,1,2000-01-01,45.786645290693,Ene 2000
 "Iguala, Gro.",v_ciudad_881084,2000,2,2000-02-01,46.162925895083,Feb 2000
 "Iguala, Gro.",v_ciudad_881084,2000,3,2000-03-01,46.418561153187,Mar 2000
@@ -14275,6 +14323,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Iguala, Gro.",v_ciudad_881084,2026,3,2026-03-01,145.953,Mar 2026
 "Iguala, Gro.",v_ciudad_881084,2026,4,2026-04-01,145.538,Abr 2026
 "Iguala, Gro.",v_ciudad_881084,2026,5,2026-05-01,145.777,May 2026
+"Iguala, Gro.",v_ciudad_881084,2026,6,2026-06-01,145.927,Jun 2026
 "Izúcar de Matamoros, Pue.",v_ciudad_881514,2018,1,2018-01-01,,Ene 2018
 "Izúcar de Matamoros, Pue.",v_ciudad_881514,2018,2,2018-02-01,,Feb 2018
 "Izúcar de Matamoros, Pue.",v_ciudad_881514,2018,3,2018-03-01,,Mar 2018
@@ -14376,6 +14425,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Izúcar de Matamoros, Pue.",v_ciudad_881514,2026,3,2026-03-01,143.79,Mar 2026
 "Izúcar de Matamoros, Pue.",v_ciudad_881514,2026,4,2026-04-01,144.465,Abr 2026
 "Izúcar de Matamoros, Pue.",v_ciudad_881514,2026,5,2026-05-01,143.954,May 2026
+"Izúcar de Matamoros, Pue.",v_ciudad_881514,2026,6,2026-06-01,142.295,Jun 2026
 "Jacona, Mich.",v_ciudad_881944,2000,1,2000-01-01,42.268444328869,Ene 2000
 "Jacona, Mich.",v_ciudad_881944,2000,2,2000-02-01,42.630427873498,Feb 2000
 "Jacona, Mich.",v_ciudad_881944,2000,3,2000-03-01,42.862135980163,Mar 2000
@@ -14693,6 +14743,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Jacona, Mich.",v_ciudad_881944,2026,3,2026-03-01,152.403,Mar 2026
 "Jacona, Mich.",v_ciudad_881944,2026,4,2026-04-01,153.212,Abr 2026
 "Jacona, Mich.",v_ciudad_881944,2026,5,2026-05-01,153.614,May 2026
+"Jacona, Mich.",v_ciudad_881944,2026,6,2026-06-01,153.338,Jun 2026
 "La Paz, B.C.S.",v_ciudad_882374,2000,1,2000-01-01,46.973382463722,Ene 2000
 "La Paz, B.C.S.",v_ciudad_882374,2000,2,2000-02-01,47.378998098205,Feb 2000
 "La Paz, B.C.S.",v_ciudad_882374,2000,3,2000-03-01,47.634881938793,Mar 2000
@@ -15010,6 +15061,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "La Paz, B.C.S.",v_ciudad_882374,2026,3,2026-03-01,139.884,Mar 2026
 "La Paz, B.C.S.",v_ciudad_882374,2026,4,2026-04-01,140.384,Abr 2026
 "La Paz, B.C.S.",v_ciudad_882374,2026,5,2026-05-01,138.013,May 2026
+"La Paz, B.C.S.",v_ciudad_882374,2026,6,2026-06-01,137.697,Jun 2026
 "León, Gto.",v_ciudad_882804,2000,1,2000-01-01,46.0601717571,Ene 2000
 "León, Gto.",v_ciudad_882804,2000,2,2000-02-01,46.460160499495,Feb 2000
 "León, Gto.",v_ciudad_882804,2000,3,2000-03-01,46.716422403753,Mar 2000
@@ -15327,6 +15379,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "León, Gto.",v_ciudad_882804,2026,3,2026-03-01,142.425,Mar 2026
 "León, Gto.",v_ciudad_882804,2026,4,2026-04-01,142.955,Abr 2026
 "León, Gto.",v_ciudad_882804,2026,5,2026-05-01,143.02,May 2026
+"León, Gto.",v_ciudad_882804,2026,6,2026-06-01,142.767,Jun 2026
 "Matamoros, Tamps.",v_ciudad_883234,2000,1,2000-01-01,46.386531784842,Ene 2000
 "Matamoros, Tamps.",v_ciudad_883234,2000,2,2000-02-01,46.792152597555,Feb 2000
 "Matamoros, Tamps.",v_ciudad_883234,2000,3,2000-03-01,47.042374164461,Mar 2000
@@ -15644,6 +15697,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Matamoros, Tamps.",v_ciudad_883234,2026,3,2026-03-01,150.585,Mar 2026
 "Matamoros, Tamps.",v_ciudad_883234,2026,4,2026-04-01,151.752,Abr 2026
 "Matamoros, Tamps.",v_ciudad_883234,2026,5,2026-05-01,150.081,May 2026
+"Matamoros, Tamps.",v_ciudad_883234,2026,6,2026-06-01,149.988,Jun 2026
 "Mérida, Yuc.",v_ciudad_883664,2000,1,2000-01-01,43.437833494302,Ene 2000
 "Mérida, Yuc.",v_ciudad_883664,2000,2,2000-02-01,43.857146464174,Feb 2000
 "Mérida, Yuc.",v_ciudad_883664,2000,3,2000-03-01,44.141909093109,Mar 2000
@@ -15961,6 +16015,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Mérida, Yuc.",v_ciudad_883664,2026,3,2026-03-01,152.664,Mar 2026
 "Mérida, Yuc.",v_ciudad_883664,2026,4,2026-04-01,151.784,Abr 2026
 "Mérida, Yuc.",v_ciudad_883664,2026,5,2026-05-01,152.322,May 2026
+"Mérida, Yuc.",v_ciudad_883664,2026,6,2026-06-01,152.093,Jun 2026
 "Mexicali, B.C.",v_ciudad_884094,2000,1,2000-01-01,49.906847051914,Ene 2000
 "Mexicali, B.C.",v_ciudad_884094,2000,2,2000-02-01,50.343406035087,Feb 2000
 "Mexicali, B.C.",v_ciudad_884094,2000,3,2000-03-01,50.632330396831,Mar 2000
@@ -16278,6 +16333,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Mexicali, B.C.",v_ciudad_884094,2026,3,2026-03-01,145.329,Mar 2026
 "Mexicali, B.C.",v_ciudad_884094,2026,4,2026-04-01,145.919,Abr 2026
 "Mexicali, B.C.",v_ciudad_884094,2026,5,2026-05-01,141.478,May 2026
+"Mexicali, B.C.",v_ciudad_884094,2026,6,2026-06-01,141.186,Jun 2026
 "Monclova, Coah.",v_ciudad_884524,2000,1,2000-01-01,47.240088342201,Ene 2000
 "Monclova, Coah.",v_ciudad_884524,2000,2,2000-02-01,47.666711125104,Feb 2000
 "Monclova, Coah.",v_ciudad_884524,2000,3,2000-03-01,47.939327231244,Mar 2000
@@ -16595,6 +16651,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Monclova, Coah.",v_ciudad_884524,2026,3,2026-03-01,141.488,Mar 2026
 "Monclova, Coah.",v_ciudad_884524,2026,4,2026-04-01,140.34,Abr 2026
 "Monclova, Coah.",v_ciudad_884524,2026,5,2026-05-01,140.433,May 2026
+"Monclova, Coah.",v_ciudad_884524,2026,6,2026-06-01,140.346,Jun 2026
 "Monterrey, N.L.",v_ciudad_884954,2000,1,2000-01-01,46.997181907136,Ene 2000
 "Monterrey, N.L.",v_ciudad_884954,2000,2,2000-02-01,47.414892159232,Feb 2000
 "Monterrey, N.L.",v_ciudad_884954,2000,3,2000-03-01,47.669680002608,Mar 2000
@@ -16912,6 +16969,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Monterrey, N.L.",v_ciudad_884954,2026,3,2026-03-01,143.417,Mar 2026
 "Monterrey, N.L.",v_ciudad_884954,2026,4,2026-04-01,142.78,Abr 2026
 "Monterrey, N.L.",v_ciudad_884954,2026,5,2026-05-01,142.922,May 2026
+"Monterrey, N.L.",v_ciudad_884954,2026,6,2026-06-01,142.729,Jun 2026
 "Morelia, Mich.",v_ciudad_885490,2000,1,2000-01-01,46.118317145839,Ene 2000
 "Morelia, Mich.",v_ciudad_885490,2000,2,2000-02-01,46.54271417891,Feb 2000
 "Morelia, Mich.",v_ciudad_885490,2000,3,2000-03-01,46.848632443154,Mar 2000
@@ -17229,6 +17287,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Morelia, Mich.",v_ciudad_885490,2026,3,2026-03-01,145.557,Mar 2026
 "Morelia, Mich.",v_ciudad_885490,2026,4,2026-04-01,146.144,Abr 2026
 "Morelia, Mich.",v_ciudad_885490,2026,5,2026-05-01,146.627,May 2026
+"Morelia, Mich.",v_ciudad_885490,2026,6,2026-06-01,146.13,Jun 2026
 "Oaxaca, Oax.",v_ciudad_885920,2000,1,2000-01-01,45.455887271277,Ene 2000
 "Oaxaca, Oax.",v_ciudad_885920,2000,2,2000-02-01,45.807647347145,Feb 2000
 "Oaxaca, Oax.",v_ciudad_885920,2000,3,2000-03-01,46.023177534065,Mar 2000
@@ -17546,6 +17605,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Oaxaca, Oax.",v_ciudad_885920,2026,3,2026-03-01,151.875,Mar 2026
 "Oaxaca, Oax.",v_ciudad_885920,2026,4,2026-04-01,152.5,Abr 2026
 "Oaxaca, Oax.",v_ciudad_885920,2026,5,2026-05-01,151.824,May 2026
+"Oaxaca, Oax.",v_ciudad_885920,2026,6,2026-06-01,151.78,Jun 2026
 "Pachuca, Hgo.",v_ciudad_886350,2018,1,2018-01-01,,Ene 2018
 "Pachuca, Hgo.",v_ciudad_886350,2018,2,2018-02-01,,Feb 2018
 "Pachuca, Hgo.",v_ciudad_886350,2018,3,2018-03-01,,Mar 2018
@@ -17647,6 +17707,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Pachuca, Hgo.",v_ciudad_886350,2026,3,2026-03-01,145.966,Mar 2026
 "Pachuca, Hgo.",v_ciudad_886350,2026,4,2026-04-01,146.431,Abr 2026
 "Pachuca, Hgo.",v_ciudad_886350,2026,5,2026-05-01,147.289,May 2026
+"Pachuca, Hgo.",v_ciudad_886350,2026,6,2026-06-01,146.388,Jun 2026
 "Puebla, Pue.",v_ciudad_886780,2000,1,2000-01-01,41.918132638571,Ene 2000
 "Puebla, Pue.",v_ciudad_886780,2000,2,2000-02-01,42.35836267503,Feb 2000
 "Puebla, Pue.",v_ciudad_886780,2000,3,2000-03-01,42.630104545591,Mar 2000
@@ -17964,6 +18025,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Puebla, Pue.",v_ciudad_886780,2026,3,2026-03-01,147.206,Mar 2026
 "Puebla, Pue.",v_ciudad_886780,2026,4,2026-04-01,147.55,Abr 2026
 "Puebla, Pue.",v_ciudad_886780,2026,5,2026-05-01,147.361,May 2026
+"Puebla, Pue.",v_ciudad_886780,2026,6,2026-06-01,146.286,Jun 2026
 "Querétaro, Qro.",v_ciudad_887210,2000,1,2000-01-01,40.714796337858,Ene 2000
 "Querétaro, Qro.",v_ciudad_887210,2000,2,2000-02-01,41.063093165392,Feb 2000
 "Querétaro, Qro.",v_ciudad_887210,2000,3,2000-03-01,41.357815839571,Mar 2000
@@ -18281,6 +18343,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Querétaro, Qro.",v_ciudad_887210,2026,3,2026-03-01,144.757,Mar 2026
 "Querétaro, Qro.",v_ciudad_887210,2026,4,2026-04-01,145.444,Abr 2026
 "Querétaro, Qro.",v_ciudad_887210,2026,5,2026-05-01,145.452,May 2026
+"Querétaro, Qro.",v_ciudad_887210,2026,6,2026-06-01,144.754,Jun 2026
 "Saltillo, Coah.",v_ciudad_887640,2018,1,2018-01-01,,Ene 2018
 "Saltillo, Coah.",v_ciudad_887640,2018,2,2018-02-01,,Feb 2018
 "Saltillo, Coah.",v_ciudad_887640,2018,3,2018-03-01,,Mar 2018
@@ -18382,6 +18445,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Saltillo, Coah.",v_ciudad_887640,2026,3,2026-03-01,143.478,Mar 2026
 "Saltillo, Coah.",v_ciudad_887640,2026,4,2026-04-01,144.048,Abr 2026
 "Saltillo, Coah.",v_ciudad_887640,2026,5,2026-05-01,144.166,May 2026
+"Saltillo, Coah.",v_ciudad_887640,2026,6,2026-06-01,144.583,Jun 2026
 "San Andrés Tuxtla, Ver.",v_ciudad_888070,2000,1,2000-01-01,42.530297839951,Ene 2000
 "San Andrés Tuxtla, Ver.",v_ciudad_888070,2000,2,2000-02-01,42.915612167267,Feb 2000
 "San Andrés Tuxtla, Ver.",v_ciudad_888070,2000,3,2000-03-01,43.202639295864,Mar 2000
@@ -18699,6 +18763,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "San Andrés Tuxtla, Ver.",v_ciudad_888070,2026,3,2026-03-01,149.873,Mar 2026
 "San Andrés Tuxtla, Ver.",v_ciudad_888070,2026,4,2026-04-01,149.572,Abr 2026
 "San Andrés Tuxtla, Ver.",v_ciudad_888070,2026,5,2026-05-01,150.484,May 2026
+"San Andrés Tuxtla, Ver.",v_ciudad_888070,2026,6,2026-06-01,149.007,Jun 2026
 "San Luis Potosí, S.L.P.",v_ciudad_888500,2000,1,2000-01-01,45.099742699354,Ene 2000
 "San Luis Potosí, S.L.P.",v_ciudad_888500,2000,2,2000-02-01,45.49361042614,Feb 2000
 "San Luis Potosí, S.L.P.",v_ciudad_888500,2000,3,2000-03-01,45.754155667028,Mar 2000
@@ -19016,6 +19081,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "San Luis Potosí, S.L.P.",v_ciudad_888500,2026,3,2026-03-01,148.172,Mar 2026
 "San Luis Potosí, S.L.P.",v_ciudad_888500,2026,4,2026-04-01,148.833,Abr 2026
 "San Luis Potosí, S.L.P.",v_ciudad_888500,2026,5,2026-05-01,148.866,May 2026
+"San Luis Potosí, S.L.P.",v_ciudad_888500,2026,6,2026-06-01,148.693,Jun 2026
 "Tampico, Tamps.",v_ciudad_888930,2000,1,2000-01-01,48.074520941727,Ene 2000
 "Tampico, Tamps.",v_ciudad_888930,2000,2,2000-02-01,48.480500131087,Feb 2000
 "Tampico, Tamps.",v_ciudad_888930,2000,3,2000-03-01,48.765337862381,Mar 2000
@@ -19333,6 +19399,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tampico, Tamps.",v_ciudad_888930,2026,3,2026-03-01,140.709,Mar 2026
 "Tampico, Tamps.",v_ciudad_888930,2026,4,2026-04-01,139.914,Abr 2026
 "Tampico, Tamps.",v_ciudad_888930,2026,5,2026-05-01,139.882,May 2026
+"Tampico, Tamps.",v_ciudad_888930,2026,6,2026-06-01,139.412,Jun 2026
 "Tapachula, Chis.",v_ciudad_889360,2000,1,2000-01-01,44.700491715829,Ene 2000
 "Tapachula, Chis.",v_ciudad_889360,2000,2,2000-02-01,44.713866444365,Feb 2000
 "Tapachula, Chis.",v_ciudad_889360,2000,3,2000-03-01,44.909741464142,Mar 2000
@@ -19650,6 +19717,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tapachula, Chis.",v_ciudad_889360,2026,3,2026-03-01,151.195,Mar 2026
 "Tapachula, Chis.",v_ciudad_889360,2026,4,2026-04-01,151.947,Abr 2026
 "Tapachula, Chis.",v_ciudad_889360,2026,5,2026-05-01,151.775,May 2026
+"Tapachula, Chis.",v_ciudad_889360,2026,6,2026-06-01,151.555,Jun 2026
 "Tehuantepec, Oax.",v_ciudad_889790,2000,1,2000-01-01,43.285644103701,Ene 2000
 "Tehuantepec, Oax.",v_ciudad_889790,2000,2,2000-02-01,43.675821278798,Feb 2000
 "Tehuantepec, Oax.",v_ciudad_889790,2000,3,2000-03-01,43.91106470824,Mar 2000
@@ -19967,6 +20035,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tehuantepec, Oax.",v_ciudad_889790,2026,3,2026-03-01,154.793,Mar 2026
 "Tehuantepec, Oax.",v_ciudad_889790,2026,4,2026-04-01,154.377,Abr 2026
 "Tehuantepec, Oax.",v_ciudad_889790,2026,5,2026-05-01,154.05,May 2026
+"Tehuantepec, Oax.",v_ciudad_889790,2026,6,2026-06-01,153.64,Jun 2026
 "Tepatitlán, Jal.",v_ciudad_890220,2000,1,2000-01-01,40.115185846513,Ene 2000
 "Tepatitlán, Jal.",v_ciudad_890220,2000,2,2000-02-01,40.473148707369,Feb 2000
 "Tepatitlán, Jal.",v_ciudad_890220,2000,3,2000-03-01,40.715307812471,Mar 2000
@@ -20284,6 +20353,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tepatitlán, Jal.",v_ciudad_890220,2026,3,2026-03-01,152.54,Mar 2026
 "Tepatitlán, Jal.",v_ciudad_890220,2026,4,2026-04-01,153.721,Abr 2026
 "Tepatitlán, Jal.",v_ciudad_890220,2026,5,2026-05-01,154.382,May 2026
+"Tepatitlán, Jal.",v_ciudad_890220,2026,6,2026-06-01,153.752,Jun 2026
 "Tepic, Nay.",v_ciudad_890650,2000,1,2000-01-01,42.6451915045,Ene 2000
 "Tepic, Nay.",v_ciudad_890650,2000,2,2000-02-01,43.020000537538,Feb 2000
 "Tepic, Nay.",v_ciudad_890650,2000,3,2000-03-01,43.242906946065,Mar 2000
@@ -20601,6 +20671,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tepic, Nay.",v_ciudad_890650,2026,3,2026-03-01,146.844,Mar 2026
 "Tepic, Nay.",v_ciudad_890650,2026,4,2026-04-01,147.189,Abr 2026
 "Tepic, Nay.",v_ciudad_890650,2026,5,2026-05-01,147.468,May 2026
+"Tepic, Nay.",v_ciudad_890650,2026,6,2026-06-01,146.557,Jun 2026
 "Tijuana, B.C.",v_ciudad_891080,2000,1,2000-01-01,47.148206746936,Ene 2000
 "Tijuana, B.C.",v_ciudad_891080,2000,2,2000-02-01,47.542726335867,Feb 2000
 "Tijuana, B.C.",v_ciudad_891080,2000,3,2000-03-01,47.78289332531,Mar 2000
@@ -20918,6 +20989,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tijuana, B.C.",v_ciudad_891080,2026,3,2026-03-01,147.077,Mar 2026
 "Tijuana, B.C.",v_ciudad_891080,2026,4,2026-04-01,147.779,Abr 2026
 "Tijuana, B.C.",v_ciudad_891080,2026,5,2026-05-01,147.925,May 2026
+"Tijuana, B.C.",v_ciudad_891080,2026,6,2026-06-01,147.891,Jun 2026
 "Tlaxcala, Tlax.",v_ciudad_891510,2000,1,2000-01-01,42.916215552491,Ene 2000
 "Tlaxcala, Tlax.",v_ciudad_891510,2000,2,2000-02-01,43.301446580816,Feb 2000
 "Tlaxcala, Tlax.",v_ciudad_891510,2000,3,2000-03-01,43.525217464434,Mar 2000
@@ -21235,6 +21307,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tlaxcala, Tlax.",v_ciudad_891510,2026,3,2026-03-01,144.16,Mar 2026
 "Tlaxcala, Tlax.",v_ciudad_891510,2026,4,2026-04-01,144.118,Abr 2026
 "Tlaxcala, Tlax.",v_ciudad_891510,2026,5,2026-05-01,143.811,May 2026
+"Tlaxcala, Tlax.",v_ciudad_891510,2026,6,2026-06-01,142.323,Jun 2026
 "Toluca, Edo. de Méx.",v_ciudad_891940,2000,1,2000-01-01,45.528223819065,Ene 2000
 "Toluca, Edo. de Méx.",v_ciudad_891940,2000,2,2000-02-01,45.957721216899,Feb 2000
 "Toluca, Edo. de Méx.",v_ciudad_891940,2000,3,2000-03-01,46.22450748585,Mar 2000
@@ -21552,6 +21625,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Toluca, Edo. de Méx.",v_ciudad_891940,2026,3,2026-03-01,139.875,Mar 2026
 "Toluca, Edo. de Méx.",v_ciudad_891940,2026,4,2026-04-01,139.448,Abr 2026
 "Toluca, Edo. de Méx.",v_ciudad_891940,2026,5,2026-05-01,139.698,May 2026
+"Toluca, Edo. de Méx.",v_ciudad_891940,2026,6,2026-06-01,139.127,Jun 2026
 "Torreón, Coah.",v_ciudad_892370,2000,1,2000-01-01,44.517512475539,Ene 2000
 "Torreón, Coah.",v_ciudad_892370,2000,2,2000-02-01,44.918141314161,Feb 2000
 "Torreón, Coah.",v_ciudad_892370,2000,3,2000-03-01,45.274141656382,Mar 2000
@@ -21869,6 +21943,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Torreón, Coah.",v_ciudad_892370,2026,3,2026-03-01,150.112,Mar 2026
 "Torreón, Coah.",v_ciudad_892370,2026,4,2026-04-01,149.366,Abr 2026
 "Torreón, Coah.",v_ciudad_892370,2026,5,2026-05-01,149.57,May 2026
+"Torreón, Coah.",v_ciudad_892370,2026,6,2026-06-01,149.129,Jun 2026
 "Tulancingo, Hgo.",v_ciudad_892800,2000,1,2000-01-01,39.869199212714,Ene 2000
 "Tulancingo, Hgo.",v_ciudad_892800,2000,2,2000-02-01,40.137041007728,Feb 2000
 "Tulancingo, Hgo.",v_ciudad_892800,2000,3,2000-03-01,40.336818252289,Mar 2000
@@ -22186,6 +22261,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tulancingo, Hgo.",v_ciudad_892800,2026,3,2026-03-01,143.655,Mar 2026
 "Tulancingo, Hgo.",v_ciudad_892800,2026,4,2026-04-01,143.655,Abr 2026
 "Tulancingo, Hgo.",v_ciudad_892800,2026,5,2026-05-01,144.186,May 2026
+"Tulancingo, Hgo.",v_ciudad_892800,2026,6,2026-06-01,143.763,Jun 2026
 "Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2018,1,2018-01-01,,Ene 2018
 "Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2018,2,2018-02-01,,Feb 2018
 "Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2018,3,2018-03-01,,Mar 2018
@@ -22287,6 +22363,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2026,3,2026-03-01,146.5,Mar 2026
 "Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2026,4,2026-04-01,146.781,Abr 2026
 "Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2026,5,2026-05-01,146.745,May 2026
+"Tuxtla Gutiérrez, Chis.",v_ciudad_893230,2026,6,2026-06-01,145.687,Jun 2026
 "Veracruz, Ver.",v_ciudad_893660,2000,1,2000-01-01,39.94282218062,Ene 2000
 "Veracruz, Ver.",v_ciudad_893660,2000,2,2000-02-01,40.319623385873,Feb 2000
 "Veracruz, Ver.",v_ciudad_893660,2000,3,2000-03-01,40.547003420196,Mar 2000
@@ -22604,6 +22681,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Veracruz, Ver.",v_ciudad_893660,2026,3,2026-03-01,144.635,Mar 2026
 "Veracruz, Ver.",v_ciudad_893660,2026,4,2026-04-01,144.522,Abr 2026
 "Veracruz, Ver.",v_ciudad_893660,2026,5,2026-05-01,144.751,May 2026
+"Veracruz, Ver.",v_ciudad_893660,2026,6,2026-06-01,144.393,Jun 2026
 "Villahermosa, Tab.",v_ciudad_894090,2000,1,2000-01-01,43.363123599255,Ene 2000
 "Villahermosa, Tab.",v_ciudad_894090,2000,2,2000-02-01,43.743617264888,Feb 2000
 "Villahermosa, Tab.",v_ciudad_894090,2000,3,2000-03-01,43.979127288846,Mar 2000
@@ -22921,6 +22999,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Villahermosa, Tab.",v_ciudad_894090,2026,3,2026-03-01,142.511,Mar 2026
 "Villahermosa, Tab.",v_ciudad_894090,2026,4,2026-04-01,140.029,Abr 2026
 "Villahermosa, Tab.",v_ciudad_894090,2026,5,2026-05-01,140.188,May 2026
+"Villahermosa, Tab.",v_ciudad_894090,2026,6,2026-06-01,139.455,Jun 2026
 "Zacatecas, Zac.",v_ciudad_894520,2018,1,2018-01-01,,Ene 2018
 "Zacatecas, Zac.",v_ciudad_894520,2018,2,2018-02-01,,Feb 2018
 "Zacatecas, Zac.",v_ciudad_894520,2018,3,2018-03-01,,Mar 2018
@@ -23022,6 +23101,7 @@ INPP intermedios,v_inpp_intermedios,2026,5,2026-05-01,133.684117034005,May 2026
 "Zacatecas, Zac.",v_ciudad_894520,2026,3,2026-03-01,144.233,Mar 2026
 "Zacatecas, Zac.",v_ciudad_894520,2026,4,2026-04-01,145.176,Abr 2026
 "Zacatecas, Zac.",v_ciudad_894520,2026,5,2026-05-01,145.616,May 2026
+"Zacatecas, Zac.",v_ciudad_894520,2026,6,2026-06-01,145.34,Jun 2026
 Nacional,v_ciudad_inpc,2000,1,2000-01-01,44.930830116378,Ene 2000
 Nacional,v_ciudad_inpc,2000,2,2000-02-01,45.329380314522,Feb 2000
 Nacional,v_ciudad_inpc,2000,3,2000-03-01,45.580680782035,Mar 2000
@@ -23339,3 +23419,4 @@ Nacional,v_ciudad_inpc,2026,2,2026-02-01,144.307,Feb 2026
 Nacional,v_ciudad_inpc,2026,3,2026-03-01,145.544,Mar 2026
 Nacional,v_ciudad_inpc,2026,4,2026-04-01,145.831,Abr 2026
 Nacional,v_ciudad_inpc,2026,5,2026-05-01,145.527,May 2026
+Nacional,v_ciudad_inpc,2026,6,2026-06-01,145.131,Jun 2026

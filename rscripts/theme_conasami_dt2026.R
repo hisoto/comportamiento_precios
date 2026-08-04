@@ -1,9 +1,10 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # theme_conasami_dt2026.R  —  Dirección Técnica CONASAMI, Manual DT 2026 (v1.0)
 #
-# Tema gráfico de ggplot2 unificado para los 4 proyectos de la CAEL
-# (comportamiento_precios, Negociación laboral, Política Social,
-# inflacion_nivel_ingreso). Este archivo es idéntico en los 4 proyectos.
+# COPIA LOCAL. El master vive en la raíz de CAEL (theme_conasami_dt2026.R); este
+# archivo replica su código de forma idéntica. NO editar aquí — todo cambio se hace
+# en el canon y se re-copia a los proyectos (ver CLAUDE.md raíz §4.1 y
+# GUIA_GRAFICAS_DT2026.md §10).
 #
 # Filosofía (Manual §6, §7, §11): R produce SOLO el área de trazado. Antetítulo,
 # título, detalles y fuente NO se generan aquí — viven en la tabla-envoltorio de
@@ -18,6 +19,10 @@
 # Salida: PNG (raster, 300 dpi, transparente) + SVG (vectorial, transparente).
 # El SVG reemplaza al EPS anterior: soporta transparencia, es editable en
 # Inkscape / Illustrator y se inserta sin pérdida en Word vía "Imagen vectorial".
+#
+# Copia externa: los proyectos de Informes/ mandan además el SVG a la carpeta
+# compartida de la Dirección Técnica, resuelta con ruta_dt_automatizacion()
+# (portable: se deriva del entorno, no del nombre de usuario del equipo).
 #
 # Requiere: ggplot2, ragg, systemfonts, svglite, here.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -199,13 +204,37 @@ scale_fill_direccion  <- function(...) scale_fill_manual(values = direccion_colo
 scale_color_quintil <- function(...) scale_color_manual(values = cnsm_quintil_pal, ...)
 scale_fill_quintil  <- function(...) scale_fill_manual(values = cnsm_quintil_pal, ...)
 
+# ── ruta institucional de la DT (portable entre equipos) ─────────────────────
+# Carpeta compartida donde la Dirección Técnica arma el informe mensual en Word.
+# La raíz se deriva del entorno para no fijar el nombre de usuario de la máquina:
+# al cambiar de equipo la ruta sigue resolviendo sola. OneDrive corporativo expone
+# OneDriveCommercial; los otros dos niveles son respaldo.
+#
+#   ruta_dt_automatizacion()          → .../proyectosDT/informes/automatizacion
+#   ruta_dt_automatizacion("graphs")  → .../automatizacion/graphs
+#   ruta_dt_automatizacion("bases")   → .../automatizacion/bases
+ruta_dt_automatizacion <- function(...) {
+  raiz <- Sys.getenv("OneDriveCommercial")
+  if (!nzchar(raiz)) raiz <- Sys.getenv("OneDrive")
+  if (!nzchar(raiz))
+    raiz <- file.path(Sys.getenv("USERPROFILE"),
+                      "OneDrive - Comision Nacional de los Salarios Minimos")
+  file.path(raiz, "proyectosDT", "informes", "automatizacion", ...)
+}
+
 # ── helper de exportación (PNG 300 dpi + SVG) ────────────────────────────────
 # tamano = "ancho" → 17.5 × 8 cm (ancho completo, ~6 años de datos)
 # tamano = "medio" → 8 × 8 cm     (medio ancho, ~3 años de datos)
 # tamano = "libre" → width × height explícitos en cm (figuras densas: heatmaps,
 #                    rankings con muchas categorías). Ancho recomendado: 17.5 cm.
 # width/height = override opcional en cm aun con tamano "ancho"/"medio".
-# dest   = carpeta opcional (p. ej. la de Word); si se indica, copia ahí el PNG.
+# dest   = carpeta externa opcional (la de Word de la DT: ruta_dt_automatizacion("graphs")).
+#          Default: getOption("cnsm_dest_graphs"), que vale NULL mientras el proyecto
+#          no la fije — así solo los proyectos de Informes vuelcan a la carpeta
+#          institucional. Un dest explícito en la llamada siempre manda.
+#          Si la carpeta no existe se avisa con message() y se omite la copia.
+# dest_formato = qué se copia a dest: "svg" (default, lo que pide el flujo de Word),
+#          "png" o "ambos".
 # svg    = FALSE permite suprimir la salida vectorial (solo PNG para previews).
 #
 # PNG: device = ragg::agg_png → tamaño de texto determinista (mismo resultado en
@@ -217,9 +246,11 @@ guardar_grafica_conasami <- function(plot, archivo,
                                      height = NULL,
                                      dir    = here::here("graphs"),
                                      dpi    = 300,
-                                     dest   = NULL,
+                                     dest   = getOption("cnsm_dest_graphs"),
+                                     dest_formato = c("svg", "png", "ambos"),
                                      svg    = TRUE) {
   tamano <- match.arg(tamano)
+  dest_formato <- match.arg(dest_formato)
   dims <- switch(
     tamano,
     ancho = c(17.5, 8),
@@ -246,9 +277,22 @@ guardar_grafica_conasami <- function(plot, archivo,
            units = "cm", device = svglite::svglite, bg = "transparent")
   }
 
-  # Copia opcional a una carpeta externa (p. ej. la de Word del pipeline mensual).
-  if (!is.null(dest) && dir.exists(dest))
-    file.copy(ruta_png, file.path(dest, basename(ruta_png)), overwrite = TRUE)
+  # Copia a la carpeta externa (la de Word del pipeline mensual de la DT). El
+  # message() del else importa: la omisión silenciosa fue lo que dejó las gráficas
+  # sin llegar cuando la ruta apuntaba al usuario de la máquina anterior.
+  if (!is.null(dest)) {
+    if (dir.exists(dest)) {
+      copiar <- switch(dest_formato,
+                       svg   = ruta_svg,
+                       png   = ruta_png,
+                       ambos = c(ruta_png, ruta_svg))
+      copiar <- Filter(Negate(is.null), copiar)
+      if (length(copiar))
+        file.copy(copiar, file.path(dest, basename(copiar)), overwrite = TRUE)
+    } else {
+      message("Carpeta destino no encontrada, se omite la copia externa: ", dest)
+    }
+  }
 
   invisible(c(png = ruta_png, svg = ruta_svg))
 }
@@ -270,3 +314,10 @@ guardar_grafica_conasami <- function(plot, archivo,
 # # Exportar (genera PNG 300 dpi + SVG en graphs/)
 # guardar_grafica_conasami(last_plot(),
 #                          "inflacion_quintiles_2026m03", tamano = "ancho")
+#
+# # Exportar mandando además el SVG a la carpeta de Word de la DT
+# guardar_grafica_conasami(last_plot(), "bar_incremento_2026m07", tamano = "ancho",
+#                          dest = ruta_dt_automatizacion("graphs"))
+#
+# # Alternativa por proyecto: fijarlo una sola vez en el config y omitir dest
+# options(cnsm_dest_graphs = ruta_dt_automatizacion("graphs"))
